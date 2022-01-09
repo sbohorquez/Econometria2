@@ -1,1 +1,52 @@
-Hello
+.wrap {
+   margin: auto;
+   width: 1180px;
+   overflow: hidden; /* because children will be floated */
+}
+
+#slides > div {
+	height: 600px;
+	width: 1180px;
+	float: left;
+	margin-right: 200px;
+	text-align: center;
+
+        /* Flexible Box Model */        
+        display: -webkit-box;
+	-webkit-box-align: center;
+	-webkit-box-orient: horizontal;
+	-webkit-box-pack: center;
+
+	display: box;
+	box-align: center;
+	box-orient: horizontal;
+	box-pack: center;
+}
+
+body {
+	background-image: -webkit-gradient(
+		radial, 
+		50% 50%, 0, 
+		50% 50%, 1000, 
+		from(rgba(245,245,245,1)), 
+		to(rgba(100,100,100,1))
+	);
+}
+
+#slides h1,
+#slides h2,
+#slides h3,
+#slides h4,
+#slides h5 {
+	color: #292929;
+	font-family: 'League Gothic', sans-serif;
+	letter-spacing: -5px;
+	margin-top: 0;
+	text-shadow: 5px 3px 0 white;
+}
+#slides > div h2 {
+	font-size: 180px;
+	line-height: 1em;
+	margin: 0;
+}
+
