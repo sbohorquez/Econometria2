@@ -74,4 +74,4 @@ var Slides = {
 };
 
 // All right; let's do this. 
-Slides.init(1);
+Slides.init(2);
