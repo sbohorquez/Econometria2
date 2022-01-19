@@ -1,0 +1,150 @@
+---
+title: "Econometría 2"
+author: |
+        | Santiago Bohorquez Correa
+        |
+        | Universidad EAFIT
+        | Escuela de Economía y Finanzas
+output:
+  revealjs::revealjs_presentation:
+    css: EAFIT.css
+    highlight: pygments
+    center: true
+    transition: slide
+---
+
+
+
+# Organización del Curso
+
+# Objetivo del curso
+
+Conocer, desarrollar y aplicar algunas técnicas econométricas que permitan realizar análisis cuantitativos de algunos fenómenos económicos que generalmente son dinámicos, estocásticos y simultáneos.
+
+# Temas 
+<ol>
+  <li>Repaso mínimos cuadrados ordinarios (MCO) y mínimos cuadrados generalizados.</li>
+  <li>Regresión lineal con series de tiempo.</li>
+  <li>Causalidad.</li>
+  <li>Modelos de elección discreta.</li>
+  <li>Datos de panel.</li>
+</ol> 
+
+## Primera Parte 
+<ol>
+  <li>Repaso mínimos cuadrados ordinarios (MCO) y mínimos cuadrados generalizados.</li>
+  <li>Regresión lineal con series de tiempo.</li>
+</ol> 
+
+
+# Equipo Docente
+
+ Santiago Bohórquez Correa
+ 
+ Gustavo Adolfo García Cruz
+ 
+ Monitor
+ 
+# Estrategias de Enseñanza Aprendizaje
+
+<ul>
+ <li>Presentación magistral de los temas del programa a cargo del docente.</li>
+ <li>Estudio y análisis de ejercicios de aplicación propuestos por el profesor.</li>
+ <li> Solución de problemas utilizando paquetes estadísticos, Stata o R.</li>
+ 
+ 
+<style>
+.divScroll {
+overflow:scroll;
+height:500px;
+width:1000px;
+}
+</style>
+
+# Evaluaciones 
+<div class="divScroll">
+<table>
+  <tr>
+    <th>Evaluación</th>
+    <th>Resultados de aprendizaje</th>
+    <th>	%	</th>
+    <th> Fecha </th>
+  </tr>
+  <tr>
+    <td>Quiz 1</td>
+    <td>	Comprende e implementa modelos de regresión lineal con datos de corte trasversal en software especializado.</td>
+    <td>5%	</td>
+    <td>Semana 3</td>
+  </tr>
+  <tr>
+    <td>Quiz 2</td>
+    <td>Comprende e implementa modelos de regresión lineal con datos de series de tiempo en software especializado.</td>
+    <td>5%</td>
+    <td>Semana 7</td>
+  </tr>
+    <tr>
+    <td>Seguimiento</td>
+    <td>	Aporta a la construcción y apropiación de conocimiento propia y grupal.</td>
+    <td>5%</td>
+    <td>Semanas 1-8</td>
+  </tr>
+  <tr>
+    <td>Parcial 1</td>
+    <td>Entiende la teoría de modelos de regresión lineal con series de tiempo, e interpreta en una manera adecuada los resultados de los mecanismos de estimación.</td>
+    <td>25%</td>
+    <td>Semana 8</td>
+  </tr>
+    <tr>
+    <td>Quiz 3</td>
+    <td>Comprende e implementa modelos orientados a estimar efectos causales en software especializado usando variable instrumental.</td>
+    <td>5%</td>
+    <td>Semana 10</td>
+  </tr>
+  <tr>
+    <td>Quiz 4</td>
+    <td>Comprende e implementa modelos orientados a estimar efectos causales en software especializado usando ecuaciones simultáneas.</td>
+    <td>5%</td>
+    <td>Semana 12</td>
+  </tr>
+  <tr>
+  <td>Parcial 2</td>
+    <td>Entiende la teoría de modelos básicos de efectos causales e interpreta en una manera adecuada los resultados de los mecanismos de estimación.</td>
+    <td>20%</td>
+    <td>Semana 13</td>
+  </tr>
+  <tr>
+  <td>Trabajo aplicado</td>
+    <td>Comprende, implementa y analiza los modelos enseñados durante el curso en un ambiente en un problema empírico. Trabaja de forma colaborativa en un ambiente de equipo, y expresa de forma idónea a nivel oral y escrito los resultados obtenidos. </td>
+    <td>15%</td>
+    <td>Semana 15</td>
+  </tr>
+  <tr>
+  <td>Parcial 3</td>
+    <td>Tiene una visión holística a profundidad de la temática enseñada a nivel teórico y aplicado. </td>
+    <td>15%</td>
+    <td>Semana 17</td>
+  </tr>
+</table>
+
+</div>
+
+## Seguimiento
+
+La nota de seguimiento se basara en sus colaboraciones al proyecto de clase en Github. Para esto deben crear una cuenta en Github, y seguir las instrucciones para crear 'Forks' e 'Issues' en un proyecto que se encuentran en Interactiva.
+
+# Bibliografía
+
+<div class="divScroll">
+Gujarati, D. & Porter, D. (2010). 5a Edición. Econometría. Mc Graw Hill.
+
+Wooldridge, J. (2013). Introducción a la Econometría. 5a Edición, Cengage Learning
+
+Lütkepohl, H., & Krätzig, M. (Eds.). (2004). Applied Time Series Econometrics. Cambridge University Press.
+
+Rosales, R., Perdomo, J., Morales, C., & Urrego, A. (2010). Fundamentos de Econometría Intermedia: Teoría y Aplicaciones, Apuntes de Clase CEDE.
+
+Stock, J. & Watson, M. (2003). Introduction to Econometrics. Addison Wesley. 
+</div>
+    
+
+

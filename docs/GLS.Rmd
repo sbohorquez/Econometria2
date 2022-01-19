@@ -1,0 +1,111 @@
+---
+title: "Repaso MCG"
+author: |
+        | Santiago Bohorquez Correa
+        |
+        | Universidad EAFIT
+        | Escuela de Economía y Finanzas
+output:
+  revealjs::revealjs_presentation:
+    css: EAFIT.css
+    highlight: pygments
+    center: true
+    transition: slide
+---
+
+# Estimador MCG
+
+#
+
+<ul>
+<li>El supuesto de observaciones i.i.d. puede ser apropiado cuando tenemos individuos que fueron seleccionados aleatoriamente de una población.</li>
+<li> Sin embargo, en varios casos en economía tenemos muestreos que difieren de este caso, e.g. observamos varios miembros de la misma familia, ó usamos series de tiempo.</li>
+<li>Cuando esto sucede los supuestos vistos para el estimador MCO no se cumplen y este estimador deja de ser el MELI.</li>
+</ul>
+
+#
+
+<ul>
+<li>Para estos casos se usa el estimador de mínimos cuadrados generalizados el cual tiene supuestos menos restrictivos.</li> 
+<li>Estos son:</li>
+<ol>
+<li> $E(\mathbf{U}|\mathbf{X}) = \mathbf{0}_n$.</li>
+<li> $E(\mathbf{U}\mathbf{U}'|\mathbf{X}) = \Omega(\mathbf{X})$, donde $\Omega(\mathbf{X})$ es una matriz definida positiva de tamaño $n \times n$ que puede depender de $\mathbf{X}$.</li>
+<li> $\mathbf{X}$ y $u_i$ satisfacen condiciones sobre los momentos, estas condiciones dependen de la forma funcional de $\Omega(\mathbf{X})$.</li>
+<li> $\mathbf{X}$ tiene rango completo.</li>
+
+#
+
+<ul>
+<li> Ahora, suponiendo que conocemos $\Omega(\mathbf{X})$ y que tenemos una matriz $\mathbf{F}$ tal que $\mathbf{F}'\mathbf{F} =\Omega(\mathbf{X})^{-1}$.</li> 
+<li> Estimamos el siguiento modelo de regresión,
+        \begin{equation}
+        \tilde{\mathbf{Y}}  = \tilde{\mathbf{X}} \boldsymbol{\beta} + \tilde{\mathbf{U}}
+    \end{equation}
+       donde, $\tilde{\mathbf{Y}} = \mathbf{F}\mathbf{Y}$, $\tilde{\mathbf{X}} = \mathbf{F}\mathbf{X}$, y $\tilde{\mathbf{U}} = \mathbf{F}\mathbf{U}$.</li>
+       
+#
+
+ Con esto podemos calcular el estimador como,
+    \begin{equation}
+        \tilde{\boldsymbol{\beta}}^{MCG} = (\mathbf{X}'\mathbf{F}'\mathbf{F}\mathbf{X})^{-1}(\mathbf{X}'\mathbf{F}'\mathbf{F}\mathbf{Y})
+    \end{equation}
+ tal que,
+    \begin{equation}
+        \tilde{\boldsymbol{\beta}}^{MCG} = (\mathbf{X}'\Omega^{-1}\mathbf{X})^{-1}(\mathbf{X}'\Omega^{-1}\mathbf{Y})
+    \end{equation}
+
+Sin embargo, muchas veces si bien la forma funcional de $\Omega$ es conocida los parámetros de esta no lo son.
+
+#
+
+Cuando $\Omega$ es desconocido necesitamos un estimador $\hat{\Omega}$, tal que 
+    \begin{equation}
+        \hat{\boldsymbol{\beta}}^{MCG} = (\mathbf{X}'\hat{\Omega}^{-1}\mathbf{X})^{-1}(\mathbf{X}'\hat{\Omega}^{-1}\mathbf{Y})
+    \end{equation}
+Este estimador es conocido como el estimador de MCG Factibles.
+
+#
+
+<ul>
+<li>Es importante examinar con un poco más de detalle el primer supuesto del estimador MCG, $E(\mathbf{U}|\mathbf{X}) = \mathbf{0}_n$.</li>
+<li> Este supuesto requiere que los errores de la observación $i$ no esta correlacionado con ningún regresor de otras observaciones.</li> 
+<li> Este supuesto es dudosa en aplicaciones de serie de tiempo, ya que esto requiere que no exista correlación entre diferentes periodos de tiempo.</li>
+<li> En estos casos el MCO es consistente pero el MCG no lo es.</li>
+</ul>
+
+# Código R
+
+##
+
+<code>
+
+library(readxl)
+
+library(nlme)
+
+USMacro <- read_excel("us_macro_quarterly.xlsx")
+
+GLSReg <- gls(GDPC96 ~ GS10, data = USMacro, corr =<br>
+              corAR1())
+
+summary(GLSReg)
+</code>
+
+##
+```{r ols, echo=FALSE, warning=FALSE}
+library(readxl)
+library(nlme)
+
+rm(list=ls())
+
+setwd("D:/OneDrive - Universidad EAFIT/EAFIT/Docencia/Econometria 2/2021 - 1")
+
+USMacro <- read_excel("us_macro_quarterly.xlsx")
+
+
+GLSReg <- gls(GDPC96 ~ GS10, data = USMacro, corr =
+              corAR1())
+
+summary(GLSReg)
+```

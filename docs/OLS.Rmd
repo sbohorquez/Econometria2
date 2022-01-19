@@ -1,0 +1,214 @@
+---
+title: "Repaso MCO"
+author: |
+        | Santiago Bohorquez Correa
+        |
+        | Universidad EAFIT
+        | Escuela de Economía y Finanzas
+output:
+  revealjs::revealjs_presentation:
+    css: EAFIT.css
+    highlight: pygments
+    center: true
+    transition: slide
+---
+
+# Modelo de Regresión lineal Múltiple
+
+#
+
+ El modelo de regresión lineal múltiple esta dado por
+\begin{equation}
+        Y_i = \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \dots + \beta_k X_{ki} + u_i
+\end{equation}
+    donde, $Y_i$ es la observación $i$ de la variable dependiente; $X_{1i},X_{2i},\dots,X_{ki}$ son las observaciones $i$ de cada uno de los $k$ regresores; y $u_i$ es el termino de error.
+
+#
+
+<ul>
+<li> La linea de regresión es la relación que existe entre $Y$ y los $X$'s en promedio en la población:
+
+
+\begin{eqnarray}   
+        E(Y|X_{1i}=x_1,X_{2i}=x_2,\dots,X_{ki}=x_k) = \\
+        \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_k x_k
+    \end{eqnarray}
+
+</li>
+<li> $\beta_1$ es el coeficiente de la pendiente de $X_1$, $\beta_2$ es el coeficiente de la pendiente de $X_2$, y así sucesivamente.</li>
+<li> El coeficiente $\beta_1$ es el cambio esperado de $Y_i$ ante un cambio de una unidad en $X_1$ manteniendo constante las demás variables. Los otros coeficientes se interpretan de manera similar.</li>
+    
+# Estimador MCO
+
+# 
+
+<ul>
+<li> Dado que los coeficientes $\beta_0,\beta_1,\dots,\beta_k$ son (generalmente) desconocidos, debemos estimarlos.</li>
+<li> El estimador MCO $\hat{\beta}_0,\hat{\beta}_1,\dots,\hat{\beta}_k$ son los valores $b_0,b_1,\dots,b_k$ que minimizan las suma de los cuadrados de los errores de predicción, $\sum_{i=1}^n (Y_i - b_0 - b_1 X_{1i}-\dots - b_k X_{ki})^2$.</li>
+</ul>
+
+#
+
+<ul>
+<li> Con este estimador podemos hacer predicciones, $\hat{Y}_i$, estas predicciones las escribimos como,
+    \begin{equation}
+        \hat{Y}_i = \hat{\beta}_0 + \hat{\beta}_1 X_{1i} + \dots + \hat{\beta}_k X_{ki}, \, i = 1,\dots, n   
+    \end{equation}</li>
+
+<li> y los residuales resultantes, $\hat{u}_i$ son,
+    \begin{equation}
+        \hat{u}_i = Y_i - \hat{Y}_i, \, i = 1,\dots, n   
+    \end{equation}</li>
+ </ul>
+
+
+#
+
+<ul>
+
+<li> Los estimadores MCO $\hat{\beta}_0,\hat{\beta}_1,\dots,\hat{\beta}_k$ y residuales $\hat{u}_i$ se calculan basados en una muestra de $n$ observaciones de $(X_{1i},\dots,X_{ki},Y_i)$, $i=1,\dots,n$. </li>
+<li> Estos son estimadores de los valores poblacionales reales, $\beta_0,\beta_1,\dots,\beta_k$ y el termino de error $u_i$.</li>
+</ul>
+
+#
+ Para obtener este estimador escribimos el modelo en forma matricial, tal que
+    \begin{eqnarray*}
+    \mathbf{Y}  = \begin{pmatrix}
+Y_1 \\ 
+Y_2 \\ 
+\vdots \\ 
+Y_n
+\end{pmatrix}, 
+    \mathbf{U} = \begin{pmatrix}
+u_1 \\ 
+u_2 \\ 
+\vdots \\ 
+u_n
+\end{pmatrix}, 
+\boldsymbol{\beta} =  \begin{pmatrix}
+\beta_0 \\ 
+\beta_1 \\ 
+\vdots \\ 
+\beta_k
+\end{pmatrix}, \\
+\mathbf{X} = \begin{pmatrix}
+1 & X_{11} & \dots & X_{k1} \\ 
+1 & X_{12} & \dots & X_{k2}  \\ 
+\vdots & \vdots & \ddots &  \vdots \\ 
+1 & X_{1n} & \dots & X_{kn} 
+\end{pmatrix} = \begin{pmatrix}
+\mathbf{X}'_1 \\ 
+\mathbf{X}'_2 \\ 
+\vdots \\ 
+\mathbf{X}'_n
+\end{pmatrix}
+\end{eqnarray*}
+
+#
+
+<ul>
+<li>Así podemos escribir el modelo como,
+    \begin{equation}
+        \mathbf{Y}  = \mathbf{X} \boldsymbol{\beta} + \mathbf{U}
+    \end{equation}</li>
+<li> Así, $\mathbf{Y}$ es $n \times 1$, $\mathbf{X}$ es $n \times (k+1)$, $\mathbf{U}$ es $n \times 1$, y $\boldsymbol{\beta}$ es $(k+1) \times 1$.</li>
+
+#
+
+<ul>
+<li> Para el estimador MCO necesitamos las siguientes supuestos.</li>
+  <ul>
+  <li>$E(u_i|\mathbf{X}_i)=0$, i.e. $u_i$ tiene media condicional cero.</li>
+  <li>$(\mathbf{X}_i,Y_i)$, $i=1,\dots,n$, son observaciones independientes e idénticamente distribuidas (i.i.d.).</li>
+  <li>El cuarto momento de $\mathbf{X}_i$ y $u_i$ existe y es diferente de cero.</li>
+  <li>La matriz $\mathbf{X}$ tiene rango completo, i.e. no existe multicolinealidad perfecta.</li>
+</ul>
+</ul>
+
+#
+
+Con estas condiciones podemos estimar las condiciones de primer orden para minimizar la suma de cuadrados de los errores,
+    \begin{equation}
+        -2\mathbf{X}'(\mathbf{Y} - \mathbf{X} b) = \mathbf{0}_{k+1}
+    \end{equation}
+ Resolviendo obtenemos,
+    \begin{equation}
+        \mathbf{X}'\mathbf{Y} = \mathbf{X}'\mathbf{X} \boldsymbol{\hat{\beta}}
+    \end{equation}
+ Finalmente,
+    \begin{equation}
+     \boldsymbol{\hat{\beta}} = (\mathbf{X}'\mathbf{X})^{-1} \mathbf{X}'\mathbf{Y}
+     \end{equation}
+     
+# 
+
+Si tenemos una muestra grande, y los supuestos anteriores se cumplen y usando el teorema del limite central, la distribución asintótica del estimador es dada por,
+    \begin{equation}
+       \sqrt{n}(\boldsymbol{\hat{\beta}} - \boldsymbol{\beta}) \overset{d}{\rightarrow} N(\mathbf{0}_{k+1},\Sigma_{\sqrt{n}(\boldsymbol{\hat{\beta}} - \boldsymbol{\beta})}) 
+    \end{equation}
+    donde, $\Sigma_{\sqrt{n}(\boldsymbol{\hat{\beta}} - \boldsymbol{\beta})} = \mathbf{Q}^{-1}_{\mathbf{X}} \Sigma_{\mathbf{V}}\mathbf{Q}^{-1}_{\mathbf{X}}$
+
+## Teorema del Limite Central
+
+Supongamos que $\mathbf{W}_1,\dots,\mathbf{W}_n$ son variables i.i.d. $m$-dimensionales con vector de medias $E(\mathbf{W}_i) = \mu_W$  y matriz de varianzas y covarianzas $E[(\mathbf{W}_i - \mu_W) (\mathbf{W}_i - \mu_W)'] = \Sigma_{\mathbf{W}} $, donde $\Sigma_{\mathbf{W}} $ es definida positiva y finita.
+
+Sea $\bar{\mathbf{W}} = \frac{1}{n}\Sigma_{i=1}^n \mathbf{W}_i$. Entonces $\sqrt{n}(\bar{\mathbf{W}} - \mu_W) \overset{d}{\rightarrow} N(\mathbf{0}_m,\Sigma_{\mathbf{W}})$.
+
+#
+
+<ul>
+
+<li>$\mathbf{Q}_{\mathbf{X}}$ es una matriz de tamaño $(k+1) \times (k+1)$ del segundo momento de los regresores, i.e. $\mathbf{Q}_{\mathbf{X}} = E(\mathbf{X}_i\mathbf{X}_i')$.</li>
+<li> $\Sigma_{\mathbf{V}}$ es la matriz de varianzas y covarianzas de $\mathbf{V}_i = \mathbf{X}_i u_i$.</li>
+<li> Así, escribiéndolo en términos de $\boldsymbol{\hat{\beta}}$,
+     \begin{equation}
+       \boldsymbol{\hat{\beta}} \overset{d}{\rightarrow}  N(\boldsymbol{\beta},\Sigma_{\boldsymbol{\hat{\beta}}}) 
+    \end{equation}  
+    donde, $\Sigma_{\boldsymbol{\hat{\beta}}} =  \mathbf{Q}^{-1}_{\mathbf{X}} \Sigma_{\mathbf{V}}\mathbf{Q}^{-1}_{\mathbf{X}} / n$.</li>
+    
+#
+<ul>
+<li>Extendiendo los supuestos para incluir los siguientes,</li>
+<ul>
+<li> $var(u_i|\mathbf{X}_i)=\sigma^2_u$, i.e. homoscedasticidad.</li>
+<li> La distribución condicional de $u_i$ dado $\mathbf{X}_i$ es normal, i.e. errores normales.</li>
+</ul>
+<li> Obtenemos,
+    \begin{equation}
+       \boldsymbol{\hat{\beta}} \overset{d}{\rightarrow}  N(\boldsymbol{\beta},\sigma^2_u(\mathbf{X}'\mathbf{X})^{-1}) 
+    \end{equation}  </li>
+</ul>
+
+# Teorema Gauss - Markov
+<ul>
+<li>Bajo los supuestos anteriores, el estimador MCO es el mejor estimador lineal insesgado.</li>
+<li> Formalmente, sea $\tilde{\boldsymbol{\beta}}$ un estimador insesgado de $\boldsymbol{\beta}$ y sea $\mathbf{c}$ un vector k+1  no aleatorio. Entonces, $var(\mathbf{c}'\boldsymbol{\hat{\beta}}|\mathbf{X}) \leq var(\mathbf{c}'\tilde{\boldsymbol{\beta}}|\mathbf{X})$ para todo vector $\mathbf{c}$ diferente de cero, donde la igualdad solo se cumple cuando $\tilde{\boldsymbol{\beta}} = \boldsymbol{\hat{\beta}}$.</li>
+
+
+# Código R
+
+##
+<code>
+library(readxl)
+
+USMacro <- read_excel("us_macro_quarterly.xlsx")
+
+olsreg <- lm(GDPC96 ~ GS10, data = USMacro)
+
+summary(olsreg)
+</code>
+
+##
+```{r ols, echo=FALSE}
+library(readxl)
+
+rm(list=ls())
+
+setwd("D:/OneDrive - Universidad EAFIT/EAFIT/Docencia/Econometria 2/2021 - 1")
+
+USMacro <- read_excel("us_macro_quarterly.xlsx")
+
+olsreg <- lm(GDPC96 ~ GS10, data = USMacro)
+
+summary(olsreg)
+```
