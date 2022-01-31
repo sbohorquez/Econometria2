@@ -150,7 +150,7 @@ Si tenemos una muestra grande, y los supuestos anteriores se cumplen y usando el
 
 ## Teorema del Limite Central
 
-Supongamos que $\mathbf{W}_1,\dots,\mathbf{W}_n$ son variables i.i.d. $m$-dimensionales con vector de medias $E(\mathbf{W}_i) = \mu_W$  y matriz de varianzas y covarianzas $E[(\mathbf{W}_i - \mu_W) (\mathbf{W}_i - \mu_W)']$ $= \Sigma_{\mathbf{W}}$, donde $\Sigma_{\mathbf{W}}$ es definida positiva y finita.
+Supongamos que $\mathbf{W}_1,\dots,\mathbf{W}_n$ son variables i.i.d. $m$-dimensionales con vector de medias $E(\mathbf{W}_i) = \mu_W$  y matriz de varianzas y covarianzas $E[(\mathbf{W}_i - \mu_W) (\mathbf{W}_i - \mu_W)^T]= \Sigma_{\mathbf{W}}$, donde $\Sigma_{\mathbf{W}}$ es definida positiva y finita.
 
 Sea $\bar{\mathbf{W}} = \frac{1}{n}\Sigma_{i=1}^n \mathbf{W}_i$. Entonces $\sqrt{n}(\bar{\mathbf{W}} - \mu_W) \overset{d}{\rightarrow} N(\mathbf{0}_m,\Sigma_{\mathbf{W}})$.
 
