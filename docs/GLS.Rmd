@@ -74,6 +74,55 @@ Este estimador es conocido como el estimador de MCG Factibles.
 <li> En estos casos el MCO es consistente pero el MCG no lo es.</li>
 </ul>
 
+
+# Errores HAC
+
+#
+
+En la literatura de series de tiempo, los errores estandars robustos a correlación serial son a veces llamados, HAC, por sus siglas en ingles (heteroskedasticity and autocorrelation consistent)
+
+Estos empezaron con el trabajo de Newey & West (1987), quienes buscaban tratar con el problema de correlación serial y heteroscedasticidad propio de las series de tiempo.
+
+# Newey-West
+
+#
+
+El procedimiento de Newey-West comienza por mirar la varianza de $\hat{\beta}$,
+
+\begin{equation}
+ \Sigma_{\hat{\beta}} = (X'X)^{-1}Var(X' U| X)  (X'X)^{-1}
+\end{equation}
+
+Newey-West entonces relajan el supuesto de homoscedasticidad sobre $Var(X' U| X)$
+
+#
+
+Si los errores son heteroscedasticos pero independientes, entonces,
+
+\begin{equation}
+ \hat{Var}(X' U| X) = \Sigma_{i=1}^n \hat{u}_i^2 x_i x_i'
+\end{equation}
+
+así los errores estandar del estimado MCO, serían:
+
+\begin{equation}
+  \Sigma_{\hat{\beta}} = (X'X)^{-1} (\Sigma_{i=1}^n \hat{u}_i^2 x_i x_i') (X'X)^{-1}
+\end{equation}
+
+#
+
+Si los errores son heteroscedasticos y tienen auto-correlación, entonces,
+
+\begin{equation}
+ \hat{Var}(X' U| X) = \Sigma_{i=-k}^k \frac{k-|j|}{k} \left(\Sigma_{t=1}^n \hat{u}_i \hat{u}_{i+j} x_i x_{i+j}'\right)
+\end{equation}
+
+así los errores estandar del estimado MCO, serían:
+
+\begin{equation}
+  \Sigma_{\hat{\beta}} = (X'X)^{-1} \left(\Sigma_{i=-k}^k \frac{k-|j|}{k} \left(\Sigma_{t=1}^n \hat{u}_i \hat{u}_{i+j} x_i x_{i+j}'\right)\right) (X'X)^{-1}
+\end{equation}
+
 # Código R
 
 ##

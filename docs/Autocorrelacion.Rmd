@@ -1,0 +1,77 @@
+---
+title: "Auto-correlación"
+author: |
+        | Santiago Bohorquez Correa
+        |
+        | Universidad EAFIT
+        | Escuela de Economía y Finanzas
+output:
+  revealjs::revealjs_presentation:
+    css: EAFIT.css
+    highlight: pygments
+    center: true
+    transition: slide
+---
+
+# Auto-Correlación
+
+<ul>
+<li> Una de las principales características de las series de tiempo es la presencia de Auto-correlación o correlación serial.</li>
+<li> Ustedes posiblemente están familiarizados con el concepto de correlación entre dos variables, la auto-correlación implica correlación entre la serie y su pasado.</li>
+
+#
+Si la secuencia aleatoria $\{x_t\}$ tiene media $E[x_t]=\mu_t$ la autocovarianza esta dada por:
+    \begin{equation}
+    \begin{matrix}
+        cov[x_{t_1},x_{t_2}]  & = & E[(x_{t_1}-\mu_{t_1})(x_{t_2}-\mu_{t_2})] \\
+                & = & E[(x_{t_1}x_{t_2})] - \mu_{t_1}\mu_{t_2} 
+      \end{matrix}
+    \end{equation}
+    
+## Autocovarianza
+
+\begin{equation}
+\begin{matrix}
+E[(x_{t_1}-\mu_{t_1})(x_{t_2}-\mu_{t_2})]  =    E[(x_{t_1}x_{t_2} - x_{t_1}\mu_{t_2} -  \mu_{t_1}x_{t_2} +  \mu_{t_1}\mu_{t_2})] \\
+ =  E[x_{t_1}x_{t_2}] - E[x_{t_1}\mu_{t_2}] - E[\mu_{t_1}x_{t_2}] + E[\mu_{t_1}\mu_{t_2}] \\
+ =  E[x_{t_1}x_{t_2}] - E[x_{t_1}]\mu_{t_2} - \mu_{t_1}E[x_{t_2}] +  \mu_{t_1}\mu_{t_2} \\
+ =  E[x_{t_1}x_{t_2}] - \mu_{t_1}\mu_{t_2} - \mu_{t_1}\mu_{t_2} + \mu_{t_1}\mu_{t_2} \\
+ = E[x_{t_1}x_{t_2}] - \mu_{t_1}\mu_{t_2}
+\end{matrix}
+\end{equation}
+
+# 
+La autocovarianza de orden $j$  se define como;
+
+\begin{equation}
+\gamma_j = cov(x_{t},x_{t-j}) =  E[(x_{t}x_{t-j})] - \mu_{t}\mu_{t-j} 
+\end{equation}
+
+
+#
+
+Ahora, definimos la auto-correlación como
+
+\begin{equation}
+    \rho_j = \frac{\gamma_j}{\gamma_0}
+\end{equation}
+ 
+La ventaja de usar la auto-correlación en vez de la auto-covarianza es que la auto-correlación siempre va a estar entre -1 y 1, dado que la covarianza siempre es igual o menor que la varianza. 
+
+
+#
+
+Las auto-covarianzas y auto-correlaciones expuestas anteriormente son los valores poblacionales, estas pueden ser estimadas en una muestra de tamaño $T$ de la siguiente manera:
+    \begin{align}
+        \hat{\gamma_j} = &  \frac{1}{T} \sum^T_{t=j+1} (x_t - \bar{x}_{j+1:T})(x_{t-j} - \bar{x}_{1:T-j}) \\
+        \hat{\rho_j} = &  \frac{\hat{\gamma_j}}{\widehat{var(x_t)}}
+    \end{align}
+
+
+
+#
+<ul>
+<li> donde $\bar{x}_{j+1:T}$ es el promedio muestral de $x_t$ usando las observaciones $t=j+1,j+2,\dots,T$ </li>
+<li> $\widehat{var(x_t)}$ es la varianza muestral de $x_t$. </li>
+<li> Noten que la ecuación de la auto-covarianza se divide por $T$ y no $T-j$ como es usual cuando perdemos grados de libertad, la razón para esto es para poder hacer comparaciones entre diferentes ordenes de las auto-covarianzas.</li>
+
