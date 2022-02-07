@@ -147,16 +147,6 @@ Primero estimamos por MCO la regresión:
         y_t =  \mathbf{X}_t \boldsymbol{\beta} + u_t
     \end{equation}  
     
-#
-
-
-Sea $\tilde{u}$ el vector de residuales de la regresión anterior.
-
-Con esto, el test consiste en probar la hipótesis nula de $b_p = 0$ en la regresión,
-    \begin{equation}
-        \tilde{u}_t = \mathbf{X}_t \boldsymbol{\beta} + b_p \tilde{u}_{t-1} + residuales
-    \end{equation}
-    donde $b_p \sim N(0,1)$ bajo la hipótesis nula
 
 #
 
