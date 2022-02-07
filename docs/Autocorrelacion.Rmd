@@ -75,3 +75,104 @@ Las auto-covarianzas y auto-correlaciones expuestas anteriormente son los valore
 <li> $\widehat{var(x_t)}$ es la varianza muestral de $x_t$. </li>
 <li> Noten que la ecuación de la auto-covarianza se divide por $T$ y no $T-j$ como es usual cuando perdemos grados de libertad, la razón para esto es para poder hacer comparaciones entre diferentes ordenes de las auto-covarianzas.</li>
 
+
+#
+Vemos un ejemplo de una serie de tiempo con auto-correlación:
+
+El crecimiento del PIB trimestral para EEUU.
+
+# 
+<img src="img/gdpgrowth.png" alt="Ejemplo: Crecimiento PIB" width="900" height="450">  
+
+#
+<ul>
+<li> En nuestro ejemplo de crecimiento del PIB las autocorrelaciones muestrales son, $\hat{\rho_1}=0.34$, $\hat{\rho_2}=0.27$, $\hat{\rho_3}=0.13$, $\hat{\rho_4}=0.14$.</li>
+<li> Estos valores sugieren que el crecimiento del PIB esta levemente correlacionado positivamente.</li>
+<li> Esto implica que si el PIB crece más (menos) que el promedio en un periodo, este tiende a crecer más (menos) que el promedio el periodo siguiente.</li>
+</ul>
+
+#
+
+<ul>
+<li> Claramente, si la autocorrelación es distinta de cero los supuestos de MCO no se cumplen.</li>
+<li> Por esta razón se han escrito innumerables artículos de investigación sobre como testear por correlación serial en modelos de regresión.</li>
+<li> La forma más sencilla de hacerlo es testeando la hipótesis nula de no correlación serial versus la alternativa de correlación serial de algún orden.</li>
+</ul>
+
+# Test correlación serial 
+
+
+#
+
+Supongamos el siguiente modelo de regresión lineal,
+    \begin{equation}
+        y_t = \mathbf{X}_t \boldsymbol{\beta} + u_t, \quad u_t = \rho u_{t-1} + \varepsilon_t, \quad \varepsilon_t \sim IID(0,\sigma^2_{\varepsilon})
+    \end{equation}
+
+es decir, el termino  de error $u_t$ sigue un proceso AR(1).
+
+Como veremos cuando analicemos los modelos Autorregresivos debemos imponer la restricción $|\rho|<1$
+
+#
+
+
+Sustituyendo $u_t$ por $\rho u_{t-1} + \varepsilon_t$,
+
+\begin{equation}
+    y_t = \mathbf{X}_t \boldsymbol{\beta} +  \rho u_{t-1} + \varepsilon_t
+\end{equation}
+    
+ Y remplazando $u_{t-1}$ por $y_{t-1} - \mathbf{X}_{t-1} \boldsymbol{\beta}$,
+    \begin{equation}
+        y_t = \rho y_{t-1} + \mathbf{X}_t \boldsymbol{\beta} - \rho\mathbf{X}_{t-1} \boldsymbol{\beta} + \varepsilon_t
+    \end{equation}    
+
+
+#
+
+<ul>
+<li> Como la variable dependiente rezagada, $y_{t-1}$, entra dentro de los regresores nos referimos a este modelo como un modelo <em> dinámico </em>.</li>
+<li> Para este modelo perdemos el primer dato de la muestra ya que en este caso no conoceríamos el rezago para dicho momento.</li>
+<li> Este modelo es lineal en los regresores, pero no es lineal en los parámetros, y por lo tanto debería ser estimado por Mínimos Cuadrados no lineales.</li>
+
+
+# Test correlación serial - Gauss Newton
+
+#
+
+Podemos evitar hacer esta estimación no lineal, si hacemos test basándonos en la regresión de Gauss-Newton.
+
+Primero estimamos por MCO la regresión:
+    \begin{equation}
+        y_t =  \mathbf{X}_t \boldsymbol{\beta} + u_t
+    \end{equation}  
+    
+#
+
+
+Sea $\tilde{u}$ el vector de residuales de la regresión anterior.
+
+Con esto, el test consiste en probar la hipótesis nula de $b_p = 0$ en la regresión,
+    \begin{equation}
+        \tilde{u}_t = \mathbf{X}_t \boldsymbol{\beta} + b_p \tilde{u}_{t-1} + residuales
+    \end{equation}
+    donde $b_p \sim N(0,1)$ bajo la hipótesis nula
+
+#
+
+Sea $\tilde{u}$ el vector de residuales de la regresión anterior.
+
+Con esto, el test consiste en probar la hipótesis nula de $b_p = 0$ en la regresión,
+    \begin{equation}
+        \tilde{u}_t = b_p \tilde{u}_{t-1} + residuales
+    \end{equation}
+    donde $b_p \sim N(0,1)$ bajo la hipótesis nula
+
+# Test correlación serial - Otros Tests
+
+#
+<b>Yule-Walker Test:</b> Calculamos la autocorrelación de los residuales,
+    \begin{equation}
+        \hat{\rho}_1 = \frac{\hat{\gamma}_1}{\hat{\gamma}_0}
+    \end{equation}
+    testeamos $\hat{\rho}_1 = 0$ con $Var(\hat{\rho}_1) = \frac{1}{T}$
