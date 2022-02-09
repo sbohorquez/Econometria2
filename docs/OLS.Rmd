@@ -188,15 +188,20 @@ Sea $\bar{\mathbf{W}} = \frac{1}{n}\Sigma_{i=1}^n \mathbf{W}_i$. Entonces $\sqrt
 # Código R
 
 ##
+
 <code>
-# Import required library.
+#Import required library.
+
 library(readxl)
       
-# Read quarterly data on U.S. real (i.e. inflation adjusted) GDP from 1947 to 2004.
+#Read quarterly data on U.S. real (i.e. inflation adjusted) GDP from 1947 to 2004.
+
 USMacro <- read_excel("us_macro_quarterly.xlsx")
 
-# OLS regression and main results.
+#OLS regression and main results.
+
 olsreg <- lm(GDPC96 ~ GS10, data = USMacro)
+
 summary(olsreg)
 </code>
 
