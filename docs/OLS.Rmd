@@ -150,7 +150,7 @@ Si tenemos una muestra grande, y los supuestos anteriores se cumplen y usando el
 
 ## Teorema del Limite Central
 
-Supongamos que $\mathbf{W}_1,\dots,\mathbf{W}_n$ son variables i.i.d. $m$-dimensionales con vector de medias $E(\mathbf{W}_i) = \mu_W$  y matriz de varianzas y covarianzas $E[(\mathbf{W}_i - \mu_W) (\mathbf{W}_i - \mu_W)^T]= \Sigma_{\mathbf{W}}$, donde $\Sigma_{\mathbf{W}}$ es definida positiva y finita.
+Supongamos que $\mathbf{W}_1,\dots,\mathbf{W}_n$ son variables i.i.d. $m$-dimensionales con vector de medias $E(\mathbf{W}_i) = \mu_W$  y matriz de varianzas y covarianzas $E[(\mathbf{W}_i - \mu_W) (\mathbf{W}_i - \mu_W)^T]= \Sigma_{\mathbf{W}}$, donde $\Sigma_{\mathbf{W}}$ es __definida positiva__ y __finita__.
 
 Sea $\bar{\mathbf{W}} = \frac{1}{n}\Sigma_{i=1}^n \mathbf{W}_i$. Entonces $\sqrt{n}(\bar{\mathbf{W}} - \mu_W) \overset{d}{\rightarrow} N(\mathbf{0}_m,\Sigma_{\mathbf{W}})$.
 
@@ -170,8 +170,8 @@ Sea $\bar{\mathbf{W}} = \frac{1}{n}\Sigma_{i=1}^n \mathbf{W}_i$. Entonces $\sqrt
 <ul>
 <li>Extendiendo los supuestos para incluir los siguientes,</li>
 <ul>
-<li> $var(u_i|\mathbf{X}_i)=\sigma^2_u$, i.e. homoscedasticidad.</li>
-<li> La distribución condicional de $u_i$ dado $\mathbf{X}_i$ es normal, i.e. errores normales.</li>
+<li> $var(u_i|\mathbf{X}_i)=\sigma^2_u$, i.e. __homoscedasticidad__.</li>
+<li> La distribución condicional de $u_i$ dado $\mathbf{X}_i$ es normal, i.e. __errores normales__.</li>
 </ul>
 <li> Obtenemos,
     \begin{equation}
@@ -181,20 +181,22 @@ Sea $\bar{\mathbf{W}} = \frac{1}{n}\Sigma_{i=1}^n \mathbf{W}_i$. Entonces $\sqrt
 
 # Teorema Gauss - Markov
 <ul>
-<li>Bajo los supuestos anteriores, el estimador MCO es el mejor estimador lineal insesgado.</li>
-<li> Formalmente, sea $\tilde{\boldsymbol{\beta}}$ un estimador insesgado de $\boldsymbol{\beta}$ y sea $\mathbf{c}$ un vector k+1  no aleatorio. Entonces, $var(\mathbf{c}'\boldsymbol{\hat{\beta}}|\mathbf{X}) \leq var(\mathbf{c}'\tilde{\boldsymbol{\beta}}|\mathbf{X})$ para todo vector $\mathbf{c}$ diferente de cero, donde la igualdad solo se cumple cuando $\tilde{\boldsymbol{\beta}} = \boldsymbol{\hat{\beta}}$.</li>
+<li>Bajo los supuestos anteriores, el estimador MCO es el ___mejor estimador lineal insesgado___, en particular, se destaca que es __eficiente__.</li>
+<li> Formalmente, sea $\tilde{\boldsymbol{\beta}}$ un estimador __insesgado__ de $\boldsymbol{\beta}$ y sea $\mathbf{c}$ un vector k+1  no aleatorio. Entonces, $var(\mathbf{c}'\boldsymbol{\hat{\beta}}|\mathbf{X}) \leq var(\mathbf{c}'\tilde{\boldsymbol{\beta}}|\mathbf{X})$ para todo vector $\mathbf{c}$ diferente de cero, donde la igualdad solo se cumple cuando $\tilde{\boldsymbol{\beta}} = \boldsymbol{\hat{\beta}}$.</li>
 
 
 # Código R
 
 ##
 <code>
+# Import required library.
 library(readxl)
-
+      
+# Read quarterly data on U.S. real (i.e. inflation adjusted) GDP from 1947 to 2004.
 USMacro <- read_excel("us_macro_quarterly.xlsx")
 
+# OLS regression and main results.
 olsreg <- lm(GDPC96 ~ GS10, data = USMacro)
-
 summary(olsreg)
 </code>
 
@@ -209,6 +211,6 @@ setwd("D:/OneDrive - Universidad EAFIT/EAFIT/Docencia/Econometria 2/2021 - 1")
 USMacro <- read_excel("us_macro_quarterly.xlsx")
 
 olsreg <- lm(GDPC96 ~ GS10, data = USMacro)
-
+        
 summary(olsreg)
 ```
