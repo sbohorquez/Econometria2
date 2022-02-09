@@ -341,19 +341,22 @@ Por esta razón, el paseo aleatorio hace parte de la clase de modelos integrados
 Los modelos integrados son aquellos que se pueden obtener mediante suma o integración de modelos estacionarios
 
 
-\begin{frame}{Pruebas de Raíces unitarias}
+# Pruebas de Raíces unitarias
+
+#
 
 Por este motivo se han diseñado diferentes pruebas estadísticas para asegurase de la estacionariedad de la serie. A continuación veremos cuatro de las pruebas más usadas:
 
-\begin{itemize}
-    \item Prueba de Dickey-Fuller
-    \item Prueba de Dickey-Fuller aumentada
-    \item Prueba de Phillips-Perron
-    \item Prueba KPSS
-\end{itemize}
-\end{frame}
+<ul>
+<li> Prueba de Dickey-Fuller. </li>
+<li> Prueba de Dickey-Fuller aumentada. </li>
+<li> Prueba de Phillips-Perron. </li>
+<li> Prueba KPSS. </li>
 
-\begin{frame}{Prueba de Dickey-Fuller}
+
+# Prueba de Dickey-Fuller
+
+#
 
 Dickey y Fuller (1979) consideraron el modelo AR(1),
 
@@ -363,93 +366,85 @@ Dickey y Fuller (1979) consideraron el modelo AR(1),
 
 Cuando $\phi =1$ este proceso tiene raíz unitaria y se vuelve un paseo aleatorio.
 
-\visible<2->{Si substraemos $x_{t-1}$ de ambos lados, obtenemos
+Si substraemos $x_{t-1}$ de ambos lados, obtenemos
 
-\begin{equation}\label{df}
+\begin{equation}\label{df}\tag{*}
     \Delta x_t = (\phi - 1) x_{t-1} + \varepsilon_t
 \end{equation}
 
-Así, para testear la hipótesis de raíz unitaria, podemos testear que el coeficiente de $x_{t-1}$ en la ecuación \ref{df} sea igual a cero, contra la alternativa que es menor a cero}
+Así, para testear la hipótesis de raíz unitaria, podemos testear que el coeficiente de $x_{t-1}$ en la ecuación (*) sea igual a cero, contra la alternativa que es menor a cero
     
-\end{frame}
+#
 
-\begin{frame}{Prueba de Dickey-Fuller}
+<ul>
+<li> La regresión (*) es conocida como una regresión des-balanceada ya que la variable dependiente es I(0). i.e. estacionaria, y la variable independientes es I(1), i.e. integrada de orden 1, bajo la hipótesis nula.</li>
+<li> Bajo la hipótesis alternativa, ambas variables son estacionarias volviendo la regresión balanceada de nuevo.</li>
+</ul>
 
-\begin{itemize}
-    \item La regresión \ref{df} es conocida como una regresión des-balanceada ya que la variable dependiente es I(0). i.e. estacionaria, y la variable independientes es I(1), i.e. integrada de orden 1, bajo la hipótesis nula.
-    \item Bajo la hipótesis alternativa, ambas variables son estacionarias volviendo la regresión balanceada de nuevo.
-\end{itemize}
-    
-\end{frame}
+#
 
-\begin{frame}{Prueba de Dickey-Fuller}
+<ul>
+<li> La forma obvia de testear la hipótesis de raíz unitaria en la ecuación (*) es usando el estadístico t para probar su significancia.</li>
+<li> Sin embargo, el parámetro $\phi - 1$ de esta ecuación no sigue una distribución normal, por lo cual p-values derivados de este supuesto estarían erróneos.</li>
+<li> MacKinnon (1996) derivo las probabilidades asociadas a las distribuciones de este parámetro a través de simulaciones. Estos valores son los que reportan la mayoría de paquetes estadísticos.</li>
+</ul>
 
-\begin{itemize}
-    \item La forma obvia de testear la hipótesis de raíz unitaria en la ecuación \ref{df} es usando el estadístico t para probar su significancia.
-    \item <2-> Sin embargo, el parámetro $\phi - 1$ de esta ecuación no sigue una distribución normal, por lo cual p-values derivados de este supuesto estarían erróneos.
-    \item <3-> MacKinnon (1996) derivo las probabilidades asociadas a las distribuciones de este parámetro a través de simulaciones. Estos valores son los que reportan la mayoría de paquetes estadísticos. 
-\end{itemize}
-\end{frame}
+#
 
-\begin{frame}{Prueba de Dickey-Fuller}
+Además de la ecuación (*), D-F también desarrollaron el método para casos con constante, i.e.
 
-Además de la ecuación \ref{df}, D-F también desarrollaron el método para casos con constante, i.e.
-
-\begin{equation}\label{df2}
+\begin{equation}\label{df2}\tag{+}
     \Delta x_t = \delta + (\phi - 1) x_{t-1} + \varepsilon_t
 \end{equation}
 
-\visible<2->{y tendencia 
+y tendencia 
 
-\begin{equation}\label{df3}
+\begin{equation}\label{df3}\tag{^}
     \Delta x_t = \delta + \alpha t +  (\phi - 1) x_{t-1} + \varepsilon_t
 \end{equation}
-}
-\visible<3->{MacKinnon (1996) también estimo las probabilidades asociadas a los parámetros de \ref{df2} y \ref{df3}. En economía por lo general testeamos usando \ref{df2}}
-\end{frame}
 
-\begin{frame}{Prueba de Dickey-Fuller Aumentado}
+MacKinnon (1996) también estimo las probabilidades asociadas a los parámetros de (+) y (^). En economía por lo general testeamos usando (+)
+
+
+# Prueba de Dickey-Fuller Aumentado
+
+#
 
 Los resultados anteriores parten de un modelo AR(1), Dickey (1984) extendió estos resultados para proceso AR(p), de forma tal que lo podemos escribir como,
 
-\begin{equation}\label{dfa}
+\begin{equation}\label{dfa}\tag{++}
    \Delta  x_t = \beta  x_{t-1} + \phi_1'\Delta x_{t-1} +  \phi_2' \Delta x_{t-2} + \dots + \phi_{p-1}' \Delta x_{t-p-1} +  \varepsilon_t
 \end{equation}
 
-donde $\beta$ sigue la misma distribución que el parámetro de \ref{df}. \visible<2->{Tambien se puede extender para las ecuaciones \ref{df2} y \ref{df3}}
+donde $\beta$ sigue la misma distribución que el parámetro de (*). También se puede extender para las ecuaciones (+) y (^)
 
-\end{frame}
+# Prueba de Phillips-Perron
 
-\begin{frame}{Prueba de Phillips-Perron}
+#
 
-\begin{itemize}
-    \item Phillips y Perron (1988) desarrollaron un test basado en la ecuación \ref{df}, en el cual no se estima la correlación serial como en \ref{dfa}, pero utilizan un estimador no-parametrico consistente para heteroscedastidad y auto-correlación, a la Newey-West.  
-  
-    \item Este estimador sigue la misma distribución que D-F por lo cual los valores de MacKinnon (1996) pueden ser utilizados
-    
-    \item <2-> Sin embargo, Schwert (1989), y Perron y Ng (1996) mostraron que este estimador funciona peor que el D-F aumentado en muestras finitas, por lo cual D-F aumentado tiende a ser preferido.
-\end{itemize}
+<ul>
+<li> Phillips y Perron (1988) desarrollaron un test basado en la ecuación (*), en el cual no se estima la correlación serial como en (++), pero utilizan un estimador no-parametrico consistente para heteroscedastidad y auto-correlación, a la Newey-West.  
+<li> Este estimador sigue la misma distribución que D-F por lo cual los valores de MacKinnon (1996) pueden ser utilizados.</li>
+<li> Sin embargo, Schwert (1989), y Perron y Ng (1996) mostraron que este estimador funciona peor que el D-F aumentado en muestras finitas, por lo cual D-F aumentado tiende a ser preferido.</li>
+</ul>
 
-\end{frame}
+# Prueba KPSS
 
-\begin{frame}{Prueba KPSS}
+#
+<ul>
+<li> D-F y PP tienen como hipótesis nula la existencia de raíz unitaria. Estos test tienen el problema que carecen de poder para rechazar, por lo cual tienden a encontrar raíces unitarias cuando estas no existen.</li>
+<li> Kwiatkowski, Phillips, Schimdt and Shin (1992) crearon un test donde la hipótesis nula es I(0), i.e. la serie es estacionaria.</li>
+</ul>
 
-\begin{itemize}
-    \item D-F y PP tienen como hipótesis nula la existencia de raíz unitaria. Estos test tienen el problema que carecen de poder para rechazar, por lo cual tienden a encontrar raíces unitarias cuando estas no existen.
-    \item Kwiatkowski, Phillips, Schimdt and Shin (1992) crearon un test donde la hipótesis nula es I(0), i.e. la serie es estacionaria.
-\end{itemize}
-    
-\end{frame}
+#
 
-\begin{frame}{Prueba KPSS}
 
-\begin{itemize}
-    \item Este test es basado en que si la serie es estacionaria y la diferenciamos una vez se vuelve de orden I(-1)
-    \item El estadístico considerado es entonces:
+Este test es basado en que si la serie es estacionaria y la diferenciamos una vez se vuelve de orden I(-1).
+ 
+El estadístico considerado es entonces:
     \begin{equation}
         \hat{\eta}_{\mu} = \frac{1}{n^2 s_{nl}^2} \sum_{t=1}^n S_{t}^2
     \end{equation}
-    donde, $s_{nl}^2$ es un estimador consistente de $\sigma^2$ y $S_t = \sum_{s=1}^t (x_s - \bar{x})$
-\end{itemize}
     
-\end{frame}
+donde, $s_{nl}^2$ es un estimador consistente de $\sigma^2$ y $S_t = \sum_{s=1}^t (x_s - \bar{x})$
+
