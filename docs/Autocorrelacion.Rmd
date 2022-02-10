@@ -56,7 +56,7 @@ Ahora, definimos la auto-correlación como
     \rho_j = \frac{\gamma_j}{\gamma_0}
 \end{equation}
  
-La ventaja de usar la auto-correlación en vez de la auto-covarianza es que la auto-correlación siempre va a estar entre -1 y 1, dado que la covarianza siempre es igual o menor que la varianza. 
+La ventaja de usar la auto-correlación en vez de la auto-covarianza es que la auto-correlación siempre va a estar entre -1 y 1, dado que la covarianza siempre es igual o menor en valor absoluto que la varianza. 
 
 
 #
@@ -111,7 +111,7 @@ Supongamos el siguiente modelo de regresión lineal,
 
 es decir, el termino  de error $u_t$ sigue un proceso AR(1).
 
-Como veremos cuando analicemos los modelos Autorregresivos debemos imponer la restricción $|\rho|<1$
+Como veremos cuando analicemos los modelos Autorregresivos debemos imponer la restricción $|\rho|<1$.
 
 #
 
@@ -156,7 +156,7 @@ Con esto, el test consiste en probar la hipótesis nula de $b_p = 0$ en la regre
     \begin{equation}
         \tilde{u}_t = b_p \tilde{u}_{t-1} + residuales
     \end{equation}
-    donde $b_p \sim N(0,1)$ bajo la hipótesis nula
+    donde $b_p \sim N(0,1)$ bajo la hipótesis nula.
 
 # Test correlación serial - Otros Tests
 
@@ -165,4 +165,4 @@ Con esto, el test consiste en probar la hipótesis nula de $b_p = 0$ en la regre
     \begin{equation}
         \hat{\rho}_1 = \frac{\hat{\gamma}_1}{\hat{\gamma}_0}
     \end{equation}
-    testeamos $\hat{\rho}_1 = 0$ con $Var(\hat{\rho}_1) = \frac{1}{T}$
+    testeamos $\hat{\rho}_1 = 0$ con $Var(\hat{\rho}_1) = \frac{1}{T}$.
