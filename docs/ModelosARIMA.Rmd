@@ -1,0 +1,866 @@
+---
+title: " Modelos Lineales Dinámicos"
+author: |
+        | Santiago Bohorquez Correa
+        |
+        | Universidad EAFIT
+        | Escuela de Economía y Finanzas
+output:
+  revealjs::revealjs_presentation:
+    css: EAFIT.css
+    highlight: pygments
+    center: true
+    transition: slide
+---
+
+# Modelo AR(1)
+
+#
+
+Ahora si podemos definir formalmente nuestro primer modelo lineal, el modelo Autoregresivo de orden 1 o AR(1)
+
+\begin{equation}
+    (1-\phi  L)x_t = \varepsilon_t
+\end{equation}
+
+Que también podemos escribir como $x_t = \phi x_{t-1} + \varepsilon_t$. El AR(1) puro depende entonces solo de la variable de interés rezagada y el proceso de innovación. 
+
+#
+
+Como vimos cuando miramos el paseo aleatorio, necesitamos que $|\phi|<1$, bajo este supuesto miremos las condiciones de estacionariedad. 
+
+\begin{align}
+    E(x_t) & = E(\phi x_{t-1} + \varepsilon_t) \\
+  & =   \phi E(x_{t-1}) + E(\varepsilon_t)  \\
+ & =  \phi E[ (\phi x_{t-2} + \varepsilon_{t-1})] +  E(\varepsilon_t)  \\
+    & =   \phi^2 E[ x_{t-2}] +  \phi E[ \varepsilon_{t-1}] +  E(\varepsilon_t) \\
+                 & =   \phi^2 E[(\phi x_{t-3} + \varepsilon_{t-2})]  +  \phi E[ \varepsilon_{t-1}] +  E(\varepsilon_t)
+\end{align}
+
+#
+
+Si seguimos iterando hacia atrás obtenemos 
+\begin{align}
+    E(x_t) & = \phi^n E[x_{t-n}] + \phi^{n-1} E[\varepsilon_{t-(n-1)}]  + \dots + \phi E[ \varepsilon_{t-1}] +  E(\varepsilon_t) \\
+    \\
+    E(x_t) & = \phi^n E[x_{t-n}] + 0 + \dots + 0 + 0 \\
+    E(x_t) & = \phi^n E[x_{t-n}]
+\end{align}    
+
+Suponemos que $n \rightarrow \infty$ por lo tanto $E(x_t) =0$  
+
+#
+
+Ahora hacemos lo mismo para la varianza, y bajo $E[x_t] = 0$:    
+
+\begin{align}
+Var(x_t) & = E[(x_t - E[x_t])^2] \\
+         & = E[x_t^2] \\
+  & = E[(\phi x_{t-1} + \varepsilon_t)^2]  \\
+  & = E[(\phi x_{t-1})^2] + 2E[\phi x_{t-1}\varepsilon_t] + E[\varepsilon_t^2] \\
+         & = \phi^2 E[x_{t-1}^2] + 0 + E[\varepsilon_t^2] 
+\end{align}    
+
+#
+
+Si seguimos iterando hacia atrás obtenemos
+
+\begin{align}
+Var(x_t) & = \phi^2 E[(\phi x_{t-2} + \varepsilon_{t-1})^2] + E[\varepsilon_t^2] \\
+         & = \phi^4 E[x_{t-2}^2] + \phi^2 E[\varepsilon_{t-1}^2] + E[\varepsilon_t^2] \\
+\end{align}
+
+Repitiendo este proceso, obtenemos
+
+\begin{align}
+Var(x_t) & = \phi^{2n} E[x_{t-n}^2] + \phi^{2(n-1)} E[\varepsilon_{t-n}^2 ] + \dots  + \\
+& \phi^2 E[\varepsilon_{t-1}^2] + E[\varepsilon_t^2] \\
+\end{align}    
+
+#
+
+Bajo $|\phi| < 1$, 
+
+\begin{align}
+Var(x_t) & = \phi^{2(n-1)} E[\varepsilon_{t-n}^2 ] + \dots  + \phi^2 E[\varepsilon_{t-1}^2] + E[\varepsilon_t^2]
+\end{align}
+
+Que podemos escribir como $Var(x_t) = E[\phi(L)\varepsilon_t]$. Ahora, si multiplicamos por $\phi^2$ obtenemos
+
+\begin{align}
+\phi^2E[\phi(L)\varepsilon_t] & =  \phi^{2n} E[\varepsilon_{t-n}^2 ] + \dots  + \phi^4 E[\varepsilon_{t-1}^2] + \phi^2 E[\varepsilon_t^2]   
+\end{align}
+
+#
+
+Reemplazamos por el valor de la esperanza,
+
+\begin{align}
+E[\phi(L)\varepsilon_t] & =  \phi^{2(n-1)} \sigma^2 + \dots  + \phi^2 \sigma^2 + \sigma^2 \\
+\phi^2E[\phi(L)\varepsilon_t] & = \phi^{2n} \sigma^2 + \dots  + \phi^4 \sigma^2 + \phi^2 \sigma^2 
+\end{align}
+
+Y restamos
+
+\begin{align}
+E[\phi(L)\varepsilon_t] - \phi^2E[\phi(L)\varepsilon_t] & = \phi^{2(n-1)} \sigma^2 + \dots  + \phi^2 \sigma^2 + \sigma^2  \\
+& -  \phi^{2n} \sigma^2 -  \dots  - \phi^4 \sigma^2 - \phi^2 \sigma^2 \\
+(1 - \phi^2) E[\phi(L)\varepsilon_t] & =  \sigma^2 -  \phi^{2n} \sigma^2 
+\end{align}
+
+#
+
+dado que $|\phi | < 1$, finalmente obtenemos 
+
+\begin{align}
+    E[\phi(L)\varepsilon_t] & = \frac{\sigma^2}{1 - \phi^2} \\
+    Var(x_t) & = \frac{\sigma^2}{1 - \phi^2}
+\end{align}
+
+#
+
+Finalmente, miremos la auto-covarianza para un proceso estacionario:
+
+\begin{align}
+    \gamma_j & = cov(x_t,x_{t-j}) \\
+             & = E[(x_t x_{t-j}) - \mu_t\mu_{t-j}] \\
+             & = E[x_t x_{t-j}]
+\end{align}
+
+Dado que $\mu_t=0$
+
+#
+
+Reemplazamos $x_t$ y obtenemos:
+
+\begin{align}
+    \gamma_j & = E[ (\phi x_{t-1} + \varepsilon_t ) x_{t-j}] \\
+             & = E[ \phi x_{t-1} x_{t-j} + \varepsilon_t x_{t-j}] \\
+            & = \phi E[x_{t-1} x_{t-j}] + E[\varepsilon_t x_{t-j}] \\
+            & = \phi E[x_{t-1} x_{t-j}]  
+\end{align}
+
+Dado que, $E[\varepsilon_t x_{t-j}]=0$   
+
+#
+
+Como vimos previamente $\gamma_j = E[x_t x_{t-j}]$, por lo tanto     
+
+\begin{equation}
+    \gamma_j = \phi \gamma_{j-1}
+\end{equation}
+
+resolvemos entonces para $\gamma_0$, $\gamma_1$ y generalizamos para $\gamma_j$. Es fácil ver que $\gamma_0$ es $Var(x)t)$
+
+#
+
+Por lo tanto:
+
+\begin{align}
+    \gamma_0 & = \frac{\sigma^2}{1 - \phi^2} \\
+    \gamma_1 & = \phi \frac{\sigma^2}{1 - \phi^2} \\
+    \gamma_2 & = \phi^2 \frac{\sigma^2}{1 - \phi^2} \\
+             & \vdots \\
+    \gamma_j & = \phi^j \frac{\sigma^2}{1 - \phi^2}   \end{align}
+
+## Estacionariedad auto-covarianza
+
+##
+
+Un punto de aclaración cuando hablamos de estacionariedad lo definimos como no dependiente de $t$. Debido a que la auto-covarianza depende de $j$ muchas veces hay confusión sobre la estacionariedad de este proceso. Sin embargo, este proceso si es estacionario, la razón es que solo importa la distancia entre las observaciones, no cuanto tiempo haya pasado desde el inicio del proceso. E.g,
+
+\begin{equation}
+    E[x_t x_{t-j}]  = E[x_{t-n} x_{t-j-n}] = \gamma_j 
+\end{equation}
+
+#
+
+Estimamos entonces la auto-correlación
+
+\begin{align}
+    \rho_0 & = \frac{\gamma_0}{\gamma_0}  = 1 \\
+    \rho_1 & =  \frac{\phi \gamma_0}{\gamma_0}  = \phi \\
+    \rho_2 & =  \frac{\phi \gamma_1}{\gamma_0}  = \phi^2 \\
+             & \vdots  \\
+    \rho_j & =  \frac{\phi \gamma_{j-1}}{\gamma_0}  = \phi^j  
+\end{align}
+
+#
+
+Con la auto-correlación podemos hacer el auto-correlograma el cual gráfica la auto-correlación en cada rezago. Observemos diferentes modelos AR(1) y las diferencia de sus auto-correlogramas teóricos.
+
+
+#
+
+$x_t = 0.6 x_{t-1} + \varepsilon_t$
+<img src="img/ar1_06.png" alt="Ejemplo: Ar(1) phi=0.6" width="900" height="450">  
+
+
+#
+
+$x_t = 0.8 x_{t-1} + \varepsilon_t$
+<img src="img/ar1_08.png" alt="Ejemplo: Ar(1) phi=0.8" width="900" height="450">  
+
+#
+
+$x_t = -0.8 x_{t-1} + \varepsilon_t$
+<img src="img/ar1_menos08.png" alt="Ejemplo: Ar(1) phi=-0.8" width="900" height="450"> 
+
+
+#
+$x_t = x_{t-1} + \varepsilon_t$
+
+<img src="img/ar1_1.png" alt="Ejemplo: Ar(1) phi=1" width="900" height="450"> 
+
+# Modelo AR(p)
+
+#
+
+Definimos el modelo AR(p) como
+     
+\begin{equation}
+    x_t = \phi_1 x_{t-1} + \phi_2 x_{t-2} + \dots + \phi_p x_{t-p}  \varepsilon_t 
+\end{equation}
+    
+o usando el operador de rezagos
+    
+\begin{equation}
+       \phi(L)x_t = \varepsilon_t
+\end{equation}
+    
+#
+
+Definimos el modelo AR(p) como
+     
+\begin{equation}
+  x_t = \phi_1 x_{t-1} + \phi_2 x_{t-2} + \dots + \phi_p x_{t-p} + \varepsilon_t
+\end{equation}
+    
+o usando el operador de rezagos
+    
+\begin{equation}
+       \phi(L)x_t = \varepsilon_t
+    \end{equation}
+
+El proceso es estacionario si las soluciones de $\lambda_i$ de la ecuación
+
+\begin{equation}
+    \lambda^p - \phi_1 \lambda^{p-1} - \dots - \phi_p = 0  
+\end{equation}
+
+caen dentro del circulo de unidad
+
+#
+
+Asumiendo estacionariedad y realizando el mismo proceso que vimos para el proceso AR(1) podemos obtener la media del proceso como:
+
+\begin{equation}
+\mu = \frac{E[\varepsilon_t]}{1- \phi_1 - \phi_2 - \dots - \phi_p}    
+\end{equation}
+
+Así en el caso sin constante $\mu = 0$
+
+#
+
+Ahora para estimar las auto-covarianzas,
+
+\begin{align}
+E[x_t x_{t-j}] & =  E[(\phi_1 x_{t-1} + \phi_2 x_{t-2} + \dots + \phi_p x_{t-p} +  \varepsilon_t) x_{t-j}] \\
+E[x_t x_{t-j}] & = \phi_1 E[x_{t-1}x_{t-j}] + \phi_2 E[x_{t-2}x_{t-j}] + \dots + \phi_p E[x_{t-p} x_{t-j}] \\
+& + E[\varepsilon_t x_{t-j}] \\
+ \gamma_j & = \phi_1 \gamma_{j-1} + \phi_2 \gamma_{j-2} + \dots + \phi_p \gamma_{j-p} + E[\varepsilon_t x_{t-j}]
+\end{align}
+
+#
+
+Ahora podemos estimar la varianza, como $\gamma_0$
+
+\begin{equation}
+    \gamma_j  = \phi_1 \gamma_{1} + \phi_2 \gamma_{2} + \dots + \phi_p \gamma_{p} + \sigma^2
+\end{equation}
+
+Y para valores de $j>0$
+
+\begin{equation}
+    \gamma_j = \phi_1 \gamma_{j-1} + \phi_2 \gamma_{j-2} + \dots + \phi_p \gamma_{j-p} 
+\end{equation}
+
+#
+
+Y para las auto-correlaciones dividimos por $\gamma_0$ y obtenemos
+
+\begin{equation}
+   \rho_j = \phi_1 \rho_{j-1} + \phi_2 \rho_{j-2} + \dots + \phi_p \rho_{j-p}  
+\end{equation}
+
+##
+
+con esto podemos estimar las ecuaciones de Yule-Walker, 
+ 
+ \begin{align}
+    \rho_1  & = \phi_1  + \phi_2 \rho_1 + \dots + \phi_p \rho_{p-1}  \\
+    \rho_2  & = \phi_1 \rho_1 + \phi_2  + \dots + \phi_p \rho_{p-2} \\
+            &  \vdots \\
+    \rho_p  & = \phi_1 \rho_{p-1} + \phi_2 \rho_{p-2} + \dots + \phi_p 
+\end{align}
+
+##
+
+Y en forma matricial para los términos de $\phi$,
+
+\begin{equation}
+\begin{bmatrix}
+ \phi_1 \\ 
+\phi_2 \\
+\vdots \\
+\phi_p
+\end{bmatrix}    
+=
+\begin{bmatrix}
+ 1 & \rho_1 & \dots & \rho_{p-1} \\ 
+\rho_1 & 1 & \dots & \rho_{p-2} \\
+\vdots & \vdots & \ddots & \vdots \\
+\rho_{p-1} & \rho_{p-2} & \dots & 1 
+\end{bmatrix}^{-1}  
+\begin{bmatrix}
+ \rho_1 \\ 
+\rho_2 \\
+\vdots \\
+\rho_p
+\end{bmatrix} 
+\end{equation}
+
+
+# Modelos de Medias Móviles
+
+
+# MA(1)
+
+Ahora miramos  los modelos de medias móviles, empezamos por el modelo de medias móviles de orden 1, o MA(1).
+
+Un modelo MA(1) se define como,
+
+\begin{equation}
+    x_t = \varepsilon_t - \theta \varepsilon_{t-1}
+\end{equation}
+
+usando el operador de rezagos $x_t = (1-\theta L) \varepsilon_{t}$
+
+#
+
+Ahora calculamos la esperanza de este proceso,
+
+\begin{align*}
+    E[x_t] & = E[\varepsilon_t - \theta \varepsilon_{t-1}] \\
+    E[x_t] & = E[\varepsilon_t] - \theta E[\varepsilon_{t-1}] \\
+    E[x_t] & = 0
+\end{align*}
+
+\end{frame}
+
+\begin{frame}{MA(1)}
+
+Y la varianza
+
+\begin{align*}
+    \gamma_0 & = E[x_t x_t] \\
+             &  = E[(\varepsilon_t - \theta \varepsilon_{t-1})^2] \\
+\visible<2->{  & = E[\varepsilon_t^2] - 2\theta E[\varepsilon_t \varepsilon_{t-1}] + \theta^2 E[\varepsilon_{t-1}^2]} \\
+\visible<3->{    & = \sigma^2 + \theta^2 \sigma^2 \\
+                & = \sigma^2 (1+\theta^2)}
+\end{align*}
+    
+\end{frame}
+
+\begin{frame}{MA(1)}
+
+Ahora, estimamos la auto-covarianza $\gamma_j$ del proceso,
+
+\begin{align*}
+    \gamma_j & = E[x_t x_{t-j}] \\
+             & = E[(\varepsilon_t - \theta \varepsilon_{t-1})((\varepsilon_{t-j} - \theta \varepsilon_{t-j-1})] \\
+\visible<2->{     & = E[\varepsilon_t \varepsilon_{t-j}] - \theta E[ \varepsilon_{t-1} \varepsilon_{t-j}] 
+                        - \theta E[ \varepsilon_{t} \varepsilon_{t-j-1}] + \theta^2 E[ \varepsilon_{t-1} \varepsilon_{t-j-1}]}
+\end{align*}    
+    
+\end{frame}
+
+\begin{frame}{MA(1)}
+
+Si  $j = 1$ obtenemos,
+
+\begin{align*}
+    \gamma_1     & = E[\varepsilon_t \varepsilon_{t-1}] - \theta E[ \varepsilon_{t-1} \varepsilon_{t-1}] 
+                        - \theta E[ \varepsilon_{t} \varepsilon_{t-2}] + \theta^2 E[ \varepsilon_{t-1} \varepsilon_{t-2}] \\
+\visible<2->{                 & =  0  - \theta \sigma^2 - 0 + 0 \\
+                & =   - \theta \sigma^2 }      
+\end{align*}    
+
+\visible<3->{si $j=2$,
+\begin{align*}
+    \gamma_2     & = E[\varepsilon_t \varepsilon_{t-2}] - \theta E[ \varepsilon_{t-1} \varepsilon_{t-2}] 
+                        - \theta E[ \varepsilon_{t} \varepsilon_{t-3}] + \theta^2 E[ \varepsilon_{t-1} \varepsilon_{t-3}] \\
+                 & = 0
+\end{align*} 
+}
+
+\end{frame}
+
+\begin{frame}{MA(1)}
+
+En general, para todo $j>1$, obtenemos
+
+
+\begin{align*}
+    \gamma_j     & =  E[\varepsilon_t \varepsilon_{t-j}] - \theta E[ \varepsilon_{t-1} \varepsilon_{t-j}] 
+                        - \theta E[ \varepsilon_{t} \varepsilon_{t-j-1}] + \theta^2 E[ \varepsilon_{t-1} \varepsilon_{t-j-1}] \\
+                 & = 0
+\end{align*} 
+
+\visible<2->{Noten que para cualquier valor de $\theta$, el proceso es estacionario débil, ya que no se deben imponer restricciones sobre el parámetro para obtener la media, varianza o auto-covarianzas }
+    
+\end{frame}
+
+\begin{frame}{MA(1)}
+
+Finalmente, estimamos las auto-correlaciones $\rho_i$,
+
+\begin{align*}
+    \rho_1 & = \frac{\gamma_1}{\gamma_0} \\
+           & = \frac{- \theta \sigma^2}{\sigma^2 (1+\theta^2)} \\
+\visible<2->{     & = \frac{- \theta }{ (1+\theta^2)} }
+\end{align*}
+
+\visible<3->{y dado que $\gamma_j=0$ para todo $j>1$, esto implica que $\rho_j=0$ para todo $j>1$}
+    
+\end{frame}
+
+
+\begin{frame}{MA(1)}
+
+Ahora, miremos la invertibilidad del proceso, para esto expresamos el proceso MA(1) en términos similares al AR(1), 
+
+\begin{align*}
+  \varepsilon_t & = x_t + \theta \varepsilon_{t-1} \\
+              & = x_t + \theta (x_{t-1} + \theta \varepsilon_{t-2}) \\
+\visible<2->{  & = x_t + \theta x_{t-1} + \theta^2 (x_{t-2} + \theta \varepsilon_{t-3}) } \\
+\visible<3->{  &     \vdots \\
+              & = x_t + \theta x_{t-1} + \theta^2 x_{t-2} + \dots + \theta^n \varepsilon_{t-n}}
+\end{align*}
+
+\end{frame}
+
+\begin{frame}{MA(1)}
+
+Si $| \theta | < 1$ el termino $\theta^n \varepsilon_{t-n} \rightarrow 0$ cunado $n \rightarrow \infty$, por lo cual bajo esta condición podemos expresar el proceso como
+
+\begin{align*}
+  \varepsilon_t  & = x_t + \theta x_{t-1} + \theta^2 x_{t-2} + \dots + \theta^{n-1} x_{t-n-1} 
+\end{align*}
+
+\visible<2->{De esta forma pasamos de un modelo MA(1) a un AR($\infty$), a la condición $|\theta| < 1$ la llamamos la condición de invertibilidad}
+
+\end{frame}
+
+\begin{frame}{MA(1)}
+
+También, si $| \theta | < 1$, podemos escribir el proceso como
+
+\begin{equation}\label{inv:ma1}
+    \varepsilon_ = \frac{1}{1-\theta L} x_t
+\end{equation}
+
+Como se ve en la ecuación \ref{inv:ma1} la condición de invertibilidad de un MA(1) es equivalente a la condición de estacionariedad de un modelo AR(1). \visible<2->{Cabe recalcar de nuevo que el proceso MA(1) siempre es estacionario!, y la condición de invertibilidad es solo para poder pasar a un modelo AR($\infty$)}
+\end{frame}
+
+
+\begin{frame}{MA(q)}
+
+Ahora generalizamos para el caso con $q$ rezagos. Definimos el proceso MA(q) como,
+
+\begin{equation}
+    x_t = \varepsilon_t - \theta_1 \varepsilon_{t-1} - \theta_2  \varepsilon_{t-2} - \dots - \theta_q \varepsilon_{t-q}
+\end{equation}
+
+usando el operador de rezagos $x_t = (1-\theta_1 L - \theta_2 L^2 - \dots - \theta_q) \varepsilon_{t}$
+
+\end{frame}
+
+\begin{frame}{MA(q)}
+Calculamos la esperanza de este proceso,
+
+\begin{align*}
+    E[x_t] & = E[\varepsilon_t - \theta_1 \varepsilon_{t-1} - \theta_2 \varepsilon_{t-2} - \dots - \theta_q \varepsilon_{t-q}] \\
+    E[x_t] & = E[\varepsilon_t] - \theta E[\varepsilon_{t-1}] - \theta_2 E[\varepsilon_{t-2}] - \dots - \theta_q E[\varepsilon_{t-q}] \\
+    E[x_t] & = 0
+\end{align*}
+
+\end{frame}
+
+\begin{frame}{MA(q)}
+
+Y la varianza
+
+\begin{align*}
+    \gamma_0 & = E[x_t x_t] \\
+             &  = E[(\varepsilon_t - \theta_1 \varepsilon_{t-1} - \theta_2 \varepsilon_{t-2} \dots - \theta_q \varepsilon_{t-q})^2] \\
+\visible<2->{  &  \text{Dado que la esperanza de todos los términos cruzados es cero,} } \\
+\visible<3->{    & = \sigma^2 + \theta_1^2 \sigma^2 + \theta_2^2 \sigma^2 + \dots + \theta_q^2 \sigma^2 \\
+                & = \sigma^2 (1+\theta_1^2 + \theta_2^2 + \dots + \theta_q^2) }
+\end{align*}
+    
+\end{frame}
+
+\begin{frame}{MA(q)}
+
+Ahora, estimamos la auto-covarianza $\gamma_j$ del proceso,
+
+\begin{align*}
+    \gamma_j & = E[x_t x_{t-j}] \\
+             & = E[(\varepsilon_t - \theta_1 \varepsilon_{t-1} - \theta_2 \varepsilon_{t-2} - \dots - \theta_q \varepsilon_{t-q}) \\
+            & (\varepsilon_{t-j} - \theta_1 \varepsilon_{t-j-1} - \theta_2 \varepsilon_{t-j-2} - \dots - \theta_q \varepsilon_{t-j-q})] \\
+\end{align*}    
+    
+\end{frame}
+
+\begin{frame}{MA(q)}
+
+Veamos para el caso de $\gamma_1$,
+
+\begin{align*}
+     \gamma_1  & = E[(\varepsilon_t - \theta_1 \varepsilon_{t-1} - \theta_2 \varepsilon_{t-2} - \dots - \theta_q \varepsilon_{t-q}) \\
+            & (\varepsilon_{t-1} - \theta_1 \varepsilon_{t-2}  - \theta_2 \varepsilon_{t-3} - \dots - \theta_q \varepsilon_{t-q-1})] \\
+\end{align*}
+    
+\visible<2->{Sabemos que la esperanza de los términos $\varepsilon$ que no estén en el mismo periodo es 0. Entonces, en este caso obtendríamos,
+
+\begin{align*}
+     \gamma_1  & = - \theta_1 \sigma^2 +  \theta_1\theta_2 \sigma^2 + \dots +   \theta_{q-1}\theta_q \sigma^2 \\
+\end{align*}
+}    
+\end{frame}
+
+\begin{frame}{MA(q)}
+
+Ahora para $\gamma_2$,
+
+\begin{align*}
+     \gamma_2  & = E[(\varepsilon_t - \theta_1 \varepsilon_{t-1} - \theta_2 \varepsilon_{t-2} - \dots - \theta_q \varepsilon_{t-q}) \\
+            & (\varepsilon_{t-2} - \theta_1 \varepsilon_{t-3}  - \theta_2 \varepsilon_{t-4} - \dots - \theta_q \varepsilon_{t-q-2})] \\
+\end{align*}
+    
+\visible<2->{Entonces, en este caso obtendríamos,
+
+\begin{align*}
+     \gamma_2  & = - \theta_2 \sigma^2 +  \theta_1\theta_3 \sigma^2 + \dots +  \theta_{q-2}\theta_q \sigma^2 \\
+\end{align*}
+}    
+\end{frame}
+
+\begin{frame}{MA(q)}
+
+Ahora para el caso general donde $1 \leq j \leq q$
+
+\begin{align*}
+     \gamma_j  & = (-\theta_j + \theta_1 \theta_{j+1} + \theta_2 \theta_{j+2} + \dots + \theta_{q-j} \theta_q) \sigma^2
+\end{align*}
+    
+Y $\gamma_j=0$ para $j>q$
+\end{frame}
+
+\begin{frame}{MA(q)}
+
+Ahora para el caso general donde $1 \leq j \leq q$
+
+\begin{align*}
+     \gamma_j  & = (-\theta_j + \theta_1 \theta_{j+1} + \theta_2 \theta_{j+2} + \dots + \theta_{q-j} \theta_q) \sigma^2
+\end{align*}
+    
+Y $\gamma_j=0$ para $j>q$
+\end{frame}
+
+\begin{frame}{MA(q)}
+
+Ahora, estimamos las auto-correlaciones $\rho_j$,
+
+\begin{align*}
+    \rho_j & = \frac{\gamma_j}{\gamma_0} \\
+           & = \frac{-\theta_j + \theta_1 \theta_{j+1} + \theta_2 \theta_{j+2} + \dots + \theta_{q-j} \theta_q}{1+\theta_1^2 + \theta_2^2 + \dots + \theta_q^2}
+ \end{align*}
+ 
+ para todo $1 \leq j \leq q$ y $\rho_j=o$ para todo $j>q$ 
+\end{frame}
+
+
+\subsection{Modelos ARMA}
+
+\begin{frame}{ARMA(1,1)}
+
+Como hicimos para los modelos AR y MA, comenzamos con el modelo más sencillo y construimos desde ahí.
+
+\visible<2->{Definimos el proceso ARMA(1,1) como,
+
+\begin{equation}
+    x_t = \phi x_{t-1} + \varepsilon_t - \theta \varepsilon_{t-1}
+\end{equation}
+
+o usando el operado de rezagos $(1-\phi L)x_t = (1-\theta L)\varepsilon_t$}
+
+    
+\end{frame}
+
+\begin{frame}{ARMA(1,1)}
+
+Estimamos la esperanza del modelo,
+
+\begin{align*}
+    E[x_t] & = E[\phi x_{t-1} + \varepsilon_t - \theta \varepsilon_{t-1}] \\ 
+           & = \phi E[\phi x_{t-2} + \varepsilon_{t-1} - \theta \varepsilon_{t-2}] - E[\varepsilon_t] - \theta E[\varepsilon_{t-1}] \\
+           & \vdots \\
+           & = \phi^n E[x_{t-n}] + \sum_{j=0}^{n} \phi^j (E[\varepsilon_{t-j}] - \theta E[\varepsilon_{t-j-1}]) 
+\end{align*}
+
+De nuevo el proceso es estacionario si $|\phi| < 1$.  Y bajo este supuesto $E[x_t] = 0$
+    
+\end{frame}
+
+\begin{frame}{ARMA(1,1)}
+
+Estimamos la esperanza del modelo,
+
+\begin{align*}
+    E[x_t] & = E[\phi x_{t-1} + \varepsilon_t - \theta \varepsilon_{t-1}] \\ 
+           & = \phi E[\phi x_{t-2} + \varepsilon_{t-1} - \theta \varepsilon_{t-2}] - E[\varepsilon_t] - \theta E[\varepsilon_{t-1}] \\
+           & \vdots \\
+           & = \phi^n E[x_{t-n}] + \sum_{j=0}^{n} \phi^j (E[\varepsilon_{t-j}] - \theta E[\varepsilon_{t-j-1}]) 
+\end{align*}
+
+De nuevo el proceso es estacionario si $|\phi| < 1$.  Y bajo este supuesto $E[x_t] = 0$
+    
+\end{frame}
+
+\begin{frame}{ARMA(1,1)}
+
+Y la varianza,
+
+\begin{align*}
+    \gamma_0 & = E[x_t^2] \\
+            & = E[(\phi x_{t-1} + \varepsilon_t - \theta \varepsilon_{t-1})^2] \\ 
+           & = \phi^2 E[x_{t-1}^2] + E[\varepsilon_t^2] + \theta^2 E[\varepsilon_{t-1}^2] + 2 \phi E[x_{t-1}\varepsilon_t] \\
+          & - 2 \theta \phi  E[x_{t-1}\varepsilon_{t-1}] - 2 \theta E[\varepsilon_t \varepsilon_{t-1}] 
+\end{align*}
+
+\end{frame}
+
+\begin{frame}{ARMA(1,1)}
+
+Bajo el supuesto de estacionariedad, y sabiendo que $E[x_t\varepsilon_t] = \sigma^2$, obtenemos 
+
+\begin{align*}
+    \gamma_0 &  = \phi^2 \gamma_0 + \sigma^2 + \theta^2 \sigma^2 - 2 \theta \phi \sigma^2 \\
+(1-\phi^2)\gamma_0 & = (1+\theta^2- 2 \theta \phi) \sigma^2 \\
+\gamma_0 & = \frac{(1+\theta^2- 2 \theta \phi) \sigma^2}{1-\phi^2}
+\end{align*}
+
+\end{frame}
+
+\begin{frame}{ARMA(1,1)}
+
+Para las auto-covarianzas tenemos,
+\begin{align*}
+\gamma_j & = E[x_t x_{t-j}] \\
+         & = \phi E[x_{t-1} x_{t-j}] + E[\varepsilon_t  x_{t-j}] - \theta [\varepsilon_{t-1} x_{t-j}] \\
+         & = \phi \gamma_{j-1} + E[\varepsilon_t  x_{t-j}] - \theta [\varepsilon_{t-1} x_{t-j}]
+\end{align*}
+
+\end{frame}
+
+
+
+\begin{frame}{ARMA(1,1)}
+
+para $\gamma_1$ sería,
+
+\begin{align*}
+\gamma_1 & = \phi \gamma_0 + E[\varepsilon_t  x_{t-1}]  + E[\varepsilon_t  x_{t-j}] - \theta [\varepsilon_{t-1} x_{t-1}] \\
+         & = \phi \frac{(1+\theta^2- 2 \theta \phi) \sigma^2}{1-\phi^2} - \theta \sigma^2
+\end{align*}
+
+\visible<2->{Y para $j>1$ obtenemos
+\begin{align*}
+\gamma_j & = \phi \gamma_{j-1} + E[\varepsilon_t  x_{t-j}]  + E[\varepsilon_t  x_{t-j}] - \theta [\varepsilon_{t-1} x_{t-j}] \\
+         & = \phi \gamma_{j-1}
+\end{align*}
+
+}
+\end{frame}
+
+\begin{frame}{ARMA(1,1)}
+
+Por lo tanto la auto-correlación para $j=1$ sería,
+
+\begin{align}
+    \rho_1 & = \phi -  \frac{\theta \sigma^2}{\gamma_0}\\
+     & = \phi - \frac{\theta (1-\phi^2)}{1+\theta^2- 2 \theta \phi}
+\end{align}
+
+\visible<2->{y para $j>1$
+
+\begin{align*}
+    \rho_j & = \phi \rho_{j-1}
+\end{align*}
+}
+
+\end{frame}
+
+\begin{frame}{ARMA(p,q)}
+
+Definimos el proceso ARMA(p,q) como,
+
+\begin{equation}
+    x_t = \phi_1 x_{t-1} + \phi_2 x_{t-2} + \dots +  \phi_p x_{t-p} + \varepsilon_t - \theta_1 \varepsilon_{t-1} - \theta_2 \varepsilon_{t-2} - \dots - \theta_q\varepsilon_{t-q} 
+\end{equation}
+
+o usando el operado de rezagos $\phi(L)x_t = \theta(L)\varepsilon_t$
+
+    
+\end{frame}
+
+\begin{frame}{ARMA(p,q)}
+
+El proceso es estacionario si las soluciones para $\lambda$ de la ecuación $\lambda^p + \phi_1 \lambda^{p-1} + \dots + \phi_p = 0 $ caen dentro del circulo de unidad y bajo este supuesto es fácil ver que para nuestro modelo 
+
+\begin{align*}
+    E[x_t] & = 0
+\end{align*}
+
+
+    
+\end{frame}
+
+
+\begin{frame}{ARMA(p,q)}
+
+Y la varianza,
+
+\begin{align*}
+    \gamma_0 & = E[x_t^2] \\
+            & = E[(\phi_1 x_{t-1} + \phi_2 x_{t-2} + \dots +  \phi_p x_{t-p} + \varepsilon_t - \theta_1 \varepsilon_{t-1} - \\
+            & \theta_2 \varepsilon_{t-2} - \dots - \theta_q\varepsilon_{t-q} )^2] \\ 
+           & = \phi_1^2 E[x_{t-1}^2] + \phi_2^2 E[x_{t-2}^2] + \dots + E[\varepsilon_t^2] + \theta^2 E[\varepsilon_{t-1}^2] + \dots  \\
+           & + 2 \phi_1 E[x_{t-1}\varepsilon_t]  - 2 \theta_1 \phi_1  E[x_{t-1}\varepsilon_{t-1}] - 2 \theta_1 E[\varepsilon_t \varepsilon_{t-1}] + \dots \\
+          & - 2 \phi_p \theta_q E[x_{t-p}\varepsilon_{t-q}]
+\end{align*}
+
+\end{frame}
+
+
+\begin{frame}{ARMA(p,q)}
+
+Para las auto-covarianzas tenemos,
+\begin{align*}
+\gamma_j & = E[x_t x_{t-j}] \\
+         & = \phi_1 E[x_{t-1} x_{t-j}] + \phi_2 E[x_{t-2} x_{t-j}] + \dots + E[\varepsilon_t  x_{t-j}] \\
+         & - \theta_1 E[\varepsilon_{t-1} x_{t-j}] - \dots - \theta_q E[\varepsilon_{t-q} x_{t-j}]  \\
+\visible<2->{         & = \phi_1 \gamma_{j-1} + \dots + \phi_p \gamma_{j-p} + E[\varepsilon_t  x_{t-j}] \\
+         & - \theta_1 E[\varepsilon_{t-1} x_{t-j}] - \dots - \theta_q E[\varepsilon_{t-q} x_{t-j}] }
+\end{align*}
+
+\end{frame}
+
+
+
+\begin{frame}{ARMA(p,q)}
+
+para $\gamma_j$ donde $1 \leq j \leq q$ sería,
+
+\begin{align*}
+\gamma_j & = \phi_1 \gamma_{j-1} + \dots + \phi_p \gamma_{j-p}  \\
+         & - \theta_1 E[\varepsilon_{t-1} x_{t-j}] - \dots - \theta_q E[\varepsilon_{t-q} x_{t-j}]
+\end{align*}
+
+\visible<2->{Y para $j>q$ obtenemos
+\begin{align*}
+\gamma_j & = \phi_1 \gamma_{j-1} + \dots + \phi_p \gamma_{j-p} 
+\end{align*}
+
+}
+\end{frame}
+
+\begin{frame}{ARMA(p,q)}
+
+Por lo tanto la auto-correlación para $1 \leq j \leq q$ sería,
+
+\begin{align}
+    \rho_j & = \phi_1 \rho_{j-1} + \dots + \phi_p \rho_{j-p}  \\
+         & + \frac{- \theta_1 E[\varepsilon_{t-1} x_{t-j}] - \dots - \theta_q E[\varepsilon_{t-q} x_{t-j}]}{\gamma_0}
+\end{align}
+
+\visible<2->{y para $j>q$
+
+\begin{align*}
+    \rho_j & =\phi_1 \rho_{j-1} + \dots + \phi_p \rho_{j-p} 
+\end{align*}
+}
+
+\end{frame}
+
+
+\begin{frame}{ARMA(p,q)}
+
+En los modelos ARMA(p,q) es conveniente factorizar las raíces de la parte autorregresiva y la parte de medias moviles, 
+
+\begin{equation}
+    \lambda^p + \phi_1 \lambda^{p-1} + \dots + \phi_p = 0
+\end{equation}
+
+\visible<2->{y,
+
+\begin{equation}
+    \delta^q + \theta_1 \delta^{q-1} + \dots + \theta_q = 0
+\end{equation}
+}
+\end{frame}
+
+
+\begin{frame}{ARMA(p,q)}
+
+Por lo tanto el ARMA(p,q) se puede expresar como,
+
+\begin{equation}
+    (1-\lambda_1 L) (1-\lambda_2 L) \dots (1-\lambda_p L) x_t = (1-\delta_1 L) (1-\delta_2 L) \dots (1-\delta_q L) \varepsilon_t
+\end{equation}
+
+\visible<2->{Si existen dos raíces iguales, digamos $\lambda_1 = \delta_q$ podemos expresar el procesos como un ARMA(p-1,q-1),
+
+\begin{equation}
+     (1-\lambda_2 L) \dots (1-\lambda_p L) x_t = (1-\delta_1 L) (1-\delta_2 L) \dots (1-\delta_{q-1} L) \varepsilon_t
+\end{equation}
+}
+\end{frame}
+
+
+\begin{frame}{ARIMA(p,d,q)}\label{arima}
+
+A un proceso integrado $x_t$ se le denomina como ARIMA(p,d,q), si aplicando primeras diferencias $d$ veces se obtiene un un proceso estacionario $w_t$ del tipo ARMA(p,q). Este se define como,
+
+\begin{align*}
+    (1-\phi_1 L - \dots - \phi_p L^p) w_t & = (1-\theta_1 L - \dots - \theta_q L^q) \varepsilon_t \\
+    (1-\phi_1 L - \dots - \phi_p L^p) (1 - L)^d x_t & = (1-\theta_1 L - \dots - \theta_q L^q) \varepsilon_t
+\end{align*}
+
+\end{frame}
+
+\begin{frame}{Transformación Box-Cox}\label{transf}
+
+Box-Cox (1964) estudiaron el caso de series en las cuales la varianza cambia a través del tiempo y diferenciar la serie no desaparece este comportamiento. Ellos definieron una transformación instantánea, i.e. no están involucrados varios periodos de tiempo, que se define como,
+
+\begin{equation}
+    x_t^\lambda = \left\{ \begin{matrix}
+\frac{x_t^\lambda - 1 }{\lambda} & \lambda \neq  0 \\ 
+\ln x_t & \lambda = 0
+\end{matrix} \right.
+\end{equation}
+
+\end{frame}
+
