@@ -287,7 +287,7 @@ Var(x_t) & =  E[x_{t-n}^2] +  E[\varepsilon_{t-n}^2 ] + \dots  + E[\varepsilon_{
 
 #
 
-Este proceso tiene varianza igual a,
+Suponiendo $Var(x_1) = \sigma^2$, este proceso tiene varianza igual a,
 
 \begin{equation}
     \gamma_{0,t} = t \sigma^2
