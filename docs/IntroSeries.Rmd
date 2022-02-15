@@ -413,7 +413,7 @@ MacKinnon (1996) también estimo las probabilidades asociadas a los parámetros 
 Los resultados anteriores parten de un modelo AR(1), Dickey (1984) extendió estos resultados para proceso AR(p), de forma tal que lo podemos escribir como,
 
 \begin{equation}\label{dfa}\tag{++}
-   \Delta  x_t = \beta  x_{t-1} + \phi_1'\Delta x_{t-1} +  \phi_2' \Delta x_{t-2} + \dots + \phi_{p-1}' \Delta x_{t-p-1} +  \varepsilon_t
+   \Delta  x_t = \beta  x_{t-1} + \phi_1'\Delta x_{t-1} +  \phi_2' \Delta x_{t-2} + \dots + \phi_{p-1}' \Delta x_{t-(p-1)} +  \varepsilon_t
 \end{equation}
 
 donde $\beta$ sigue la misma distribución que el parámetro de (*). También se puede extender para las ecuaciones (+) y (^)
