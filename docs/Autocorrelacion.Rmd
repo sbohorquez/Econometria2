@@ -72,7 +72,7 @@ Las auto-covarianzas y auto-correlaciones expuestas anteriormente son los valore
 #
 <ul>
 <li> donde $\bar{x}_{j+1:T}$ es el promedio muestral de $x_t$ usando las observaciones $t=j+1,j+2,\dots,T$ </li>
-<li> $\widehat{var(x_t)}$ es la varianza muestral de $x_t$. </li>
+<li> $\widehat{var(x_t)}=\frac{1}{T-1}\Sigma_{i=1}^T(x_i-\bar{x})^2$ es la varianza muestral de $x_t$.  </li>
 <li> Noten que la ecuación de la auto-covarianza se divide por $T$ y no $T-j$ como es usual cuando perdemos grados de libertad, la razón para esto es para poder hacer comparaciones entre diferentes ordenes de las auto-covarianzas.</li>
 
 
