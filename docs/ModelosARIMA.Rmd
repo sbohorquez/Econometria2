@@ -150,7 +150,7 @@ Como vimos previamente $\gamma_j = E[x_t x_{t-j}]$, por lo tanto
     \gamma_j = \phi \gamma_{j-1}
 \end{equation}
 
-resolvemos entonces para $\gamma_0$, $\gamma_1$ y generalizamos para $\gamma_j$. Es fácil ver que $\gamma_0$ es $Var(x)t)$
+resolvemos entonces para $\gamma_0$, $\gamma_1$ y generalizamos para $\gamma_j$. Es fácil ver que $\gamma_0$ es $Var(x)_{t})$
 
 #
 
