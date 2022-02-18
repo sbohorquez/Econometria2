@@ -416,24 +416,19 @@ Los resultados anteriores parten de un modelo AR(1), Dickey (1984) extendió est
    \Delta  x_t = \beta  x_{t-1} + \phi_1'\Delta x_{t-1} +  \phi_2' \Delta x_{t-2} + \dots + \phi_{p-1}' \Delta x_{t-(p-1)} +  \varepsilon_t
 \end{equation}
 donde $\beta$ sigue la misma distribución que el parámetro de (*). También se puede extender para las ecuaciones (+) y (^)
-
 # Prueba de Phillips-Perron
-
 #
 <ul>
 <li> Phillips y Perron (1988) desarrollaron un test basado en la ecuación (*), en el cual no se estima la correlación serial como en (++), pero utilizan un estimador no-parametrico consistente para heteroscedastidad y auto-correlación, a la Newey-West.  
 <li> Este estimador sigue la misma distribución que D-F por lo cual los valores de MacKinnon (1996) pueden ser utilizados.</li>
 <li> Sin embargo, Schwert (1989), y Perron y Ng (1996) mostraron que este estimador funciona peor que el D-F aumentado en muestras finitas, por lo cual D-F aumentado tiende a ser preferido.</li>
 </ul>
-
 # Prueba KPSS
-
 #
 <ul>
 <li> D-F y PP tienen como hipótesis nula la existencia de raíz unitaria. Estos test tienen el problema que carecen de poder para rechazar, por lo cual tienden a encontrar raíces unitarias cuando estas no existen.</li>
 <li> Kwiatkowski, Phillips, Schimdt and Shin (1992) crearon un test donde la hipótesis nula es I(0), i.e. la serie es estacionaria.</li>
 </ul>
-
 #
 Este test es basado en que si la serie es estacionaria y la diferenciamos una vez se vuelve de orden I(-1).
  
@@ -443,14 +438,13 @@ El estadístico considerado es entonces:
     \end{equation}
     
 donde, $s_{nl}^2$ es un estimador consistente de $\sigma^2$ y $S_t = \sum_{s=1}^t (x_s - \bar{x})$
-
 # Código R
         
 ##
-```{r AR function, echo=FALSE}
-library(geometry) # Dot product.
 
-AR(p) with standard error series with the parametrization and traditional transformed
+```{r AR function, echo=FALSE, warning=FALSE}
+library(geometry) # Dot product.
+#AR(p) with standard error series with the parametrization and traditional transformed
 #' series.
 #' 
 #' @param p Order of the AR. Must be a integer number.
@@ -509,32 +503,46 @@ AR <- function(p, n,
 ar <- AR(p = 2, n = 1000, x0 = c(14, 14.1), phi = c(0.2, -0.6), alpha = 0.02, delta = 20)
 data <- ar$x.tend
 ```
+
 La serie **data** es un AR(2) con intercepto y tendencia, es decir, no es estacionaria. Suponiendo que desconocemos esta información, para verificar esto, podemos las librerias de R _urca_ y _tseries_. Ambas tienen implementadas todas las pruebas de raices unitarias vistas en clase, solo cambian en como muestran los resultados y en algunas opciones adicionales para algunas pruebas. Por conveniencia en este ejemplo usaremos la _tseries_.
 
 ##
+
 De manera visual se observa que la serie es no estacionaria, aunque parece serlo en tendencia y con intercepto. Comprobamos este hecho con las diferentes pruebas. Cabe resaltar que para la libreria _tseries_, ADF (Dickey-Fuller aumentada) y PP (Phillips-Perron) son pruebas que soportan una serie con tendencia e intercepto. Por su parte, KPSS por default solo incluye el intercepto. Así, que se quiere probar si la serie es estacionaria sólo con intercepto o sin tendencia ni intercepto, debemos recurrir a la libreria _urca_.
-```{r plot, echo=TRUE}
+
+##
+
+```{r lib, include=FALSE}
 library(tseries)
+```
+
+```{r plot, echo=FALSE, warning=FALSE}
+
 plot(data, type = 'l')
 ```
         
 ##
+
 ADF rechaza la hipótesis nula así que concluimos que la serie estacionaria.
-```{r adf, echo=TRUE}
+
+```{r adf, echo=TRUE, warning=FALSE}
 library(tseries)
 adf.test(data)
 ```
         
 ##
+
 De igual manera, PP rechaza la hipótesis nula así que concluimos que la serie estacionaria.
-```{r pp, echo=TRUE}
+
+```{r pp, echo=TRUE, warning=FALSE}
 pp.test(data)
 ```
         
 ##
+
 Finalmente, kpss de manera predeterminada rechaza que la serie sea estacionaria pues no considera estacionareidad en tendencia, pero al cambiar el parámetro _null_ por _"Trend" si la incluye y por tanto no encuentra evidencia de que la serie sea no estacionaria. En conclusión, tenemos evidencia para afirmar que la serie es estacionaria con intercepto y en tendencia.
-```{r kpss, echo=TRUE}
+
+```{r kpss, echo=TRUE, warning=FALSE}
 kpss.test(data)
 kpss.test(data, null = "Trend")
 ```
-
