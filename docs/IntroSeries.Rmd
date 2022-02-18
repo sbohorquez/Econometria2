@@ -352,7 +352,7 @@ Por este motivo se han diseñado diferentes pruebas estadísticas para asegurase
 <li> Prueba de Dickey-Fuller aumentada. </li>
 <li> Prueba de Phillips-Perron. </li>
 <li> Prueba KPSS. </li>
-
+</ul>
 
 # Prueba de Dickey-Fuller
 
@@ -416,19 +416,24 @@ Los resultados anteriores parten de un modelo AR(1), Dickey (1984) extendió est
    \Delta  x_t = \beta  x_{t-1} + \phi_1'\Delta x_{t-1} +  \phi_2' \Delta x_{t-2} + \dots + \phi_{p-1}' \Delta x_{t-(p-1)} +  \varepsilon_t
 \end{equation}
 donde $\beta$ sigue la misma distribución que el parámetro de (*). También se puede extender para las ecuaciones (+) y (^)
+
 # Prueba de Phillips-Perron
+
 #
 <ul>
 <li> Phillips y Perron (1988) desarrollaron un test basado en la ecuación (*), en el cual no se estima la correlación serial como en (++), pero utilizan un estimador no-parametrico consistente para heteroscedastidad y auto-correlación, a la Newey-West.  
 <li> Este estimador sigue la misma distribución que D-F por lo cual los valores de MacKinnon (1996) pueden ser utilizados.</li>
 <li> Sin embargo, Schwert (1989), y Perron y Ng (1996) mostraron que este estimador funciona peor que el D-F aumentado en muestras finitas, por lo cual D-F aumentado tiende a ser preferido.</li>
 </ul>
+
 # Prueba KPSS
+
 #
 <ul>
 <li> D-F y PP tienen como hipótesis nula la existencia de raíz unitaria. Estos test tienen el problema que carecen de poder para rechazar, por lo cual tienden a encontrar raíces unitarias cuando estas no existen.</li>
 <li> Kwiatkowski, Phillips, Schimdt and Shin (1992) crearon un test donde la hipótesis nula es I(0), i.e. la serie es estacionaria.</li>
 </ul>
+
 #
 Este test es basado en que si la serie es estacionaria y la diferenciamos una vez se vuelve de orden I(-1).
  
@@ -438,6 +443,7 @@ El estadístico considerado es entonces:
     \end{equation}
     
 donde, $s_{nl}^2$ es un estimador consistente de $\sigma^2$ y $S_t = \sum_{s=1}^t (x_s - \bar{x})$
+
 # Código R
         
 ##
