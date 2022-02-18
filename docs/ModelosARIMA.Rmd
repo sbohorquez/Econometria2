@@ -140,7 +140,7 @@ Reemplazamos $x_t$ y obtenemos:
             & = \phi E[x_{t-1} x_{t-j}]  
 \end{align}
 
-Dado que, $E[\varepsilon_t x_{t-j}]=0$   
+Donde $E[\varepsilon_t x_{t-j}]=0$ cuando $j \geq 1$   
 
 #
 
@@ -219,20 +219,6 @@ $x_t = x_{t-1} + \varepsilon_t$
 Definimos el modelo AR(p) como
      
 \begin{equation}
-    x_t = \phi_1 x_{t-1} + \phi_2 x_{t-2} + \dots + \phi_p x_{t-p}  \varepsilon_t 
-\end{equation}
-    
-o usando el operador de rezagos
-    
-\begin{equation}
-       \phi(L)x_t = \varepsilon_t
-\end{equation}
-    
-#
-
-Definimos el modelo AR(p) como
-     
-\begin{equation}
   x_t = \phi_1 x_{t-1} + \phi_2 x_{t-2} + \dots + \phi_p x_{t-p} + \varepsilon_t
 \end{equation}
     
@@ -241,6 +227,8 @@ o usando el operador de rezagos
 \begin{equation}
        \phi(L)x_t = \varepsilon_t
     \end{equation}
+
+#
 
 El proceso es estacionario si las soluciones de $\lambda_i$ de la ecuación
 
