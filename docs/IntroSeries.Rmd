@@ -415,13 +415,11 @@ Los resultados anteriores parten de un modelo AR(1), Dickey (1984) extendió est
 \begin{equation}\label{dfa}\tag{++}
    \Delta  x_t = \beta  x_{t-1} + \phi_1'\Delta x_{t-1} +  \phi_2' \Delta x_{t-2} + \dots + \phi_{p-1}' \Delta x_{t-(p-1)} +  \varepsilon_t
 \end{equation}
-
 donde $\beta$ sigue la misma distribución que el parámetro de (*). También se puede extender para las ecuaciones (+) y (^)
 
 # Prueba de Phillips-Perron
 
 #
-
 <ul>
 <li> Phillips y Perron (1988) desarrollaron un test basado en la ecuación (*), en el cual no se estima la correlación serial como en (++), pero utilizan un estimador no-parametrico consistente para heteroscedastidad y auto-correlación, a la Newey-West.  
 <li> Este estimador sigue la misma distribución que D-F por lo cual los valores de MacKinnon (1996) pueden ser utilizados.</li>
@@ -437,8 +435,6 @@ donde $\beta$ sigue la misma distribución que el parámetro de (*). También se
 </ul>
 
 #
-
-
 Este test es basado en que si la serie es estacionaria y la diferenciamos una vez se vuelve de orden I(-1).
  
 El estadístico considerado es entonces:
@@ -541,3 +537,4 @@ Finalmente, kpss de manera predeterminada rechaza que la serie sea estacionaria 
 kpss.test(data)
 kpss.test(data, null = "Trend")
 ```
+
