@@ -443,3 +443,98 @@ El estadístico considerado es entonces:
     \end{equation}
     
 donde, $s_{nl}^2$ es un estimador consistente de $\sigma^2$ y $S_t = \sum_{s=1}^t (x_s - \bar{x})$
+
+# Código R
+        
+##
+```{r AR function, echo=FALSE}
+library(geometry) # Dot product.
+
+AR(p) with standard error series with the parametrization and traditional transformed
+#' series.
+#' 
+#' @param p Order of the AR. Must be a integer number.
+#' @param n Sample size of the series.
+#' @param phi Real coefficients of the AR. Predefined, are random numbers
+#' between -1 and 1. Must be of length p.
+#' @param x0 p initial values of the series. Predefined, are random numbers
+#' between -1 and 1. Must be of length p.
+#' @param alpha Tendency real parameter. Real number.
+#' @return List that has the original AR(\code{p}) series with parametrization
+#' \code{phi} and \code{alpha}, as well as an associated series. This series are:
+#' x.tend (tendency stationary), x.int (differentiation stationary) and x.int.tend
+#' (tendency and differentiation stationary)
+#' @example 
+#' # AR(1) with 1000 sample sizes.
+#' p <- 1; n <- 1000
+#' phi <- c(0.2, 0.4); alpha <- 0.03
+#' x0 <- c(0.3, 0.5)
+#' ar <- AR(p, n, phi, x0, alpha)
+#' plot(ar$x)
+#' plot(ar$x.int)
+#' @example 
+#' # AR(4) with 1000 sample sizes and default parameters.
+#' ar <- AR(4, 1000)
+#' plot(ar$x)
+#' plot(ar$x.tend)
+AR <- function(p, n, 
+               phi = runif(p, min = -1, max = 1),
+               x0 = runif(p, min = -1, max = 1),
+               alpha = 0.01, delta = 0){
+  # Initiallize series.
+  x <- c(x0, rep(NA, n-p))
+  
+  # AR simulation for each observation.
+  for (i in (p+1):n){
+    I <- (i-p):(i-1)
+    if (p==1){
+      x[i] <- delta + x[I]*phi + rnorm(1)
+    } else if (p > 1){
+      x[i] <- delta + dot(x[I], phi) + rnorm(1)
+    } else {
+      warning("p must be a positive integer.")
+    }
+  }
+  # Organize results.
+  results <- list(x = x,
+                  phi = phi,
+                  alpha = alpha,
+                  x.int = diffinv(x),
+                  x.tend = alpha*1:n + x,
+                  x.int.tend = alpha*1:(n+1) + diffinv(x)
+                  )
+  return(results)
+}
+    
+ar <- AR(p = 2, n = 1000, x0 = c(14, 14.1), phi = c(0.2, -0.6), alpha = 0.02, delta = 20)
+data <- ar$x.tend
+```
+La serie **data** es un AR(2) con intercepto y tendencia, es decir, no es estacionaria. Suponiendo que desconocemos esta información, para verificar esto, podemos las librerias de R _urca_ y _tseries_. Ambas tienen implementadas todas las pruebas de raices unitarias vistas en clase, solo cambian en como muestran los resultados y en algunas opciones adicionales para algunas pruebas. Por conveniencia en este ejemplo usaremos la _tseries_.
+
+##
+De manera visual se observa que la serie es no estacionaria, aunque parece serlo en tendencia y con intercepto. Comprobamos este hecho con las diferentes pruebas. Cabe resaltar que para la libreria _tseries_, ADF (Dickey-Fuller aumentada) y PP (Phillips-Perron) son pruebas que soportan una serie con tendencia e intercepto. Por su parte, KPSS por default solo incluye el intercepto. Así, que se quiere probar si la serie es estacionaria sólo con intercepto o sin tendencia ni intercepto, debemos recurrir a la libreria _urca_.
+```{r plot, echo=TRUE}
+library(tseries)
+plot(data, type = 'l')
+```
+        
+##
+ADF rechaza la hipótesis nula así que concluimos que la serie estacionaria.
+```{r adf, echo=TRUE}
+library(tseries)
+adf.test(data)
+```
+        
+##
+De igual manera, PP rechaza la hipótesis nula así que concluimos que la serie estacionaria.
+```{r pp, echo=TRUE}
+pp.test(data)
+```
+        
+##
+Finalmente, kpss de manera predeterminada rechaza que la serie sea estacionaria pues no considera estacionareidad en tendencia, pero al cambiar el parámetro _null_ por _"Trend" si la incluye y por tanto no encuentra evidencia de que la serie sea no estacionaria. En conclusión, tenemos evidencia para afirmar que la serie es estacionaria con intercepto y en tendencia.
+```{r kpss, echo=TRUE}
+kpss.test(data)
+kpss.test(data, null = "Trend")
+```
+
