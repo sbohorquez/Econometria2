@@ -500,16 +500,6 @@ Y $\gamma_j=0$ para $j>q$
 
 #
 
-Ahora para el caso general donde $1 \leq j \leq q$
-
-\begin{align}
-     \gamma_j  & = (-\theta_j + \theta_1 \theta_{j+1} + \theta_2 \theta_{j+2} + \dots + \theta_{q-j} \theta_q) \sigma^2
-\end{align}
-    
-Y $\gamma_j=0$ para $j>q$
-
-#
-
 Ahora, estimamos las auto-correlaciones $\rho_j$,
 
 \begin{align}
