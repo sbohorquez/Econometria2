@@ -452,7 +452,7 @@ Ahora, estimamos la auto-covarianza $\gamma_j$ del proceso,
     \gamma_j & = E[x_t x_{t-j}] \\
              & = E[(\varepsilon_t - \theta_1 \varepsilon_{t-1} - \theta_2 \varepsilon_{t-2} - \dots - \theta_q \varepsilon_{t-q}) \\
             & (\varepsilon_{t-j} - \theta_1 \varepsilon_{t-j-1} - \theta_2 \varepsilon_{t-j-2} - \dots - \theta_q \varepsilon_{t-j-q})] \\
-\end{align*}    
+\end{align}    
 
 #
 
