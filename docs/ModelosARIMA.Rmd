@@ -364,7 +364,7 @@ Ahora, estimamos la auto-covarianza $\gamma_j$ del proceso,
 
 \begin{align}
     \gamma_j & = E[x_t x_{t-j}] \\
-             & = E[(\varepsilon_t - \theta \varepsilon_{t-1})((\varepsilon_{t-j} - \theta \varepsilon_{t-j-1})] \\
+             & = E[(\varepsilon_t - \theta \varepsilon_{t-1})(\varepsilon_{t-j} - \theta \varepsilon_{t-j-1})] \\
  & = E[\varepsilon_t \varepsilon_{t-j}] - \theta E[ \varepsilon_{t-1} \varepsilon_{t-j}] - \theta E[ \varepsilon_{t} \varepsilon_{t-j-1}] + \theta^2 E[ \varepsilon_{t-1} \varepsilon_{t-j-1}]
 \end{align}    
     
@@ -421,7 +421,7 @@ Ahora generalizamos para el caso con $q$ rezagos. Definimos el proceso MA(q) com
     x_t = \varepsilon_t - \theta_1 \varepsilon_{t-1} - \theta_2  \varepsilon_{t-2} - \dots - \theta_q \varepsilon_{t-q}
 \end{equation}
 
-usando el operador de rezagos $x_t = (1-\theta_1 L - \theta_2 L^2 - \dots - \theta_q) \varepsilon_{t}$
+usando el operador de rezagos $x_t = (1-\theta_1 L - \theta_2 L^2 - \dots - \theta_q L^q) \varepsilon_{t}$
 
 #
 
@@ -429,7 +429,7 @@ Calculamos la esperanza de este proceso,
 
 \begin{align}
     E[x_t] & = E[\varepsilon_t - \theta_1 \varepsilon_{t-1} - \theta_2 \varepsilon_{t-2} - \dots - \theta_q \varepsilon_{t-q}] \\
-    E[x_t] & = E[\varepsilon_t] - \theta E[\varepsilon_{t-1}] - \theta_2 E[\varepsilon_{t-2}] - \dots - \theta_q E[\varepsilon_{t-q}] \\
+    E[x_t] & = E[\varepsilon_t] - \theta_1 E[\varepsilon_{t-1}] - \theta_2 E[\varepsilon_{t-2}] - \dots - \theta_q E[\varepsilon_{t-q}] \\
     E[x_t] & = 0
 \end{align}
 
