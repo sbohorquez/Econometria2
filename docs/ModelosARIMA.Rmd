@@ -256,15 +256,15 @@ Ahora para estimar las auto-covarianzas,
 E[x_t x_{t-j}] & =  E[(\phi_1 x_{t-1} + \phi_2 x_{t-2} + \dots + \phi_p x_{t-p} +  \varepsilon_t) x_{t-j}] \\
 E[x_t x_{t-j}] & = \phi_1 E[x_{t-1}x_{t-j}] + \phi_2 E[x_{t-2}x_{t-j}] + \dots + \phi_p E[x_{t-p} x_{t-j}] \\
 & + E[\varepsilon_t x_{t-j}] \\
- \gamma_j & = \phi_1 \gamma_{j-1} + \phi_2 \gamma_{j-2} + \dots + \phi_p \gamma_{j-p} + E[\varepsilon_t x_{t-j}]
+ \gamma_j & = \phi_1 \gamma_{j-1} + \phi_2 \gamma_{j-2} + \dots + \phi_p \gamma_{j-p} + E[\varepsilon_t x_{t-j}]}
 \end{align}
 
 #
 
-Ahora podemos estimar la varianza, como $\gamma_0$
+Teniendo en cuenta que $\gamma_{-j} = \gamma{j} $, podemos estimar la varianza, como $\gamma_0$
 
 \begin{equation}
-    \gamma_j  = \phi_1 \gamma_{1} + \phi_2 \gamma_{2} + \dots + \phi_p \gamma_{p} + \sigma^2
+    \gamma_0  = \phi_1 \gamma_{1} + \phi_2 \gamma_{2} + \dots + \phi_p \gamma_{p} + \sigma^2
 \end{equation}
 
 Y para valores de $j>0$
