@@ -565,8 +565,8 @@ Bajo el supuesto de estacionariedad, y sabiendo que $E[x_t\varepsilon_t] = \sigm
 Para las auto-covarianzas tenemos,
 \begin{align}
 \gamma_j & = E[x_t x_{t-j}] \\
-         & = \phi E[x_{t-1} x_{t-j}] + E[\varepsilon_t  x_{t-j}] - \theta [\varepsilon_{t-1} x_{t-j}] \\
-         & = \phi \gamma_{j-1} + E[\varepsilon_t  x_{t-j}] - \theta [\varepsilon_{t-1} x_{t-j}]
+         & = \phi E[x_{t-1} x_{t-j}] + E[\varepsilon_t  x_{t-j}] - \theta E[\varepsilon_{t-1} x_{t-j}] \\
+         & = \phi \gamma_{j-1} + E[\varepsilon_t  x_{t-j}] - \theta E[\varepsilon_{t-1} x_{t-j}]
 \end{align}
 
 
