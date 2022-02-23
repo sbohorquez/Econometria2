@@ -531,7 +531,7 @@ Estimamos la esperanza del modelo,
 
 \begin{align}
     E[x_t] & = E[\phi x_{t-1} + \varepsilon_t - \theta \varepsilon_{t-1}] \\ 
-           & = \phi E[\phi x_{t-2} + \varepsilon_{t-1} - \theta \varepsilon_{t-2}] - E[\varepsilon_t] - \theta E[\varepsilon_{t-1}] \\
+           & = \phi E[\phi x_{t-2} + \varepsilon_{t-1} - \theta \varepsilon_{t-2}] + E[\varepsilon_t] - \theta E[\varepsilon_{t-1}] \\
            & \vdots \\
            & = \phi^n E[x_{t-n}] + \sum_{j=0}^{n} \phi^j (E[\varepsilon_{t-j}] - \theta E[\varepsilon_{t-j-1}]) 
 \end{align}
