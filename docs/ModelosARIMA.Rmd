@@ -575,7 +575,7 @@ Para las auto-covarianzas tenemos,
 para $\gamma_1$ sería,
 
 \begin{align}
-\gamma_1 & = \phi \gamma_0 + E[\varepsilon_t  x_{t-1}]  + E[\varepsilon_t  x_{t-j}] - \theta [\varepsilon_{t-1} x_{t-1}] \\
+\gamma_1 & = \phi \gamma_0 + E[\varepsilon_t  x_{t-1}]  + E[\varepsilon_t  x_{t-j}] - \theta E[\varepsilon_{t-1} x_{t-1}] \\
          & = \phi \frac{(1+\theta^2- 2 \theta \phi) \sigma^2}{1-\phi^2} - \theta \sigma^2
 \end{align}
 
