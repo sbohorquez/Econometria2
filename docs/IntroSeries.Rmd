@@ -54,7 +54,7 @@ Sea $x_t$ una observación aleatoria de una serie de tiempo. Definimos el símbo
     L x_t = x_{t-1}
 \end{equation}
 
-$L$ es lo que en matemáticas es conocido como un operador. No es un parámetro o un número pero puede ser tratado como tal para operaciones algebraicas, e.g. $L^2 x_t = L(L x_t) = L x_{t-1} = x_{t-2}$, en general $L^n x_t = x_{t-n}$  
+$L$ es lo que en matemáticas es conocido como un operador. No es un parámetro o un número, pero puede ser tratado como tal para operaciones algebraicas, e.g. $L^2 x_t = L(L x_t) = L x_{t-1} = x_{t-2}$, en general $L^n x_t = x_{t-n}$  
 
 #
     
