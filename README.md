@@ -10,5 +10,6 @@ Notas de clase Econometria 2 Universidad EAFIT:
   <li><a href="https://sbohorquez.github.io/Econometria2/Autocorrelacion.html#/">Auto-correlacion</a></li>
   <li><a href="https://sbohorquez.github.io/Econometria2/IntroSeries.html#/">Introducción Series de Tiempo</a></li>
   <li><a href="https://sbohorquez.github.io/Econometria2/ModelosARIMA.html#/">Modelos ARIMA</a></li>
+  <li><a href="https://sbohorquez.github.io/Econometria2/VariablesExogenas.html#/">Modelos con Variables Exógenas</a></li>
 </ol> 
 
