@@ -1,0 +1,262 @@
+---
+title: "Modelos Dinámicos con variables exógenas"
+author: |
+        | Santiago Bohorquez Correa
+        |
+        | Universidad EAFIT
+        | Escuela de Economía y Finanzas
+output:
+  revealjs::revealjs_presentation:
+    css: EAFIT.css
+    highlight: pygments
+    center: true
+    transition: slide
+---
+
+#
+
+Hasta ahora hemos modelado los procesos como dependientes solo de su pasado o de procesos de innovación.
+
+Sin embargo, para muchas series económicas deseamos modelar la relación entre nuestra variable de interés y el valor actual y rezagos de otras variables independientes y rezagos de la variable de interés.
+
+
+# Modelos de Rezagos distribuidos
+
+#
+
+Empezamos con el modelo dinámico con variables independientes más sencillo.
+
+Por simplicidad de notación miraremos el caso con una sola variable independiente $z_t$. En la practica suele haber más de una variable, pero en los casos que veremos a continuación la extensión a modelos más generales es sencilla. 
+
+#
+
+Cuando el proceso $x_t$ depende solamente de nuestra variable independiente $z_t$ y no de rezagos de si mismo tenemos lo que es llamado el modelo de rezagos distribuidos. 
+
+#
+
+Este se puede escribir como,
+ \begin{equation}\label{eq:rd}
+     x_t = \delta + \sum_{j=0}^b \beta_j z_{t-j} + \varepsilon_t
+ \end{equation}
+
+ donde $\varepsilon_t \sim IID(0,\sigma^2)$
+
+#
+
+En muchos casos $z_t$ esta correlacionado con algunos o todos los rezagos $z_{t-j}$ para $j \geq 1$.
+
+En consecuencia, los estimadores MCO de $\beta_j$ en la ecuación anterior pueden ser bastante imprecisos.
+
+Sin embargo, esto no es, generalmente, un problema si lo que nos interesa es el efecto de largo plazo de cambios de la variable independiente $z_t$.
+
+
+#
+
+Este efecto de largo plazo es,
+ \begin{equation}
+     \gamma \equiv \sum_{j=0}^b \beta_j = \sum_{j=0}^b \frac{\partial x_t}{\partial z_{t-j}}
+ \end{equation}
+
+ Así podríamos calcular el estimador de $\hat{\gamma}$. 
+  
+
+##
+
+ También podríamos reparametrizar la ecuación y obtener  $\hat{\gamma}$ directamente,
+   \begin{equation}
+     x_t = \delta +  \gamma z_t + \sum_{j=1}^b \beta_j (z_{t-j} - z_t) + \varepsilon_t
+ \end{equation}
+
+La ventaja de esta parametrización es que podemos obtener el error estándar de $\hat{\gamma}$. 
+ 
+ 
+# Modelos de Ajuste parcial
+
+#
+
+Una alternativa popular al modelo de rezagos distribuidos es el modelo de ajuste parcial, que fue propuesto, al menos para economía, por Nerlove (1958).
+
+Este modelo también es conocido como modelo de Koyk ya que la ecuación a estimar es la misma que el modelo de ajuste parcial, pero los supuestos iniciales son distintos. 
+
+#
+
+Supongamos que el nivel deseado de una variable económica, $x_t$ es $x^0_t$.
+
+Este nivel deseado asumimos que depende de una variable exógena $z_t$, así
+
+ \begin{equation}
+     x^0_t = \beta^0 z_t + \varepsilon_t
+ \end{equation}
+  donde $\varepsilon_t \sim IID(0,\sigma_{\varepsilon}^2)$
+
+#
+
+Debido a costos de ajuste, $x_t$ no es igual a $x^0_t$ en todos los periodos. Este se ajusta hacia $x^0_t$ de acuerdo a la ecuación,
+
+ \begin{equation}
+     x_t - x_{t-1} = (1-\lambda)(x^0_t - x_{t-1}) + \upsilon_t
+ \end{equation}
+
+ donde $\upsilon_t \sim IID(0,\sigma_{\upsilon}^2)$, y $\lambda$ es un parámetro de ajuste que se asume positivo y estrictamente menor a 1. 
+
+
+#
+
+Resolviendo por $x_t$ obtenemos,
+
+ \begin{align}
+     x_t & = x_{t-1} - (1 - \lambda)x_{t-1} + (1-\lambda)\beta^0 z_t + (1-\lambda)\varepsilon_t +\upsilon_t \nonumber \\
+     & = \beta z_t + \lambda x_{t-1} + u_t \label{map}
+ \end{align}
+ donde $\beta \equiv (1-\lambda)\beta^0$ y $u_t \equiv (1-\lambda)\varepsilon_t + \upsilon_t$.
+
+Por lo tanto, el modelo de ajuste parcial lleva a una regresión lineal de $x_t$ con respecto a $z_t$ y $x_{t-1}$ 
+
+#
+
+El coeficiente de $x_{t-1}$ es el parámetro de ajuste, y estimaciones de $\beta^0$ se pueden obtener de los estimadores de MCO de $\beta$ y $\lambda$.
+
+Noten que el modelo no tiene sentido si $\lambda<0$ ya que esto implicaría una sobre-reacción, o si $\lambda \geq 1$ ya que esto implicaría alejarse cada vez más. Además, cuando $\lambda$ es muy cercana a 1, la velocidad de ajuste puede ser improbablemente lenta.
+ 
+#
+
+La ecuación también puede ser solucionada para encontrar $x_t$ en función de el valor actual y rezagos de $x_t$.
+
+Bajo el supuesto que $|\lambda|<1$, obtenemos
+ \begin{equation}
+     x_t = \sum_{j=0}^{\infty} \lambda^j \beta z_{t-j} + \sum_{j=0}^{\infty} \lambda^j u_{t-j}
+ \end{equation}
+
+Por lo tanto, el modelo de ajuste parcial implica una forma particular de de rezago distribuido.
+
+#
+
+En contraste con el modelo de rezagos dsitrivuidos, $x_t$ ahora depende de los valores rezagados del error $u_t$ al igual que que de valores rezagados de $z_t$.
+ 
+Si los regresores afectan $x_t$ a través de rezagos distribuidos, y si el termino de error refleja la influencia de las variables omitidas, entonces es de esperar que estas variables omitidas también afecten $x_t$ a través de unos rezagos distribuidos.
+ 
+Sin embargo, la restricción que el mismo coeficiente afecta a todas las observaciones puede ser bastante restrictivo.
+
+# Modelos ADL
+
+#
+
+Ahora consideraremos una familia general de modelos que incluyen rezagos de la variable dependiente y variables independientes.
+
+#
+Un modelo autoregresivo de rezagos distrbuidos, o ADL por sus siglas en ingles, se denota como,
+ \begin{equation}
+     x_t = \delta + \sum_{i=1}^p \phi_i x_{t-i} + \sum_{j=0}^b \beta_j z_{t-j} + u_t
+ \end{equation}
+ donde $u_t \sim IID(0,\sigma^2_u)$. Este es un modelo ADL(p,b).
+
+# 
+
+Veamos el caso del ADL(1,1),
+ \begin{equation}
+     x_t = \delta + \phi_1 x_{t-1} +  \beta_0 z_{t} + \beta_1 z_{t-1} + u_t
+ \end{equation}
+
+Los resultados del ADL(1,1) son fácilmente generalizables para el caso ADL(p,b), por lo cual centraremos nuestra discusión en este caso especial.
+
+#
+
+Aunque el modelo ADL(1,1) es bastante sencillo, muchos modelos encontrados en la practica son casos especiales de este.
+
+<ul>
+<li> Si $\phi_1=\beta_1=0$ obtenemos un modelo estático con errores IID.</li>
+<li> Si $\beta_0=\beta_1=0$ obtenemos el modelo AR(1).</li>
+<li> Si $\beta_1=0$, obtenemos el modelo de ajuste parcial.</li>
+<li> Si $\beta_1=-\phi_1\beta_0$ obtenemos un modelo estático con errores AR(1)</li>
+</ul>
+
+# 
+<ul>
+
+<li> Y finalmente si $\phi_1=1$ y $\beta_1=-\beta_0$, obtenemos el modelo en primeras diferencias que puede ser escrito como:
+ \begin{equation*}
+     \Delta x_t = \delta + \beta_0 \Delta z_t + u_t
+ \end{equation*}
+
+antes de aceptar cualquiera de estos casos especiales, deberíamos de testearlos contra el modelo ADL(1,1) general.</li>
+
+#
+
+En general, es deseable imponer la condición que $|\phi_1|<1$.
+ 
+Estrictamente, esta no es una condición de estacionariedad ya que no podemos esperar que $x_t$ sea estacionario sin imponer condiciones adicionales en la variable $z_t$.
+
+Sin embargo, es fácil ver que si la condición no se cumple $x_t$ se vuelve explosivo. 
+
+#
+
+Si la condición $|\phi_1|<1$ se cumple, puede existir un equilibrio de largo plazo entre $x_t$ y $z_t$. Supongamos que existe un valor de equilibrio $z^0$ al cual $z_t$ converge cuando $t \rightarrow \infty$ en la ausencia de choques. Entonces, $x_t$ converge a un estado estacionario $x^0$ tal que,
+
+ \begin{equation}
+     x^0 = \delta + \phi_1 x^0 + (\beta_0 + \beta_1) z^0
+ \end{equation}
+ 
+#
+
+Resolviendo esta ecuación para $x^0$ como función de $z^0$ tenemos,
+ \begin{align*}
+     x^0 & = \frac{\delta}{1-\phi_1} + \frac{\beta_0 + \beta_1}{1 - \phi_1}z^0 \\
+     & = \frac{\delta}{1-\phi_1} + \lambda z^0
+ \end{align*}
+ 
+ donde $\lambda \equiv \frac{\beta_0 + \beta_1}{1 - \phi_1}$
+
+
+#
+
+$\lambda$ es la derivada de largo plazo de $x^0$ con respecto a $z^0$ (la podemos interpretar como una elasticidad si ambas variables están en logaritmos).
+
+Un estimado de $\lambda$ es posible a partir del modelo ADL(1,1) si y solo si $|\phi_1|<1$
+
+#
+
+Debido a la generalidad de los modelos ADL, es generalmente recomendable empezar especificando un modelo de este tipo.
+
+En muchos casos imponer $p=b=1$ es suficientemente general, pero con datos estacionales también se puede imponer $p=b=s$.
+
+El tipo de restricciones que pongamos sobre este modelo pueden ser testeadas con las pruebas $\chi^2$ y $F$ tradicionales.
+
+
+# Modelos ARMAX
+
+#
+
+Los modelos ADL estiman solo efectos auto-regresivos. Una extensión inmediata que viene a la mente es la inclusión de efectos MA dentro del modelo.
+
+Como vimos en el modelo de ajuste parcial estos efectos pueden ser entendidos en este modelo como efectos rezagados de variables omitidas.  
+
+#
+
+El modelo ARMAX(p,q,b) se define entonces como,
+ \begin{equation}
+     x_t = \sum_{j=1}^p \phi_j x_{t-j} + \sum_{i=0}^b \beta_i z_{t-i} + \varepsilon_t + \sum_{k=1}^q \theta_k \varepsilon_{t-k}
+ \end{equation}
+
+Sin embargo, en este modelo los parámetros $\beta_i$ no pueden ser interpretados como en una regresión lineal normal, ya que este tiene que ser interpretado condicional a los valores pasados de $x_t$.
+
+#
+
+Por lo tanto, si queremos interpretar estos coeficientes debemos hacer una transformación del modelo a estimar,
+  \begin{equation}
+     x_t - Z_t\beta = \sum_{j=1}^p \phi_j (x_{t-j} - Z_{t-j}\beta )+ \varepsilon_t + \sum_{k=1}^q \theta_k \varepsilon_{t-k}
+ \end{equation}
+ 
+ donde $Z_t\beta = \sum_{i=0}^b \beta_i z_{t-i}$
+
+#
+
+Este tipo de modelos también se pueden escribir como modelos dinámicos con errores ARMA,
+ \begin{equation}
+     x_t = Z_t\beta + \eta_t 
+ \end{equation}
+ 
+ donde $\eta_t= \sum_{j=1}^p \phi_j (x_{t-j} - Z_{t-j}\beta )+ \varepsilon_t + \sum_{k=1}^q \theta_k \varepsilon_{t-k}$
+ 
+Los paquetes estadísticos por lo general usan una de estas dos transformaciones para las estimaciones.
+
+
