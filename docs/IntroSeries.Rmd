@@ -54,7 +54,7 @@ Sea $x_t$ una observación aleatoria de una serie de tiempo. Definimos el símbo
     L x_t = x_{t-1}
 \end{equation}
 
-$L$ es lo que en matemáticas es conocido como un operador. No es un parámetro o un número pero puede ser tratado como tal para operaciones algebraicas, e.g. $L^2 x_t = L(L x_t) = L x_{t-1} = x_{t-2}$, en general $L^n x_t = x_{t-n}$  
+$L$ es lo que en matemáticas es conocido como un operador. No es un parámetro o un número, pero puede ser tratado como tal para operaciones algebraicas, e.g. $L^2 x_t = L(L x_t) = L x_{t-1} = x_{t-2}$, en general $L^n x_t = x_{t-n}$  
 
 #
     
@@ -188,7 +188,7 @@ reemplazando obtenemos,
     E[x_t] & = E[\delta] + E[\alpha t] + E[\phi x_{t-1}] + E[\varepsilon_t] \\
            & = \delta + \alpha t + \phi E[\delta + \alpha (t-1) + \phi x_{t-2} + \varepsilon_{t-1}] \\
            & \vdots \\
-           & = \sum_{i=0}^n \phi^i (\delta + \alpha (t-i))  
+           & = \sum_{i=0}^{n-1} \phi^i (\delta + \alpha (t-i))  
 \end{align*}
 
 dado que $|\phi| < 1$ y $n \rightarrow \infty$

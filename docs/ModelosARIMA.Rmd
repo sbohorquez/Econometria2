@@ -150,7 +150,7 @@ Como vimos previamente $\gamma_j = E[x_t x_{t-j}]$, por lo tanto
     \gamma_j = \phi \gamma_{j-1}
 \end{equation}
 
-resolvemos entonces para $\gamma_0$, $\gamma_1$ y generalizamos para $\gamma_j$. Es fácil ver que $\gamma_0$ es $Var(x)t)$
+resolvemos entonces para $\gamma_0$, $\gamma_1$ y generalizamos para $\gamma_j$. Es fácil ver que $\gamma_0$ es $Var(x)_{t})$
 
 #
 
@@ -448,7 +448,7 @@ Y la varianza
 
 Ahora, estimamos la auto-covarianza $\gamma_j$ del proceso,
 
-\begin{align*}
+\begin{align}
     \gamma_j & = E[x_t x_{t-j}] \\
              & = E[(\varepsilon_t - \theta_1 \varepsilon_{t-1} - \theta_2 \varepsilon_{t-2} - \dots - \theta_q \varepsilon_{t-q}) \\
             & (\varepsilon_{t-j} - \theta_1 \varepsilon_{t-j-1} - \theta_2 \varepsilon_{t-j-2} - \dots - \theta_q \varepsilon_{t-j-q})] \\
@@ -531,7 +531,7 @@ Estimamos la esperanza del modelo,
 
 \begin{align}
     E[x_t] & = E[\phi x_{t-1} + \varepsilon_t - \theta \varepsilon_{t-1}] \\ 
-           & = \phi E[\phi x_{t-2} + \varepsilon_{t-1} - \theta \varepsilon_{t-2}] - E[\varepsilon_t] - \theta E[\varepsilon_{t-1}] \\
+           & = \phi E[\phi x_{t-2} + \varepsilon_{t-1} - \theta \varepsilon_{t-2}] + E[\varepsilon_t] - \theta E[\varepsilon_{t-1}] \\
            & \vdots \\
            & = \phi^n E[x_{t-n}] + \sum_{j=0}^{n} \phi^j (E[\varepsilon_{t-j}] - \theta E[\varepsilon_{t-j-1}]) 
 \end{align}
@@ -565,8 +565,8 @@ Bajo el supuesto de estacionariedad, y sabiendo que $E[x_t\varepsilon_t] = \sigm
 Para las auto-covarianzas tenemos,
 \begin{align}
 \gamma_j & = E[x_t x_{t-j}] \\
-         & = \phi E[x_{t-1} x_{t-j}] + E[\varepsilon_t  x_{t-j}] - \theta [\varepsilon_{t-1} x_{t-j}] \\
-         & = \phi \gamma_{j-1} + E[\varepsilon_t  x_{t-j}] - \theta [\varepsilon_{t-1} x_{t-j}]
+         & = \phi E[x_{t-1} x_{t-j}] + E[\varepsilon_t  x_{t-j}] - \theta E[\varepsilon_{t-1} x_{t-j}] \\
+         & = \phi \gamma_{j-1} + E[\varepsilon_t  x_{t-j}] - \theta E[\varepsilon_{t-1} x_{t-j}]
 \end{align}
 
 
@@ -575,7 +575,7 @@ Para las auto-covarianzas tenemos,
 para $\gamma_1$ sería,
 
 \begin{align}
-\gamma_1 & = \phi \gamma_0 + E[\varepsilon_t  x_{t-1}]  + E[\varepsilon_t  x_{t-j}] - \theta [\varepsilon_{t-1} x_{t-1}] \\
+\gamma_1 & = \phi \gamma_0 + E[\varepsilon_t  x_{t-1}]  + E[\varepsilon_t  x_{t-j}] - \theta E[\varepsilon_{t-1} x_{t-1}] \\
          & = \phi \frac{(1+\theta^2- 2 \theta \phi) \sigma^2}{1-\phi^2} - \theta \sigma^2
 \end{align}
 
@@ -584,9 +584,9 @@ para $\gamma_1$ sería,
 Y para $j>1$ obtenemos
 
 \begin{align}
-\gamma_j & = \phi \gamma_{j-1} + E[\varepsilon_t  x_{t-j}]  + E[\varepsilon_t  x_{t-j}] - \theta [\varepsilon_{t-1} x_{t-j}] \\
+\gamma_j & = \phi \gamma_{j-1} + E[\varepsilon_t  x_{t-j}]  + E[\varepsilon_t  x_{t-j}] - \theta E[\varepsilon_{t-1} x_{t-j}] \\
          & = \phi \gamma_{j-1}
-\end{align*}
+\end{align}
 
 #
 
@@ -621,7 +621,7 @@ o usando el operado de rezagos $\phi(L)x_t = \theta(L)\varepsilon_t$
     
 #
 
-El proceso es estacionario si las soluciones para $\lambda$ de la ecuación $\lambda^p + \phi_1 \lambda^{p-1} + \dots + \phi_p = 0 $ caen dentro del circulo de unidad y bajo este supuesto es fácil ver que para nuestro modelo 
+El proceso es estacionario si las soluciones para $\lambda$ de la ecuación $\lambda^p + \phi_1 \lambda^{p-1} + \dots + \phi_p = 0$ caen dentro del circulo de unidad y bajo este supuesto es fácil ver que para nuestro modelo 
 
 \begin{align}
     E[x_t] & = 0
@@ -713,9 +713,10 @@ Por lo tanto el ARMA(p,q) se puede expresar como,
 
 Si existen dos raíces iguales, digamos $\lambda_1 = \delta_q$ podemos expresar el procesos como un ARMA(p-1,q-1),
 
-\begin{equation}
-     (1-\lambda_2 L) \dots (1-\lambda_p L) x_t = (1-\delta_1 L) (1-\delta_2 L) \dots (1-\delta_{q-1} L) \varepsilon_t
-\end{equation}
+\begin{align}
+     (1-\lambda_2 L) \dots (1-\lambda_p L) x_t = \\
+     (1-\delta_1 L) (1-\delta_2 L) \dots (1-\delta_{q-1} L) \varepsilon_t
+\end{align}
 
 
 # ARIMA(p,d,q)

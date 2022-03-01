@@ -114,13 +114,13 @@ así los errores estandar del estimado MCO, serían:
 Si los errores son heteroscedasticos y tienen auto-correlación, entonces,
 
 \begin{equation}
- \hat{Var}(X' U| X) = \Sigma_{i=-k}^k \frac{k-|j|}{k} \left(\Sigma_{t=1}^n \hat{u}_i \hat{u}_{i+j} x_i x_{i+j}'\right)
+ \hat{Var}(X' U| X) = \Sigma_{j=-k}^k \frac{k-|j|}{k} \left(\Sigma_{i=1}^n \hat{u}_i \hat{u}_{i+j} x_i x_{i+j}'\right)
 \end{equation}
 
 así los errores estandar del estimado MCO, serían:
 
 \begin{equation}
-  \Sigma_{\hat{\beta}} = (X'X)^{-1} \left(\Sigma_{i=-k}^k \frac{k-|j|}{k} \left(\Sigma_{t=1}^n \hat{u}_i \hat{u}_{i+j} x_i x_{i+j}'\right)\right) (X'X)^{-1}
+  \Sigma_{\hat{\beta}} = (X'X)^{-1} \left(\Sigma_{j=-k}^k \frac{k-|j|}{k} \left(\Sigma_{i=1}^n \hat{u}_i \hat{u}_{i+j} x_i x_{i+j}'\right)\right) (X'X)^{-1}
 \end{equation}
 
 # Código R
