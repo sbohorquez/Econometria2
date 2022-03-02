@@ -256,15 +256,15 @@ Ahora para estimar las auto-covarianzas,
 E[x_t x_{t-j}] & =  E[(\phi_1 x_{t-1} + \phi_2 x_{t-2} + \dots + \phi_p x_{t-p} +  \varepsilon_t) x_{t-j}] \\
 E[x_t x_{t-j}] & = \phi_1 E[x_{t-1}x_{t-j}] + \phi_2 E[x_{t-2}x_{t-j}] + \dots + \phi_p E[x_{t-p} x_{t-j}] \\
 & + E[\varepsilon_t x_{t-j}] \\
- \gamma_j & = \phi_1 \gamma_{j-1} + \phi_2 \gamma_{j-2} + \dots + \phi_p \gamma_{j-p} + E[\varepsilon_t x_{t-j}]
+ \gamma_j & = \phi_1 \gamma_{j-1} + \phi_2 \gamma_{j-2} + \dots + \phi_p \gamma_{j-p} + E[\varepsilon_t x_{t-j}]}
 \end{align}
 
 #
 
-Ahora podemos estimar la varianza, como $\gamma_0$
+Teniendo en cuenta que $\gamma_{-j} = \gamma{j} $, podemos estimar la varianza, como $\gamma_0$
 
 \begin{equation}
-    \gamma_j  = \phi_1 \gamma_{1} + \phi_2 \gamma_{2} + \dots + \phi_p \gamma_{p} + \sigma^2
+    \gamma_0  = \phi_1 \gamma_{1} + \phi_2 \gamma_{2} + \dots + \phi_p \gamma_{p} + \sigma^2
 \end{equation}
 
 Y para valores de $j>0$
@@ -584,8 +584,9 @@ para $\gamma_1$ sería,
 Y para $j>1$ obtenemos
 
 \begin{align}
-\gamma_j & = \phi \gamma_{j-1} + E[\varepsilon_t  x_{t-j}]  + E[\varepsilon_t  x_{t-j}] - \theta E[\varepsilon_{t-1} x_{t-j}] \\
+\gamma_j & = \phi \gamma_{j-1} + E[\varepsilon_t  x_{t-j}] - \theta E[\varepsilon_{t-1} x_{t-j}] \\
          & = \phi \gamma_{j-1}
+         & = \phi^{j-1} \rho_1
 \end{align}
 
 #
@@ -635,7 +636,7 @@ Y la varianza,
     \gamma_0 & = E[x_t^2] \\
             & = E[(\phi_1 x_{t-1} + \phi_2 x_{t-2} + \dots +  \phi_p x_{t-p} + \varepsilon_t - \theta_1 \varepsilon_{t-1} - \\
             & \theta_2 \varepsilon_{t-2} - \dots - \theta_q\varepsilon_{t-q} )^2] \\ 
-           & = \phi_1^2 E[x_{t-1}^2] + \phi_2^2 E[x_{t-2}^2] + \dots + E[\varepsilon_t^2] + \theta^2 E[\varepsilon_{t-1}^2] + \dots  \\
+           & = \phi_1^2 E[x_{t-1}^2] + \phi_2^2 E[x_{t-2}^2] + \dots + E[\varepsilon_t^2] + \theta_1^2 E[\varepsilon_{t-1}^2] + \dots  \\
            & + 2 \phi_1 E[x_{t-1}\varepsilon_t]  - 2 \theta_1 \phi_1  E[x_{t-1}\varepsilon_{t-1}] - 2 \theta_1 E[\varepsilon_t \varepsilon_{t-1}] + \dots \\
           & - 2 \phi_p \theta_q E[x_{t-p}\varepsilon_{t-q}]
 \end{align}
