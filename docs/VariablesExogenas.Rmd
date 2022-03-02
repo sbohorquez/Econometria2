@@ -129,6 +129,7 @@ Bajo el supuesto que $|\lambda|<1$, obtenemos
 
 Por lo tanto, el modelo de ajuste parcial implica una forma particular del modelo de rezagos distribuidos.
 
+
 #
 
 En contraste con el modelo de rezagos distribuidos, $x_t$ ahora depende de los valores rezagados del error $u_t$ al igual que que de valores rezagados de $z_t$.
@@ -144,7 +145,7 @@ Sin embargo, la restricción que el mismo coeficiente afecta a todas las observa
 Ahora consideraremos una familia general de modelos que incluyen rezagos de la variable dependiente y variables independientes.
 
 #
-Un modelo autoregresivo de rezagos distrbuidos, o ADL por sus siglas en ingles, se denota como,
+Un modelo autoregresivo de rezagos distribuidos, o ADL por sus siglas en ingles, se denota como,
  \begin{equation}
      x_t = \delta + \sum_{i=1}^p \phi_i x_{t-i} + \sum_{j=0}^b \beta_j z_{t-j} + u_t
  \end{equation}
