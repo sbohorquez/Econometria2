@@ -127,7 +127,7 @@ Bajo el supuesto que $|\lambda|<1$, obtenemos
      x_t = \sum_{j=0}^{\infty} \lambda^j \beta z_{t-j} + \sum_{j=0}^{\infty} \lambda^j u_{t-j}
  \end{equation}
 
-Por lo tanto, el modelo de ajuste parcial implica una forma particular de de rezago distribuido.
+Por lo tanto, el modelo de ajuste parcial implica una forma particular de rezago distribuido.
 
 #
 
