@@ -706,9 +706,10 @@ y,
 
 Por lo tanto el ARMA(p,q) se puede expresar como,
 
-\begin{equation}
-    (1-\lambda_1 L) (1-\lambda_2 L) \dots (1-\lambda_p L) x_t = (1-\delta_1 L) (1-\delta_2 L) \dots (1-\delta_q L) \varepsilon_t
-\end{equation}
+\begin{align}
+    (1-\lambda_1 L) (1-\lambda_2 L) \dots (1-\lambda_p L) x_t = \\
+    (1-\delta_1 L) (1-\delta_2 L) \dots (1-\delta_q L) \varepsilon_t
+\end{align}
 
 #
 
@@ -718,6 +719,29 @@ Si existen dos raíces iguales, digamos $\lambda_1 = \delta_q$ podemos expresar 
      (1-\lambda_2 L) \dots (1-\lambda_p L) x_t = \\
      (1-\delta_1 L) (1-\delta_2 L) \dots (1-\delta_{q-1} L) \varepsilon_t
 \end{align}
+
+
+#
+
+Se pueden presentar problemas de sobre-parametrización. Esto puede ser solucionado a través de la búsqueda de un modelo parsimonioso.
+
+¿Cómo escoger entre modelos? A través de los criterios de información (IC):
+
+<ul>
+<li> R cuadrado ajustado.</li>
+<li> Criterio de Akaike (AIC): 
+\begin{equation}
+    AIC = -\log (MV)+2(k/T)
+\end{equation}</li>
+<li> Criterio de Scharwz (o criterio bayesiano) (BIC): 
+\begin{equation}
+    BIC = -\log (MV) + \ln (T)*K/T
+\end{equation}</li>
+</ul>
+
+
+Cuando hay incongruencia entre el AIC y el BIC, es preferible el BIC porque castiga con la penalidad.
+
 
 ##
 
