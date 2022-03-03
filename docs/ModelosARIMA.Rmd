@@ -720,6 +720,7 @@ Si existen dos raíces iguales, digamos $\lambda_1 = \delta_q$ podemos expresar 
      (1-\delta_1 L) (1-\delta_2 L) \dots (1-\delta_{q-1} L) \varepsilon_t
 \end{align}
 
+
 #
 
 Se pueden presentar problemas de sobre-parametrización. Esto puede ser solucionado a través de la búsqueda de un modelo parsimonioso.
@@ -741,6 +742,35 @@ Se pueden presentar problemas de sobre-parametrización. Esto puede ser solucion
 
 Cuando hay incongruencia entre el AIC y el BIC, es preferible el BIC porque castiga con la penalidad.
 
+
+##
+
+Ahora, miremos la estimación condicional bajo máxima verosimilitud.
+
+bajo el supuesto de $\varepsilon_t \sim N(0, \sigma^2 I)$ la función de densidad de $\varepsilon_t$ es,
+
+\begin{align}
+    f(\varepsilon_t | \sigma^2_{\varepsilon}, \beta, w^0, \varepsilon^0) &  = 
+    (2\pi)^{-0.5} (\sigma^2_{\varepsilon})^{-0.5} {\rm e}^{-\frac{1}{2\sigma^2_{\varepsilon}}\varepsilon_t^2} \\
+    & = (2\pi)^{-0.5} (\sigma^2_{\varepsilon})^{-0.5} {\rm e}^{-\frac{1}{2\sigma^2_{\varepsilon}}(w_t - \dots -  \phi_p w_{t-p} + \theta_1 \varepsilon_{t-1} + \dots + \theta_q\varepsilon_{t-q})^2} \nonumber
+\end{align}
+
+##
+
+La función de densidad conjunta de $\varepsilon_1,\varepsilon_2,\dots,\varepsilon_T$ sera igual al producto de las funciones de densidad marginales, ya que por hipótesis no tiene auto-correlación, por lo tanto:
+
+\begin{align}
+    f(\varepsilon_t | \sigma^2_{\varepsilon}, \beta, w^0, \varepsilon^0) &  = 
+    (2\pi)^{\frac{-T}{2}} (\sigma^2_{\varepsilon})^{\frac{-T}{2}} {\rm e}^{-\frac{1}{2\sigma^2_{\varepsilon}}\sum \varepsilon_t^2} \\
+    & = (2\pi)^{\frac{-T}{2}} (\sigma^2_{\varepsilon})^{\frac{-T}{2}} {\rm e}^{-\frac{1}{2\sigma^2_{\varepsilon}}\sum (w_t - \dots -  \phi_p w_{t-p} + \theta_1 \varepsilon_{t-1} + \dots + \theta_q\varepsilon_{t-q})^2} \nonumber
+\end{align}
+
+##
+
+<ul>
+<li> La maximización de esta función con respecto a $\beta$ nos da los estimadores máximo verosímiles.</li> 
+<li> Se puede observar que maximizar la función anterior corresponde a minimizar la sumatoria del exponencial, lo cual coincide con  el estimador de MCO.</li>
+</ul>
 
 
 # ARIMA(p,d,q)
