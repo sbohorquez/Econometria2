@@ -18,8 +18,8 @@ output:
 <ul>
 <li> Una serie de tiempo, corresponde a datos de un individuo u objeto recolectados en múltiples puntos de tiempo.</li>
 <li> Este tipo de series puede ser utilizado para responder preguntas que no pueden ser resueltas con el uso de datos de corte transversal visto en Econometría 1.</li>
-<li> Por ejemplo, ¿cual es el efecto causal en una variable de interés, $Y$, del cambio de otra variable, $X$, a través del tiempo?</li>
-<li> ó ¿Cual es la mejor predicción del valor de una variable en el futuro?</li>
+<li> Por ejemplo, ¿cuál es el efecto causal en una variable de interés, $Y$, del cambio de otra variable, $X$, a través del tiempo?</li>
+<li> ¿Cuál es la mejor predicción del valor de una variable en el futuro?</li>
 </ul>
 
 #
@@ -54,7 +54,7 @@ Sea $x_t$ una observación aleatoria de una serie de tiempo. Definimos el símbo
     L x_t = x_{t-1}
 \end{equation}
 
-$L$ es lo que en matemáticas es conocido como un operador. No es un parámetro o un número, pero puede ser tratado como tal para operaciones algebraicas, e.g. $L^2 x_t = L(L x_t) = L x_{t-1} = x_{t-2}$, en general $L^n x_t = x_{t-n}$  
+$L$ es lo que en matemáticas es conocido como un operador. No es un parámetro o un número pero puede ser tratado como tal para operaciones algebraicas, e.g. $L^2 x_t = L(L x_t) = L x_{t-1} = x_{t-2}$, en general $L^n x_t = x_{t-n}$  
 
 #
     
@@ -135,6 +135,7 @@ el operador de la diferencia de orden $n$, e.g. $\Delta_2 x_t = x_t - x_{t-2}$ y
 <li> Esta idea es formalmente conocida como <b> estacionariedad</b>.
 </ul>
 
+
 #
 
 <b>Estacionariedad débil:</b>
@@ -145,7 +146,11 @@ Una secuencia aleatoria $\{x_t\}$ es estacionaria débil (o estacionaria en cova
 
 <b>Estacionariedad Estricta:</b>
 
-Una secuencia aleatoria $\{x_t\}$ es estacionaria estricta si para todo $k>0$ la distribución conjunta de todas las colecciones $(x_t,x_{t+1},x_{t+2},\dots,x_{t+k})$ no depende de $t$
+Es aquel que su distribución de probabilidad conjunta se mantiene constante durante el tiempo
+
+Si se toma cualquier cualquier colección de variables aleatorias de la secuencia y se desplaza n periodos, la distribución de probabilidad conjunta debe permanecer inalterada
+
+#
 
 Estacionariedad estricta implica estacionariedad débil, pero lo contrario no siempre aplica.
 
@@ -188,7 +193,7 @@ reemplazando obtenemos,
     E[x_t] & = E[\delta] + E[\alpha t] + E[\phi x_{t-1}] + E[\varepsilon_t] \\
            & = \delta + \alpha t + \phi E[\delta + \alpha (t-1) + \phi x_{t-2} + \varepsilon_{t-1}] \\
            & \vdots \\
-           & = \sum_{i=0}^{n-1} \phi^i (\delta + \alpha (t-i))  
+           & = \sum_{i=0}^n \phi^i (\delta + \alpha (t-i))  
 \end{align*}
 
 dado que $|\phi| < 1$ y $n \rightarrow \infty$
@@ -385,8 +390,8 @@ Así, para testear la hipótesis de raíz unitaria, podemos testear que el coefi
 
 <ul>
 <li> La forma obvia de testear la hipótesis de raíz unitaria en la ecuación (*) es usando el estadístico t para probar su significancia.</li>
-<li> Sin embargo, el parámetro $\phi - 1$ de esta ecuación no sigue una distribución normal, por lo cual p-values derivados de este supuesto estarían erróneos.</li>
-<li> MacKinnon (1996) derivo las probabilidades asociadas a las distribuciones de este parámetro a través de simulaciones. Estos valores son los que reportan la mayoría de paquetes estadísticos.</li>
+<li> Sin embargo, el parámetro $\phi - 1$ de esta ecuación no sigue una distribución normal, por lo cual los p-values derivados de este supuesto estarían erróneos.</li>
+<li> MacKinnon (1996) derivó las probabilidades asociadas a las distribuciones de este parámetro a través de simulaciones. Estos valores son los que reportan la mayoría de paquetes estadísticos.</li>
 </ul>
 
 #

@@ -120,19 +120,18 @@ Noten que el modelo no tiene sentido si $\lambda<0$ ya que esto implicaría una 
  
 #
 
-La ecuación también puede ser solucionada para encontrar $x_t$ en función de el valor actual y rezagos de $z_t$.
+La ecuación también puede ser solucionada para encontrar $x_t$ en función del valor actual y rezagos de $x_t$.
 
 Bajo el supuesto que $|\lambda|<1$, obtenemos
  \begin{equation}
      x_t = \sum_{j=0}^{\infty} \lambda^j \beta z_{t-j} + \sum_{j=0}^{\infty} \lambda^j u_{t-j}
  \end{equation}
 
-Por lo tanto, el modelo de ajuste parcial implica una forma particular del modelo de rezagos distribuidos.
-
+Por lo tanto, el modelo de ajuste parcial implica una forma particular de de rezago distribuido.
 
 #
 
-En contraste con el modelo de rezagos distribuidos, $x_t$ ahora depende de los valores rezagados del error $u_t$ al igual que que de valores rezagados de $z_t$.
+En contraste con el modelo de rezagos dsitrivuidos, $x_t$ ahora depende de los valores rezagados del error $u_t$ al igual que que de valores rezagados de $z_t$.
  
 Si los regresores afectan $x_t$ a través de rezagos distribuidos, y si el termino de error refleja la influencia de las variables omitidas, entonces es de esperar que estas variables omitidas también afecten $x_t$ a través de unos rezagos distribuidos.
  
@@ -179,7 +178,7 @@ Aunque el modelo ADL(1,1) es bastante sencillo, muchos modelos encontrados en la
      \Delta x_t = \delta + \beta_0 \Delta z_t + u_t
  \end{equation*}
 
-antes de aceptar cualquiera de estos casos especiales, deberíamos de testearlos contra el modelo ADL(1,1) general.</li>
+antes de aceptar cualquiera de estos casos especiales, deberíamos testearlos contra el modelo ADL(1,1) general.</li>
 
 #
 
