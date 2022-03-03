@@ -720,8 +720,6 @@ Si existen dos raíces iguales dentro del circulo unidad, digamos $\lambda_1 = \
      (1-\delta_1 L) (1-\delta_2 L) \dots (1-\delta_{q-1} L) \varepsilon_t
 \end{align}
 
-AGREGAR IMAGÉN
-
 #
 
 Se pueden presentar problemas de sobre-parametrización. Esto puede ser solucionado a través de la búsqueda de un modelo parsimonioso.
