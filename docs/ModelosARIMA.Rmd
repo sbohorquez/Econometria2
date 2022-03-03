@@ -713,34 +713,49 @@ Por lo tanto el ARMA(p,q) se puede expresar como,
 
 #
 
-Si existen dos raíces iguales, digamos $\lambda_1 = \delta_q$ podemos expresar el procesos como un ARMA(p-1,q-1),
+Si existen dos raíces iguales dentro del circulo unidad, digamos $\lambda_1 = \delta_q$ podemos expresar el procesos como un ARMA(p-1,q-1),
 
 \begin{align}
      (1-\lambda_2 L) \dots (1-\lambda_p L) x_t = \\
      (1-\delta_1 L) (1-\delta_2 L) \dots (1-\delta_{q-1} L) \varepsilon_t
 \end{align}
 
+AGREGAR IMAGÉN
 
 #
 
 Se pueden presentar problemas de sobre-parametrización. Esto puede ser solucionado a través de la búsqueda de un modelo parsimonioso.
 
 ¿Cómo escoger entre modelos? A través de los criterios de información (IC):
-
 <ul>
 <li> R cuadrado ajustado.</li>
+</ul>
+      
+#
+
+** Criterios de información **
+
+La idea es minimizar el criterio, que por lo general tienen la forma de 
+\begin{equation}
+    - \text{bondad de ajuste} + \text{penalización}
+\end{equation}
+
+Sea $MV$ la máxima verosimilitud, $T$ el número de observaciones y $k$ el número de parámetros. Entonces
+
+<ul>
 <li> Criterio de Akaike (AIC): 
 \begin{equation}
-    AIC = -\log (MV)+2(k/T)
+    AIC = -\ln (MV)+2(k/T)
 \end{equation}</li>
 <li> Criterio de Scharwz (o criterio bayesiano) (BIC): 
 \begin{equation}
-    BIC = -\log (MV) + \ln (T)*K/T
+    BIC = -\ln (MV) + \ln (T)*k/T
 \end{equation}</li>
 </ul>
 
+Cuando hay incongruencia entre el AIC y el BIC, es preferible el BIC porque castiga mejor la relación número de parámetros y datos.
 
-Cuando hay incongruencia entre el AIC y el BIC, es preferible el BIC porque castiga con la penalidad.
+**Advertencia:** La máxima verosimilitud $MV$ depende de los supuestos sobre el error, por lo tanto, una vez escogido el modelo se deben validar los supuestos sobre el error.x
 
 
 ##
