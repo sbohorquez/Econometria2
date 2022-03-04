@@ -80,7 +80,7 @@ width:1000px;
     <td>Quiz 2</td>
     <td>Comprende e implementa modelos de regresión lineal con datos de series de tiempo en software especializado.</td>
     <td>5%</td>
-    <td>Semana 7</td>
+    <td>Semana 6</td>
   </tr>
     <tr>
     <td>Seguimiento</td>
