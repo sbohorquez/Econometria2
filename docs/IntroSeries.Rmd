@@ -193,7 +193,7 @@ reemplazando obtenemos,
     E[x_t] & = E[\delta] + E[\alpha t] + E[\phi x_{t-1}] + E[\varepsilon_t] \\
            & = \delta + \alpha t + \phi E[\delta + \alpha (t-1) + \phi x_{t-2} + \varepsilon_{t-1}] \\
            & \vdots \\
-           & = \sum_{i=0}^n \phi^i (\delta + \alpha (t-i))  
+           & = \sum_{i=0}^{n-1} \phi^i (\delta + \alpha (t-i))  
 \end{align*}
 
 dado que $|\phi| < 1$ y $n \rightarrow \infty$

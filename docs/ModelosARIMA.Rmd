@@ -73,7 +73,7 @@ Var(x_t) & = \phi^2 E[(\phi x_{t-2} + \varepsilon_{t-1})^2] + E[\varepsilon_t^2]
 Repitiendo este proceso, obtenemos
 
 \begin{align}
-Var(x_t) & = \phi^{2n} E[x_{t-n}^2] + \phi^{2(n-1)} E[\varepsilon_{t-n}^2 ] + \dots  + \\
+Var(x_t) & = \phi^{2n} E[x_{t-n}^2] + \phi^{2(n-1)} E[\varepsilon_{t-(n-1)}^2 ] + \dots  + \\
 & \phi^2 E[\varepsilon_{t-1}^2] + E[\varepsilon_t^2] \\
 \end{align}    
 
@@ -603,7 +603,7 @@ y para $j>1$
 
 \begin{align}
     \rho_j & = \phi \rho_{j-1} \\
-    & =    & = \phi^{j-1} \rho_1
+       & = \phi^{j-1} \rho_1 
 \end{align}
 
 
@@ -713,7 +713,7 @@ Por lo tanto el ARMA(p,q) se puede expresar como,
 
 #
 
-Si existen dos raíces iguales, digamos $\lambda_1 = \delta_q$ podemos expresar el procesos como un ARMA(p-1,q-1),
+Si existen dos raíces iguales dentro del circulo unidad, digamos $\lambda_1 = \delta_q$ podemos expresar el procesos como un ARMA(p-1,q-1),
 
 \begin{align}
      (1-\lambda_2 L) \dots (1-\lambda_p L) x_t = \\
@@ -724,23 +724,70 @@ Si existen dos raíces iguales, digamos $\lambda_1 = \delta_q$ podemos expresar 
 
 Se pueden presentar problemas de sobre-parametrización. Esto puede ser solucionado a través de la búsqueda de un modelo parsimonioso.
 
-¿Cómo escoger entre modelos? A través de los criterios de información (IC):
+¿Cómo escoger entre modelos? A través de los criterios de información (IC)
+
+#
+
+
+
+La idea es minimizar el criterio, que por lo general tienen la forma de 
+\begin{equation}
+    - \text{bondad de ajuste} + \text{penalización}
+\end{equation}
+
+Sea $MV$ la máxima verosimilitud, $T$ el número de observaciones y $k$ el número de parámetros. 
+
+
+#
+
+**Criterios de información**
 
 <ul>
 <li> R cuadrado ajustado.</li>
 <li> Criterio de Akaike (AIC): 
 \begin{equation}
-    AIC = -\log (MV)+2(k/T)
+    AIC = -\ln (MV)+2(k/T)
 \end{equation}</li>
 <li> Criterio de Scharwz (o criterio bayesiano) (BIC): 
 \begin{equation}
-    BIC = -\log (MV) + \ln (T)*K/T
+    BIC = -\ln (MV) + \ln (T)*k/T
 \end{equation}</li>
 </ul>
 
+Cuando hay incongruencia entre el AIC y el BIC, es preferible el BIC porque castiga mejor la relación número de parámetros y datos.
 
-Cuando hay incongruencia entre el AIC y el BIC, es preferible el BIC porque castiga con la penalidad.
+## Máxima verosimilitud.
 
+##
+
+bajo el supuesto de $\varepsilon_t \sim N(0, \sigma^2 I)$ la función de densidad de $\varepsilon_t$ es,
+
+\begin{align}
+    f(\varepsilon_t | \sigma^2_{\varepsilon}, \beta, w^0, \varepsilon^0) &  = 
+    (2\pi)^{-0.5} (\sigma^2_{\varepsilon})^{-0.5} {\rm e}^{-\frac{1}{2\sigma^2_{\varepsilon}}\varepsilon_t^2} \\
+    & = (2\pi)^{-0.5} (\sigma^2_{\varepsilon})^{-0.5} {\rm e}^{-\frac{1}{2\sigma^2_{\varepsilon}}(w_t - \dots -  \phi_p w_{t-p} + \theta_1 \varepsilon_{t-1} + \dots + \theta_q\varepsilon_{t-q})^2} \nonumber
+\end{align}
+
+##
+
+La función de densidad conjunta de $\varepsilon_1,\varepsilon_2,\dots,\varepsilon_T$ sera igual al producto de las funciones de densidad marginales, ya que por hipótesis no tiene auto-correlación, por lo tanto:
+
+\begin{align}
+    F(\varepsilon_t | \sigma^2_{\varepsilon}, \beta, w^0, \varepsilon^0) &  = 
+    (2\pi)^{\frac{-T}{2}} (\sigma^2_{\varepsilon})^{\frac{-T}{2}} {\rm e}^{-\frac{1}{2\sigma^2_{\varepsilon}}\sum \varepsilon_t^2} \\
+    & = (2\pi)^{\frac{-T}{2}} (\sigma^2_{\varepsilon})^{\frac{-T}{2}} {\rm e}^{-\frac{1}{2\sigma^2_{\varepsilon}}\sum (w_t - \dots -  \phi_p w_{t-p} + \theta_1 \varepsilon_{t-1} + \dots + \theta_q\varepsilon_{t-q})^2} \nonumber
+\end{align}
+
+##
+
+<ul>
+<li> La maximización de esta función con respecto a $\beta$ nos da los estimadores máximo verosímiles.</li> 
+<li> Se puede observar que maximizar la función anterior corresponde a minimizar la sumatoria del exponencial, lo cual coincide con  el estimador de MCO.</li>
+</ul>
+
+##
+
+**Advertencia:** La máxima verosimilitud $MV$ depende de los supuestos sobre el error, por lo tanto, una vez escogido el modelo se deben validar los supuestos sobre el error.
 
 
 # ARIMA(p,d,q)
