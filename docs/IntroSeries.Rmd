@@ -204,7 +204,7 @@ dado que $|\phi| < 1$ y $n \rightarrow \infty$
 por lo tanto la media sería,
 
 \begin{equation}
-    E[x_t]  = \frac{\delta + \alpha(\phi (t + 1) - t)}{(1-\phi)^2}
+    E[x_t]  = \frac{\delta (1-\phi) + \alpha \phi (t + 1)}{(1-\phi)^2}
 \end{equation}
 
 y dado que depende de $t$ no sería estacionaria bajo nuestra definición de estacionariedad. 
