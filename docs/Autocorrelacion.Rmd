@@ -11,10 +11,16 @@ output:
     highlight: pygments
     center: true
     transition: slide
+    self_contained: false
+    reveal_plugins: ["menu"]
+    reveal_options:
+      slideNumber: true
+      menu:
+        numbers: true
 ---
 
-# Auto-Correlación
 
+#
 <ul>
 <li> Una de las principales características de las series de tiempo es la presencia de Auto-correlación o correlación serial.</li>
 <li> Ustedes posiblemente están familiarizados con el concepto de correlación entre dos variables, la auto-correlación implica correlación entre la serie y su pasado.</li>

@@ -1,5 +1,5 @@
 ---
-title: " Modelos Lineales Dinámicos"
+title: "Modelos Lineales Dinámicos"
 author: |
         | Santiago Bohorquez Correa
         |
@@ -11,6 +11,12 @@ output:
     highlight: pygments
     center: true
     transition: slide
+    self_contained: false
+    reveal_plugins: ["menu"]
+    reveal_options:
+      slideNumber: true
+      menu:
+        numbers: true
 ---
 
 # Modelo AR(1)
