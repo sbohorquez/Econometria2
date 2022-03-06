@@ -11,12 +11,8 @@ output:
     highlight: pygments
     center: true
     transition: slide
-    self_contained: false
-    reveal_plugins: ["menu"]
     reveal_options:
       slideNumber: true
-      menu:
-        numbers: true
 ---
 
 
