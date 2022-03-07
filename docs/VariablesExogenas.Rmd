@@ -261,4 +261,82 @@ Este tipo de modelos también se pueden escribir como modelos dinámicos con err
  
 Los paquetes estadísticos por lo general usan una de estas dos transformaciones para las estimaciones.
 
+# Modelos ARMAX - Validación
 
+#
+
+Para testear si es necesario un modelo ARMAX en comparación con un modelo ARMA, miramos si la variable exógena es necesaria en la estimación  de nuestro proceso.
+
+Para esto, Granger (1969) definió un concepto de causalidad bajo el cual podemos testear esto fácilmente.
+
+
+# 
+
+Para testear escogemos primero un modelo ARMA sin incorporar la variable exógena y luego estimamos el mismo modelo incluyendo la variable exógena y sus rezagos. Y se testea conjuntamente $\beta_i=0 \quad \forall i \leq b$ en el modelo.
+ 
+
+ 
+# Modelos ARMAX - Predicción
+
+#
+
+Finalmente, es importante notar que necesitamos para hacer predicción del proceso de interés bajo los modelos expuestos.
+
+Miremos el predictor un paso adelante y a partir de este podemos generalizar,
+  \begin{align}
+     E_t(x_{t+1}) & = \sum_{j=1}^p E_t(\phi_j x_{t-j+1}) + \sum_{i=0}^b E_t(\beta_i z_{t-i+1}) \nonumber\\
+     & + E_t(\varepsilon_{t+1}) + \sum_{k=1}^q E_t(\theta_k \varepsilon_{t-k+1})
+ \end{align}
+
+#
+
+Reemplazando,
+
+  \begin{equation}
+      E_t(x_{t+1}) = \sum_{j=1}^p \phi_j x_{t-j+1} + \beta_0 E_t( z_{t+1}) + \sum_{i=1}^b \beta_i z_{t-i+1} + \sum_{k=1}^q \theta_k \varepsilon_{t-k+1}
+  \end{equation}
+
+Esto implica que para poder hacer una predicción de $x_{t+1}$ necesitamos una predicción de $z_{t+1}$. 
+
+#
+
+Si $z_t$ es un proceso deterministico, i.e. puede ser predecido perfectamente un periodo antes. Esto no implicaría ningún problema ya que $z_{t+1} \equiv E_t( z_{t+1})$.
+
+Ejemplos de este tipo de variables son dummies estacionales, y tendencias deterministicas.
+
+Sin embargo, cuando estas variables no son conocidas con antelación nos podemos encontrar con serios problemas de predicción.
+
+#
+
+En caso de que el valor de $z_{t+1}$ no sea conocido, una opción es estimar modelo de predicción para esta variable. Este enfoque causa que el grado de complejidad del problema a resolver aumente, ya que necesitamos encontrar dos modelos.
+
+Es claro, además, que el modelo usado para $z_t$ no puede contener variables no deterministicas, de lo contrario el grado de complejidad crecería aun más.
+
+#
+
+Por ultimo, si hacemos uso de este enfoque debemos tener en cuenta que el error de predicción de $z_{t+1}$ debe ser calculado,
+
+Si no incluimos este error de predicción de $z_{t+1}$, nuestra predicción de $x_{t+1}$ sobre-estimara la precisión.
+
+#
+
+Otra opción, implica estimar el modelo ARMAX usando los rezagos de la variable $z_t$ y no el valor actual, así
+ \begin{equation}
+     x_t = \sum_{j=1}^p \phi_j x_{t-j} + \sum_{i=1}^b \beta_i z_{t-i} + \varepsilon_t + \sum_{k=1}^q \theta_k \varepsilon_{t-k}
+ \end{equation}
+
+#
+
+Y la predicción sería,
+  \begin{equation}
+      E_t(x_{t+1}) = \sum_{j=1}^p \phi_j x_{t-j+1} + \sum_{i=1}^b \beta_i z_{t-i+1} + \sum_{k=1}^q \theta_k \varepsilon_{t-k+1}
+  \end{equation}
+
+#
+
+En general, cuando usamos los modelos ARMAX con el objetivo de hacer predicciones el modelo que estimamos es,
+ \begin{equation}
+     x_t = \sum_{j=1}^p \phi_j x_{t-j} + \sum_{i=1}^b \beta_i z_{t-i-n} + \varepsilon_t + \sum_{k=1}^q \theta_k \varepsilon_{t-k}
+ \end{equation}
+ 
+ donde $n$ es el rezago del proceso. En este caso, si $n \geq 1$ implica que cambios en $z_t$ no tienen efectos inmediatos sobre $x_t$. 
