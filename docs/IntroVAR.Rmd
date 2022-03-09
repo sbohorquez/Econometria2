@@ -51,7 +51,7 @@ Si múltiples series son consideradas, una extensión directa de los modelos AR(
 
 \begin{equation}\label{eq:varp}
 \begin{matrix}
-    y_{k,t}  = & \nu_k  + \alpha_{k1,1}y_{1,t-1} + \alpha_{k2,1}y{2,t-1} + \dots + \alpha_{kK,1}y_{K,t-1} \\ 
+    y_{k,t}  = & \nu_k  + \alpha_{k1,1}y_{1,t-1} + \alpha_{k2,1}y_{2,t-1} + \dots + \alpha_{kK,1}y_{K,t-1} \\ 
     &  + \dots + \alpha_{k1,p}y_{1,t-p} + \alpha_{k2,p}y_{2,t-p} + \dots + \alpha_{kK,p}y_{K,t-p} + u_{kt}
 \end{matrix}    
 \end{equation}
