@@ -17,7 +17,7 @@ output:
 
 #
 
-Hasta ahora nos enfocamos en modelar relaciones unidireccionales. Es decir, asumimos que las variables indepndientes afectan a la variable dependiente y no al reves.
+Hasta ahora nos enfocamos en modelar relaciones unidireccionales. Es decir, asumimos que las variables independientes afectan a la variable dependiente y no al revés.
 
 Sin embargo, en muchos casos en economía diferentes variables se afectan entre ellas a través de las leyes económicas.  
 
