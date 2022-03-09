@@ -274,7 +274,7 @@ Para esto, Granger (1969) definió un concepto de causalidad bajo el cual podemo
 
 Para testear escogemos primero un modelo ARMA sin incorporar la variable exógena y luego estimamos el mismo modelo incluyendo la variable exógena y sus rezagos. Y se testea conjuntamente $\beta_i=0 \quad \forall i \leq b$ en el modelo.
  
-
+Tambien se puede hacer uso de los criterios de información, comparando el AIC y el BIC de los modelos y escogiendo el que tenga menor valor.
  
 # Modelos ARMAX - Predicción
 
