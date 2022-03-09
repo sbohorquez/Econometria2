@@ -174,7 +174,7 @@ Supongamos que el efecto de un choque en la inversión, en un sistema VAR que co
 
 Para aislar este efecto, suponemos que las tres variables son iguales a su media previo a $t=0$, i.e $y_t = \mu$ para $t <0$. Y la inversión se incrementa en uno en el periodo $t=0$, i.e. $u_{1,0}=1$
 
-Con esto podemos ver que pasa en el sistema para los periodos $t=1,2,\dots$, asumiendo que no hya nuevos choques
+Con esto podemos ver que pasa en el sistema para los periodos $t=1,2,\dots$, asumiendo que no haya nuevos choques
 
 #
 
