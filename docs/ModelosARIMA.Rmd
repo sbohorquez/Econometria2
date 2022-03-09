@@ -691,7 +691,7 @@ y para $j>q$
 
 #
 
-En los modelos ARMA(p,q) es conveniente factorizar las raíces de la parte autorregresiva y la parte de medias moviles, 
+En los modelos ARMA(p,q) es conveniente factorizar las raíces de la parte autorregresiva y la parte de medias móviles, 
 
 \begin{equation}
     \lambda^p + \phi_1 \lambda^{p-1} + \dots + \phi_p = 0
@@ -796,7 +796,7 @@ La función de densidad conjunta de $\varepsilon_1,\varepsilon_2,\dots,\varepsil
 
 #
 
-A un proceso integrado $x_t$ se le denomina como ARIMA(p,d,q), si aplicando primeras diferencias $d$ veces se obtiene un un proceso estacionario $w_t$ del tipo ARMA(p,q). Este se define como,
+A un proceso integrado $x_t$ se le denomina como ARIMA(p,d,q), si aplicando primeras diferencias $d$ veces se obtiene un proceso estacionario $w_t$ del tipo ARMA(p,q). Este se define como,
 
 \begin{align}
     (1-\phi_1 L - \dots - \phi_p L^p) w_t & = (1-\theta_1 L - \dots - \theta_q L^q) \varepsilon_t \\

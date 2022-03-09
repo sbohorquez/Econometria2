@@ -314,7 +314,7 @@ Es claro, además, que el modelo usado para $z_t$ no puede contener variables no
 
 #
 
-Por ultimo, si hacemos uso de este enfoque debemos tener en cuenta que el error de predicción de $z_{t+1}$ debe ser calculado,
+Por ultimo, si hacemos uso de este enfoque debemos tener en cuenta que el error de predicción de $z_{t+1}$ debe ser calculado.
 
 Si no incluimos este error de predicción de $z_{t+1}$, nuestra predicción de $x_{t+1}$ sobre-estimara la precisión.
 

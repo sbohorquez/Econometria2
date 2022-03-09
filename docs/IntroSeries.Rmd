@@ -216,8 +216,8 @@ y dado que depende de $t$ no sería estacionaria bajo nuestra definición de est
 #
 
 <ul>
-<li> Sin embargo, noten que $t$ cumple con la condición de ser un proceso deterministico, ya que sabemos perfectamente el valor que va a tomar con antelación.</li>
-<li> Por lo tanto, podemos pensar en una transformación donde excluimos la tendencia deterministica de la serie permitiendo que la serie ya no dependa de $t$.</li>
+<li> Sin embargo, noten que $t$ cumple con la condición de ser un proceso determinístico, ya que sabemos perfectamente el valor que va a tomar con antelación.</li>
+<li> Por lo tanto, podemos pensar en una transformación donde excluimos la tendencia determinística de la serie permitiendo que la serie ya no dependa de $t$.</li>
 <li> A este tipo de procesos se les conoce como procesos estacionarios en tendencia. Y es común su uso para filtros en economía.</li>
 </ul>
 

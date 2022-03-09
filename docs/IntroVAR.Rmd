@@ -1,0 +1,251 @@
+---
+title: "Introducción VAR"
+author: |
+        | Santiago Bohorquez Correa
+        |
+        | Universidad EAFIT
+        | Escuela de Economía y Finanzas
+output:
+  revealjs::revealjs_presentation:
+    css: EAFIT.css
+    highlight: pygments
+    center: true
+    transition: slide
+    reveal_options:
+      slideNumber: true
+---
+
+#
+
+Hasta ahora nos enfocamos en modelar relaciones unidireccionales. Es decir, asumimos que las variables indepndientes afectan a la variable dependiente y no al reves.
+
+Sin embargo, en muchos casos en economía diferentes variables se afectan entre ellas a través de las leyes económicas.  
+
+#
+
+En el modelo ADL tenemos que $x_t$ es afectado por $z_t$. Consideremos el caso sin efectos contemporaneos:
+
+ \begin{equation}
+     x_t = \delta + \sum_{i=1}^p \phi_i x_{t-i} + \sum_{j=0}^b \beta_j z_{t-j} + u_t
+ \end{equation}
+ 
+ donde $u_t \sim IID(0,\sigma^2_u)$. 
+
+#
+
+Y si a su vez tenemos que $z_t$ es afectado por $x_t$,
+
+ \begin{equation}
+     z_t = \delta + \sum_{i=1}^p \phi_i x_{t-i} + \sum_{j=0}^b \beta_j z_{t-j} + \upsilon_t
+ \end{equation}
+ 
+ donde $\upsilon_t \sim IID(0,\sigma^2_u)$. 
+
+#
+
+Por lo tanto, no podemos estimar de forma independiente estas ecuaciones. Así que necesitamos estimar de forma conjunta las dos ecuaciones.
+        
+#
+
+Si múltiples series son consideradas, una extensión directa de los modelos AR(p) sería:
+
+\begin{equation}\label{eq:varp}
+\begin{matrix}
+    y_{k,t}  = & \nu_k  + \alpha_{k1,1}y_{1,t-1} + \alpha_{k2,1}y{2,t-1} + \dots + \alpha_{kK,1}y_{K,t-1} \\ 
+    &  + \dots + \alpha_{k1,p}y_{1,t-p} + \alpha_{k2,p}y_{2,t-p} + \dots + \alpha_{kK,p}y_{K,t-p} + u_{kt}
+\end{matrix}    
+\end{equation}
+
+donde $k=1,2,\dots , K$
+
+
+
+#
+
+Siguiendo la notación de Lütkepohl, podemos simplificar este modelo, definiendo $y_t := (y_{1t},y_{2t},\dots,y_{Kt})'$, $\nu := (\nu_1,\nu_2, \dots, \nu_K)'$, $u_t := (u_{1t},u_{2t}, \dots, u_{Kt})'$ donde $u_t$ son K-vectores i.i.d. con media cero  y
+
+\begin{equation}
+    A_i := 
+\begin{bmatrix}
+    \alpha_{11,i} & \alpha_{12,i} & \dots & \alpha_{1K,i} \\
+    \alpha_{21,i} & \alpha_{22,i} & \dots & \alpha_{2K,i} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    \alpha_{K1,i} & \alpha_{K2,i} & \dots & \alpha_{KK,i}
+\end{bmatrix}
+\end{equation}
+
+
+#
+
+Así podemos simplificar la ecuación \ref{eq:varp} en,
+
+\begin{equation}\label{eq:varps}
+    y_{t}  =  \nu  + A_1 y_{t-1} + A_2 y_{t-2} + \dots + A_p y_{t-p}
+\end{equation}
+
+este es el modelo conocido como vector auto-regresivo de orden p [VAR(p)]. 
+
+
+# Estabilidad VAR(p)
+
+#
+
+Si el VAR(p) tiene media constante y matriz de varianzas y co-varianzas constantes, decimos que el VAR(p) es estable.
+
+Todo proceso VAR(p) estable es estacionario.
+
+#
+
+
+formalmente, definimos la condición de estabilidad del proceso VAR(p) como,
+
+\begin{equation}
+    \det (I_{K} - A_1 z -  A_2 z^2 - \dots -  A_p z^p ) \neq 0 \quad \text{para } |z| \leq 1
+\end{equation}
+ 
+
+
+
+# Ejemplo
+
+#
+
+Consideremos el siguiente VAR(1) con tres variables,
+
+\begin{equation}
+    y_t = \nu + \begin{bmatrix}
+        0.5 & 0 & 0 \\
+        0.1 & 0.1 & 0.3 \\
+        0 & 0.2 & 0.3
+    \end{bmatrix} y_{t-1} + u_t
+\end{equation}
+
+#
+
+Para este proceso el reverso del polinomio característico se puede escribir como,
+
+\begin{align}
+   \det & \left( \begin{bmatrix}
+       1 & 0 & 0 \\
+       0 & 1 & 0 \\
+       0 & 0 & 1
+   \end{bmatrix}  - \begin{bmatrix}
+      0.5 & 0 & 0 \\
+       0.1 & 0.1 & 0.3 \\
+       0 & 0.2 & 0.3
+   \end{bmatrix} z \right) \\
+   & = \det\begin{bmatrix}
+      1- 0.5z  & 0 & 0 \\
+       -0.1 z & 1 - 0.1 z & -0.3z \\
+       0 & - 0.2 z & 1 - 0.3 z
+   \end{bmatrix}
+\end{align}
+
+#
+
+Por propiedades del determinante lo podemos escribir como,
+
+\begin{equation}
+(1-0.5z) (1-0.4z - 0.03z^2) = 0    
+\end{equation}
+
+#
+
+por lo tanto las soluciones son:
+
+\begin{align}
+    z_1 & = 2; & z_2 & = 2.1525; & z_3 = -15.4858
+\end{align}
+
+
+Todas son mayores a 1 en valor absoluto, por lo tanto el proceso es estable.
+
+
+# Impulso respuesta
+
+#
+
+En el trabajo aplicado muchas veces es de interés ver como reacciona una variable a cambios de otra variable en el sistema. Esto es conocido como análisis de impulso respuesta.
+
+
+#
+
+Supongamos que el efecto de un choque en la inversión, en un sistema VAR que contiene, inversión ($y_1$), ingreso ($y_2$), y consumo ($y_3$)
+
+Para aislar este efecto, suponemos que las tres variables son iguales a su media previo a $t=0$, i.e $y_t = \mu$ para $t <0$. Y la inversión se incrementa en uno en el periodo $t=0$, i.e. $u_{1,0}=1$
+
+Con esto podemos ver que pasa en el sistema para los periodos $t=1,2,\dots$, asumiendo que no hya nuevos choques
+
+#
+
+Usando el ejemplo visto en la clase, tenemos
+
+\begin{equation}
+    y_t = \nu + \begin{bmatrix}
+        0.5 & 0 & 0 \\
+        0.1 & 0.1 & 0.3 \\
+        0 & 0.2 & 0.3
+    \end{bmatrix} 
+    \begin{bmatrix}
+    y_{1,t-1} \\
+    y_{2,t-1} \\
+    y_{3,t-1} 
+    \end{bmatrix}
+    +  \begin{bmatrix}
+    u_{1,t} \\
+    u_{2,t} \\
+    u_{3,t} 
+    \end{bmatrix}
+\end{equation}
+
+#
+Asumiendo un choque en el periodo 0 en este sistema
+
+\begin{align}
+    y_0 & = \begin{bmatrix}
+    y_{1,0} \\
+    y_{2,0} \\
+    y_{3,0} 
+    \end{bmatrix} =
+\begin{bmatrix}
+    u_{1,0} \\
+    u_{2,0} \\
+    u_{3,0} 
+    \end{bmatrix} =
+    \begin{bmatrix}
+    1 \\
+    0 \\
+    0 
+    \end{bmatrix}, \\
+y_1 & = \begin{bmatrix}
+    y_{1,1} \\
+    y_{2,1} \\
+    y_{3,1} 
+    \end{bmatrix} = A_1 y_0 = \begin{bmatrix}
+    0.5 \\
+    0.1 \\
+    0 
+    \end{bmatrix} \\
+y_2 & = \begin{bmatrix}
+    y_{1,2} \\
+    y_{2,2} \\
+    y_{3,2} 
+    \end{bmatrix} = A_1 y_1 =  A_1^2 y_0 = \begin{bmatrix}
+    0.25 \\
+    0.06 \\
+    0.02
+    \end{bmatrix}    
+\end{align}
+
+
+#
+
+Si continuamos esta secuencia vemos que $y_i = (y_{1,i}.y_{2,i},y_{3,i})'$ es la primera columna de $A_i=1^i$
+
+Un argumento análogo se daría en caso de mirar una innovación para ingreso o consumo, i.e. $y_2,y_3$.
+
+Así, los elementos de $A_i^i$ son los efectos de choques unitarios sobre las variables del sistema después de $i$ periodos. Estos son llamados los impulsos respuestas o multiplicadores dinámicos
+
+
+#
+<img src="img/impulso_respuesta.png" alt="Impulso Respuesta" width="900" height="450"> 
