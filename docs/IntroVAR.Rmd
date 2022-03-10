@@ -26,7 +26,7 @@ Sin embargo, en muchos casos en economía diferentes variables se afectan entre 
 En el modelo ADL tenemos que $x_t$ es afectado por $z_t$. Consideremos el caso sin efectos contemporaneos:
 
  \begin{equation}
-     x_t = \delta + \sum_{i=1}^p \phi_i x_{t-i} + \sum_{j=0}^b \beta_j z_{t-j} + u_t
+     x_t = \delta + \sum_{i=1}^p \phi_i x_{t-i} + \sum_{j=1}^b \beta_j z_{t-j} + u_t
  \end{equation}
  
  donde $u_t \sim IID(0,\sigma^2_u)$. 
@@ -36,7 +36,7 @@ En el modelo ADL tenemos que $x_t$ es afectado por $z_t$. Consideremos el caso s
 Y si a su vez tenemos que $z_t$ es afectado por $x_t$,
 
  \begin{equation}
-     z_t = \delta + \sum_{i=1}^p \phi_i x_{t-i} + \sum_{j=0}^b \beta_j z_{t-j} + \upsilon_t
+     z_t = \delta + \sum_{i=1}^p \phi_i x_{t-i} + \sum_{j=1}^b \beta_j z_{t-j} + \upsilon_t
  \end{equation}
  
  donde $\upsilon_t \sim IID(0,\sigma^2_u)$. 
@@ -77,10 +77,10 @@ Siguiendo la notación de Lütkepohl, podemos simplificar este modelo, definiend
 
 #
 
-Así podemos simplificar la ecuación \ref{eq:varp} en,
+Así podemos simplificar la ecuación a,
 
 \begin{equation}\label{eq:varps}
-    y_{t}  =  \nu  + A_1 y_{t-1} + A_2 y_{t-2} + \dots + A_p y_{t-p}
+    y_{t}  =  \nu  + A_1 y_{t-1} + A_2 y_{t-2} + \dots + A_p y_{t-p} + u_t
 \end{equation}
 
 este es el modelo conocido como vector auto-regresivo de orden p [VAR(p)]. 

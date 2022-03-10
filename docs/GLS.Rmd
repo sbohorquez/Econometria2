@@ -11,6 +11,8 @@ output:
     highlight: pygments
     center: true
     transition: slide
+    reveal_options:
+      slideNumber: true
 ---
 
 # Estimador MCG
@@ -61,7 +63,7 @@ Sin embargo, muchas veces si bien la forma funcional de $\Omega$ es conocida los
 
 Cuando $\Omega$ es desconocido necesitamos un estimador $\hat{\Omega}$, tal que 
     \begin{equation}
-        \hat{\boldsymbol{\beta}}^{MCG} = (\mathbf{X}'\hat{\Omega}^{-1}\mathbf{X})^{-1}(\mathbf{X}'\hat{\Omega}^{-1}\mathbf{Y})
+        \tilde{\boldsymbol{\beta}}^{MCG} = (\mathbf{X}'\hat{\Omega}^{-1}\mathbf{X})^{-1}(\mathbf{X}'\hat{\Omega}^{-1}\mathbf{Y})
     \end{equation}
 Este estimador es conocido como el estimador de MCG Factibles.
 
@@ -79,7 +81,7 @@ Este estimador es conocido como el estimador de MCG Factibles.
 
 #
 
-En la literatura de series de tiempo, los errores estandars robustos a correlación serial son a veces llamados, HAC, por sus siglas en ingles (heteroskedasticity and autocorrelation consistent)
+En la literatura de series de tiempo, los errores estandares robustos a correlación serial son a veces llamados, HAC, por sus siglas en ingles (heteroskedasticity and autocorrelation consistent)
 
 Estos empezaron con el trabajo de Newey & West (1987), quienes buscaban tratar con el problema de correlación serial y heteroscedasticidad propio de las series de tiempo.
 
@@ -148,7 +150,7 @@ library(nlme)
 
 rm(list=ls())
 
-setwd("D:/OneDrive - Universidad EAFIT/EAFIT/Docencia/Econometria 2/2021 - 1")
+setwd("C:/Users/sbohorqu/OneDrive - Universidad EAFIT/EAFIT/Docencia/Econometria 2/2021 - 1")
 
 USMacro <- read_excel("us_macro_quarterly.xlsx")
 

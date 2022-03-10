@@ -92,19 +92,19 @@ el operador de diferencia. $\Delta x_t = x_t - x_{t-1}$ es el cambio en $x$ en e
 
 #
 
-Es importante anotar la diferencia de notación entre
+Es importante anotar la diferencia de notación entre <b>el operador de la diferencia de $n$ periodos</b>,
 
 \begin{equation}
     \Delta_n = 1 - L^n
 \end{equation}
 
-que el operador de la diferencia de $n$ periodos, y
+y, <b>el operador de la diferencia de orden $n$</b>
 
 \begin{equation}
     \Delta^n = (1 - L)^n
 \end{equation}
 
-el operador de la diferencia de orden $n$, e.g. $\Delta_2 x_t = x_t - x_{t-2}$ y $\Delta^2 x_t= \Delta x_t - \Delta x_{t-1} = (x_t - x_{t-1}) - (x_{t-1} - x_{t-2})$ 
+e.g. $\Delta_2 x_t = x_t - x_{t-2}$ y $\Delta^2 x_t= \Delta x_t - \Delta x_{t-1} = (x_t - x_{t-1}) - (x_{t-1} - x_{t-2})$ 
 
 
 #
