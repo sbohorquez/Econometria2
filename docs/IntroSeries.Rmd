@@ -151,7 +151,7 @@ Una secuencia aleatoria $\{x_t\}$ es estacionaria débil (o estacionaria en cova
 
 Es aquel que su distribución de probabilidad conjunta se mantiene constante durante el tiempo
 
-Si se toma cualquier cualquier colección de variables aleatorias de la secuencia y se desplaza n periodos, la distribución de probabilidad conjunta debe permanecer inalterada
+Si se toma cualquier colección de variables aleatorias de la secuencia y se desplaza n periodos, la distribución de probabilidad conjunta debe permanecer inalterada
 
 #
 
