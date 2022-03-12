@@ -189,7 +189,7 @@ Estimamos entonces la auto-correlación
 
 #
 
-Con la auto-correlación podemos hacer el auto-correlograma el cual gráfica la auto-correlación en cada rezago. Observemos diferentes modelos AR(1) y las diferencia de sus auto-correlogramas teóricos.
+Con la auto-correlación podemos hacer el auto-correlograma el cual grafica la auto-correlación en cada rezago. Observemos diferentes modelos AR(1) y las diferencia de sus auto-correlogramas teóricos.
 
 
 #
