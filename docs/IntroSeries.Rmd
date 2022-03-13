@@ -128,8 +128,9 @@ e.g. $\Delta_2 x_t = x_t - x_{t-2}$ y $\Delta^2 x_t= \Delta x_t - \Delta x_{t-1}
 </ul>    
 
 
-# Estacionareidad
+# Estacionariedad
 
+#
 
 <ul>
 <li> Las series de tiempo usan los datos pasados para cuantificar relaciones históricas.</li>
