@@ -643,6 +643,72 @@ Y la varianza,
           & - 2 \phi_p \theta_q E[x_{t-p}\varepsilon_{t-q}]
 \end{align}
 
+##
+\begin{align}
+
+      Var(X_t) & = E[X^2_{t}]\\
+
+              &= E[(\phi_1 x_{t-1}+...+\phi \rho x_{t-p}+ \epsilon_{t}- \theta_1 \epsilon_{t-1}-...- \theta_q \epsilon_{t-q})^2]\\
+        
+
+                &=\sum _{i=1}^p \phi^2_i E[x^2_{t-1}] +,E[\epsilon^2_t]+ \sum _{j=1}^q \theta^2_j E[\epsilon^2_{t-j}]\\
+
+               &+2\sum _{i=1}^{^p} \sum _{j=1}^p\phi_i \phi_j E[x_{t-i} x_{t-j}]\\
+
+              &+2 \sum _{i=1}^{^q} \sum_{j=1}^q \theta_i \theta_j E[\epsilon_{t-i} \epsilon_{t-j}] \text{para todo}  j\neq i\\
+
+              &-2 \sum _{i=1}^q \theta_i E[\epsilon_{t} \epsilon_{t-i}]\\
+
+              &- 2 \sum_{i=1}^p\phi_i E[\epsilon_{t} x_{t-i}]\\
+
+              &- 2 \sum _{i=1}^{^p} \sum_{j=1}^q \phi_i \theta_j E[x_{t-i} \epsilon_{t-j}]\\
+
+\end{align}
+
+
+##
+
+Sabemos que la $E[x^2_{t-1}] = \gamma_0$ y también tenemos en cuenta que $\epsilon_t\sim IID(0,\sigma^2)$ entonces $E[\epsilon_t]=0$ y $E[\epsilon_t^2]=\sigma^2$ 
+
+$=\sum _{i=1}^p \phi^2_i \gamma_0  +\sigma^2 + \sum _{j=1}^q \theta^2_j \sigma^2$
+
+Tenemos presente que   $E[x_{t-i} x_{t-j}]=\gamma_{|i-j|}$ para todo $j \neq i$
+
+$+2\sum _{i=1}^{^p} \sum _{j=1}^p\phi_i \phi_j\gamma_{|i-j|}]$
+
+Sabemos que el error es independiente de su pasado por esto tenemos que $E[\epsilon_{t-j} x_{t-i}]=0$ si $i<j$ y $E[\epsilon_{t-i} \epsilon_{t-j}]=0$ para todo $j \neq i$.
+
+$+2 \sum _{i=1}^{^q} \sum_{j=1}^q \theta_i \theta_j E[\epsilon_{t-i} \epsilon_{t-j}]$ 
+
+$-2 \sum _{i=1}^q \theta_i] E[\epsilon_{t} \epsilon_{t-i}]$
+
+$- 2 \sum_{i=1}^p\phi_i E[\epsilon_{t} x_{t-i}]$
+
+Por esta razón todas las ecuaciones anteriores son cero
+
+Tenemos que  $E[x_{t-i} \epsilon_{t-j}]=\sigma^2$ si $i=j$, $E[x_{t-i} \epsilon_{t-j}]=0$ para todo $i<j$ y $E[x_{t-i} \epsilon_{t-j}]=\sigma^2(\phi-\theta)$ si $i>j$
+
+Para este caso usaremos $E[x_{t-i} \epsilon_{t-j}]=\sigma^2(\phi-\theta)$ si $i>j$
+
+$- 2 \sum _{i=1}^{^p} \sum_{j=1}^q \phi_i \theta_j \sigma^2(\phi-\theta)$
+
+##
+De acuerdo a lo anterior
+\begin{align}
+
+      Var(X_t)&=\gamma_0 (\sum_{i=1}^p \phi^2_i) + \sigma^2(1 + \sum_{i=1}^q \theta^2 _i) \\
+
+
+        &+2 \sum_{i=1}^p \sum_{j=1}^p \gamma_{|j-i|}\\
+
+        &-2 \sum_{i=1}^r \sigma^2 \phi_i \theta_i  ------>         \text{sea r el}\min(p,q)\\
+
+        &-2 \sum_{j=1}^q \sum_{i=j+1}^p \phi_i \theta_j \sigma^2 (\phi_1- \theta_1) \\
+
+
+\end{align}
+
+
 #
 
 Para las auto-covarianzas tenemos,
