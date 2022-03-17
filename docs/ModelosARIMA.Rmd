@@ -456,6 +456,8 @@ Ahora, estimamos la auto-covarianza $\gamma_j$ del proceso,
             & (\varepsilon_{t-j} - \theta_1 \varepsilon_{t-j-1} - \theta_2 \varepsilon_{t-j-2} - \dots - \theta_q \varepsilon_{t-j-q})] \\
 \end{align}    
 
+
+
 #
 
 Veamos para el caso de $\gamma_1$,
@@ -489,6 +491,8 @@ Entonces, en este caso obtendríamos,
 \begin{align}
      \gamma_2  & = - \theta_2 \sigma^2 +  \theta_1\theta_3 \sigma^2 + \dots +  \theta_{q-2}\theta_q \sigma^2 \\
 \end{align}
+
+Nota: al ver el resultado anterior es importante recordar que con esto se resume un proceso bastante largo y esta es la razón por la cual theta_3 se encuentra en gamma_2
     
 #
 
