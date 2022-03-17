@@ -39,6 +39,7 @@ Como vimos cuando miramos el paseo aleatorio, necesitamos que $|\phi|<1$, bajo e
                  & =   \phi^2 E[(\phi x_{t-3} + \varepsilon_{t-2})]  +  \phi E[ \varepsilon_{t-1}] +  E(\varepsilon_t)
 \end{align}
 
+Es importante recalcar que, cuando se menciona el x_t de cualquier periodo, siempre a cada componente de la ecuación de x_t se le va a restar el numero de los rezagos lo cual hace refrencia a iterar hacia atras.
 #
 
 Si seguimos iterando hacia atrás obtenemos 
