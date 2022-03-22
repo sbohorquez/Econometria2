@@ -772,7 +772,7 @@ Por lo tanto el ARMA(p,q) se puede expresar como,
 
 #
 
-Si existen dos raíces iguales dentro del circulo unidad, digamos $\lambda_1 = \delta_q$ podemos expresar el procesos como un ARMA(p-1,q-1),
+Si existen dos raíces iguales dentro del circulo unidad, digamos $\lambda_1 = \delta_q$ podemos expresar el proceso como un ARMA(p-1,q-1),
 
 \begin{align}
      (1-\lambda_2 L) \dots (1-\lambda_p L) x_t = \\
