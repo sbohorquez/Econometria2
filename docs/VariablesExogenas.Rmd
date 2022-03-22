@@ -230,7 +230,9 @@ El tipo de restricciones que pongamos sobre este modelo pueden ser testeadas con
 
 Los modelos ADL estiman solo efectos auto-regresivos. Una extensión inmediata que viene a la mente es la inclusión de efectos MA dentro del modelo.
 
-Como vimos en el modelo de ajuste parcial estos efectos pueden ser entendidos en este modelo como efectos rezagados de variables omitidas.  
+Como vimos en el modelo de ajuste parcial estos efectos pueden ser entendidos en este modelo como efectos rezagados de variables omitidas. 
+
+En el caso de R las betas se pueden interpretar sin problema ya que el software diferencia automaticamente el modelo.                                                                                          
 
 #
 
