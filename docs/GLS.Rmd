@@ -71,8 +71,8 @@ Este estimador es conocido como el estimador de MCG Factibles.
 
 <ul>
 <li>Es importante examinar con un poco más de detalle el primer supuesto del estimador MCG, $E(\mathbf{U}|\mathbf{X}) = \mathbf{0}_n$.</li>
-<li> Este supuesto requiere que los errores de la observación $i$ no esta correlacionado con ningún regresor de otras observaciones.</li> 
-<li> Este supuesto es dudosa en aplicaciones de serie de tiempo, ya que esto requiere que no exista correlación entre diferentes periodos de tiempo.</li>
+<li> Este supuesto requiere que los errores de la observación $i$ no estén correlacionados con ningún regresor de otras observaciones.</li> 
+<li> Este supuesto es dudoso en aplicaciones de serie de tiempo, ya que esto requiere que no exista correlación entre diferentes periodos de tiempo.</li>
 <li> En estos casos el MCO es consistente pero el MCG no lo es.</li>
 </ul>
 
@@ -150,7 +150,7 @@ library(nlme)
 
 rm(list=ls())
 
-setwd("C:/Users/sbohorqu/OneDrive - Universidad EAFIT/EAFIT/Docencia/Econometria 2/2021 - 1")
+setwd("D:/OneDrive - Universidad EAFIT/EAFIT/Docencia/Econometria 2/2021 - 1")
 
 USMacro <- read_excel("us_macro_quarterly.xlsx")
 

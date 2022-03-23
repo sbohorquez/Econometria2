@@ -142,7 +142,7 @@ Sustituyendo $u_t$ por $\rho u_{t-1} + \varepsilon_t$,
 
 #
 
-Podemos evitar hacer esta estimación no lineal, si hacemos test basándonos en la regresión de Gauss-Newton.
+Podemos evitar hacer esta estimación no lineal, si hacemos un test basándonos en la regresión de Gauss-Newton.
 
 Primero estimamos por MCO la regresión:
     \begin{equation}

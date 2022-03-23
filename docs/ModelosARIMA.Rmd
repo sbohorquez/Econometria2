@@ -794,9 +794,9 @@ Se pueden presentar problemas de sobre-parametrización. Esto puede ser solucion
 
 
 
-La idea es minimizar el criterio, que por lo general tienen la forma de 
+La idea es **minimizar** el criterio, que por lo general tienen la forma de 
 \begin{equation}
-    - \text{bondad de ajuste} + \text{penalización}
+   - \text{bondad de ajuste} + \text{penalización}
 \end{equation}
 
 Sea $MV$ la máxima verosimilitud, $T$ el número de observaciones y $k$ el número de parámetros. 

@@ -172,7 +172,7 @@ En el caso especial de la distribución normal, estacionariedad débil si implic
 
 # Ejemplos 
 
-# Procesos estacionarios en Tendencia
+# Procesos con Tendencia Determinística
 
 #
 
@@ -219,7 +219,7 @@ y dado que depende de $t$ no sería estacionaria bajo nuestra definición de est
 <ul>
 <li> Sin embargo, noten que $t$ cumple con la condición de ser un proceso determinístico, ya que sabemos perfectamente el valor que va a tomar con antelación.</li>
 <li> Por lo tanto, podemos pensar en una transformación donde excluimos la tendencia determinística de la serie permitiendo que la serie ya no dependa de $t$.</li>
-<li> A este tipo de procesos se les conoce como procesos estacionarios en tendencia. Y es común su uso para filtros en economía.</li>
+<li> A este tipo de procesos se les conoce como procesos estacionarios en tendencia, y es común su uso para filtros en economía.</li>
 </ul>
 
 # Paseo aleatorio
@@ -421,9 +421,10 @@ MacKinnon (1996) también estimo las probabilidades asociadas a los parámetros 
 
 Los resultados anteriores parten de un modelo AR(1), Dickey (1984) extendió estos resultados para proceso AR(p), de forma tal que lo podemos escribir como,
 
-\begin{equation}\label{dfa}\tag{++}
-   \Delta  x_t = \beta  x_{t-1} + \phi_1'\Delta x_{t-1} +  \phi_2' \Delta x_{t-2} + \dots + \phi_{p-1}' \Delta x_{t-(p-1)} +  \varepsilon_t
-\end{equation}
+\begin{align}\label{dfa}
+   \Delta  x_t & = \beta  x_{t-1} + \phi_1'\Delta x_{t-1} +  \phi_2' \Delta x_{t-2} \\
+   & + \dots + \phi_{p-1}' \Delta x_{t-(p-1)} +  \varepsilon_t \tag{++}
+\end{align}
 donde $\beta$ sigue la misma distribución que el parámetro de (*). También se puede extender para las ecuaciones (+) y (^)
 
 # Prueba de Phillips-Perron
@@ -555,7 +556,7 @@ pp.test(data)
         
 ##
 
-Finalmente, kpss de manera predeterminada rechaza que la serie sea estacionaria pues no considera estacionareidad en tendencia, pero al cambiar el parámetro _null_ por _"Trend" si la incluye y por tanto no encuentra evidencia de que la serie sea no estacionaria. En conclusión, tenemos evidencia para afirmar que la serie es estacionaria con intercepto y en tendencia.
+Finalmente, KPSS de manera predeterminada rechaza que la serie sea estacionaria pues no considera estacionareidad en tendencia, pero al cambiar el parámetro _null_ por _"Trend" si la incluye y por tanto no encuentra evidencia de que la serie sea no estacionaria. En conclusión, tenemos evidencia para afirmar que la serie es estacionaria con intercepto y en tendencia.
 
 ```{r kpss, echo=TRUE, warning=FALSE}
 kpss.test(data)

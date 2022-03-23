@@ -129,13 +129,13 @@ Bajo el supuesto que $|\lambda|<1$, obtenemos
      x_t = \sum_{j=0}^{\infty} \lambda^j \beta z_{t-j} + \sum_{j=0}^{\infty} \lambda^j u_{t-j}
  \end{equation}
 
-Por lo tanto, el modelo de ajuste parcial implica una forma particular de de rezago distribuido.
+Por lo tanto, el modelo de ajuste parcial implica una forma particular de rezago distribuido.
 
 #
 
 En contraste con el modelo de rezagos distribuidos, $x_t$ ahora depende de los valores rezagados del error $u_t$ al igual que que de valores rezagados de $z_t$.
  
-Si los regresores afectan $x_t$ a través de rezagos distribuidos, y si el termino de error refleja la influencia de las variables omitidas, entonces es de esperar que estas variables omitidas también afecten $x_t$ a través de unos rezagos distribuidos.
+Si los regresores afectan $x_t$ a través de rezagos distribuidos y si el término de error refleja la influencia de las variables omitidas, entonces es de esperar que estas variables omitidas también afecten $x_t$ a través de unos rezagos distribuidos.
  
 Sin embargo, la restricción que el mismo coeficiente afecta a todas las observaciones puede ser bastante restrictivo.
 
@@ -310,7 +310,7 @@ Sin embargo, cuando estas variables no son conocidas con antelación nos podemos
 
 #
 
-En caso de que el valor de $z_{t+1}$ no sea conocido, una opción es estimar modelo de predicción para esta variable. Este enfoque causa que el grado de complejidad del problema a resolver aumente, ya que necesitamos encontrar dos modelos.
+En caso de que el valor de $z_{t+1}$ no sea conocido, una opción es estimar el modelo de predicción para esta variable. Este enfoque causa que el grado de complejidad del problema a resolver aumente, ya que necesitamos encontrar dos modelos.
 
 Es claro, además, que el modelo usado para $z_t$ no puede contener variables no deterministicas, de lo contrario el grado de complejidad crecería aun más.
 
@@ -363,14 +363,12 @@ La predicción un paso adelante sería entonces,
 
 #
 
-Si queremos hacer el predictor dos pasos adelantes, entonces necesitamos estimar la siguiente ecuación primero,
+Si queremos hacer el predictor dos pasos adelante, entonces necesitamos estimar la siguiente ecuación primero,
 
  \begin{equation}
      x_t = \phi_1 x_{t-1} + \beta_1 z_{t-2} + \varepsilon_t + \theta_1 \varepsilon_{t-1}
  \end{equation}
- 
- #
- 
+
  Y el predictor sería,
  
   \begin{equation}
