@@ -1,5 +1,5 @@
 ---
-title: "Introducción Series de Tiempo"
+title: "Introducción Series de"
 author: |
         | Santiago Bohorquez Correa
         |
