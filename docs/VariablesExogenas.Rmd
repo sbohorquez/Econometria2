@@ -146,11 +146,11 @@ Sin embargo, la restricción que el mismo coeficiente afecta a todas las observa
 Ahora consideraremos una familia general de modelos que incluyen rezagos de la variable dependiente y variables independientes.
 
 #
-Un modelo autoregresivo de rezagos distribuidos, o ADL por sus siglas en ingles, se denota como,
+Un modelo autoregresivo de rezagos distribuidos, o ADL por sus siglas en inglés, se denota como,
  \begin{equation}
      x_t = \delta + \sum_{i=1}^p \phi_i x_{t-i} + \sum_{j=0}^b \beta_j z_{t-j} + u_t
  \end{equation}
- donde $u_t \sim IID(0,\sigma^2_u)$. Este es un modelo ADL(p,b).
+ donde $u_t \sim IID(0,\sigma^2_u)$. Éste es un modelo ADL(p,b).
 
 # 
 
@@ -163,7 +163,7 @@ Los resultados del ADL(1,1) son fácilmente generalizables para el caso ADL(p,b)
 
 #
 
-Aunque el modelo ADL(1,1) es bastante sencillo, muchos modelos encontrados en la practica son casos especiales de este.
+Aunque el modelo ADL(1,1) es bastante sencillo, muchos modelos encontrados en la práctica son casos especiales de éste.
 
 <ul>
 <li> Si $\phi_1=\beta_1=0$ obtenemos un modelo estático con errores IID.</li>
@@ -230,9 +230,9 @@ El tipo de restricciones que pongamos sobre este modelo pueden ser testeadas con
 
 Los modelos ADL estiman solo efectos auto-regresivos. Una extensión inmediata que viene a la mente es la inclusión de efectos MA dentro del modelo.
 
-Como vimos en el modelo de ajuste parcial estos efectos pueden ser entendidos en este modelo como efectos rezagados de variables omitidas. 
+Como vimos en el modelo de ajuste parcial estos efectos pueden ser entendidos en éste modelo como efectos rezagados de variables omitidas. 
 
-En el caso de R las betas se pueden interpretar sin problema ya que el software diferencia automaticamente el modelo.                                                                                          
+En el caso de R las betas se pueden interpretar sin problema ya que el software diferencia automáticamente el modelo.                                                                                          
 
 #
 
@@ -302,22 +302,22 @@ Esto implica que para poder hacer una predicción de $x_{t+1}$ necesitamos una p
 
 #
 
-Si $z_t$ es un proceso deterministico, i.e. puede ser predecido perfectamente un periodo antes. Esto no implicaría ningún problema ya que $z_{t+1} \equiv E_t( z_{t+1})$.
+Si $z_t$ es un proceso determinístico, i.e. puede ser predecido perfectamente un periodo antes. Esto no implicaría ningún problema ya que $z_{t+1} \equiv E_t( z_{t+1})$.
 
-Ejemplos de este tipo de variables son dummies estacionales, y tendencias deterministicas.
+Ejemplos de este tipo de variables son dummies estacionales, y tendencias determinísticas.
 
-Sin embargo, cuando estas variables no son conocidas con antelación nos podemos encontrar con serios problemas de predicción.
+Sin embargo, cuando éstas variables no son conocidas con antelación nos podemos encontrar con serios problemas de predicción.
 
 #
 
 En caso de que el valor de $z_{t+1}$ no sea conocido, una opción es estimar el modelo de predicción para esta variable. Este enfoque causa que el grado de complejidad del problema a resolver aumente, ya que necesitamos encontrar dos modelos.
 
-Es claro, además, que el modelo usado para $z_t$ no puede contener variables no deterministicas, de lo contrario el grado de complejidad crecería aun más.
+Es claro, además, que el modelo usado para $z_t$ no puede contener variables no determinísticas, de lo contrario el grado de complejidad crecería aun más.
 
 #
 
 
-Por ultimo, si hacemos uso de este enfoque debemos tener en cuenta que el error de predicción de $z_{t+1}$ debe ser calculado.
+Por último, si hacemos uso de este enfoque debemos tener en cuenta que el error de predicción de $z_{t+1}$ debe ser calculado.
 
 
 Si no incluimos este error de predicción de $z_{t+1}$, nuestra predicción de $x_{t+1}$ sobre-estimara la precisión.
