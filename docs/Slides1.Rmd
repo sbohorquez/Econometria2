@@ -4,7 +4,7 @@ author: |
         | Santiago Bohorquez Correa
         |
         | Universidad EAFIT
-        | Escuela de Economía y Finanzas
+        | Escuela de Finanzas, Economía y Gobierno
 output:
   revealjs::revealjs_presentation:
     css: EAFIT.css
