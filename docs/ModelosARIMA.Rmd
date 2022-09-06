@@ -40,6 +40,7 @@ Como vimos cuando miramos el paseo aleatorio, necesitamos que $|\phi|<1$, bajo e
 \end{align}
 
 Es importante recalcar que, a cada componente de la ecuación de $x_t$ se remplaza por rezago, lo cual se conoce como iterar hacia atras.
+
 #
 
 Si seguimos iterando hacia atrás obtenemos 
