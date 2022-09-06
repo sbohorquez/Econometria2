@@ -2537,8 +2537,7 @@ x_{t-p} + \varepsilon_t - \theta_1 \varepsilon_{t-1} - \\
 <section id="section-59" class="slide level2">
 <h2></h2>
 <p><span class="math display">\[\begin{align}
-
-      Var(X_t) &amp; = E[X^2_{t}]\\
+Var(X_t) &amp; = E[X^2_{t}]\\
               &amp;= E[(\phi_1 x_{t-1}+...+\phi \rho x_{t-p}+
 \epsilon_{t}- \theta_1 \epsilon_{t-1}-...- \theta_q \epsilon_{t-q})^2]\\
                 &amp;=\sum_{i=1}^p \phi^2_i E[x^2_{t-1}]
@@ -2547,6 +2546,11 @@ x_{t-p} + \varepsilon_t - \theta_1 \varepsilon_{t-1} - \\
 E[x_{t-i} x_{t-j}]\\
               &amp;+2 \sum_{i=1}^{^q} \sum_{j=1}^q \theta_i \theta_j
 E[\epsilon_{t-i} \epsilon_{t-j}] \text{para todo}  j\neq i\\
+\end{align}\]</span></p>
+</section>
+<section id="section-60" class="slide level2">
+<h2></h2>
+<p><span class="math display">\[\begin{align}
               &amp;-2 \sum_{i=1}^q \theta_i E[\epsilon_{t}
 \epsilon_{t-i}]\\
               &amp;- 2 \sum_{i=1}^p\phi_i E[\epsilon_{t} x_{t-i}]\\
@@ -2554,7 +2558,7 @@ E[\epsilon_{t-i} \epsilon_{t-j}] \text{para todo}  j\neq i\\
 E[x_{t-i} \epsilon_{t-j}]
 \end{align}\]</span></p>
 </section>
-<section id="section-60" class="slide level2">
+<section id="section-61" class="slide level2">
 <h2></h2>
 <p>Sabemos que la <span class="math inline">\(E[x^2_{t-1}] =
 \gamma_0\)</span> y también tenemos en cuenta que <span class="math inline">\(\epsilon_t\sim IID(0,\sigma^2)\)</span> entonces
@@ -2566,6 +2570,9 @@ x_{t-j}]=\gamma_{|i-j|}\)</span> para todo <span class="math inline">\(j
 \neq i\)</span></p>
 <p><span class="math inline">\(+2\sum_{i=1}^{^p} \sum _{j=1}^p\phi_i
 \phi_j\gamma_{|i-j|}]\)</span></p>
+</section>
+<section id="section-62" class="slide level2">
+<h2></h2>
 <p>Sabemos que el error es independiente de su pasado por esto tenemos
 que <span class="math inline">\(E[\epsilon_{t-j} x_{t-i}]=0\)</span> si
 <span class="math inline">\(i&lt;j\)</span> y <span class="math inline">\(E[\epsilon_{t-i} \epsilon_{t-j}]=0\)</span> para
@@ -2577,6 +2584,9 @@ todo <span class="math inline">\(j \neq i\)</span>.</p>
 <p><span class="math inline">\(- 2 \sum_{i=1}^p\phi_i E[\epsilon_{t}
 x_{t-i}]\)</span></p>
 <p>Por esta razón todas las ecuaciones anteriores son cero</p>
+</section>
+<section id="section-63" class="slide level2">
+<h2></h2>
 <p>Tenemos que <span class="math inline">\(E[x_{t-i}
 \epsilon_{t-j}]=\sigma^2\)</span> si <span class="math inline">\(i=j\)</span>, <span class="math inline">\(E[x_{t-i} \epsilon_{t-j}]=0\)</span> para todo
 <span class="math inline">\(i&lt;j\)</span> y <span class="math inline">\(E[x_{t-i}
@@ -2586,7 +2596,7 @@ x_{t-i}]\)</span></p>
 <p><span class="math inline">\(- 2 \sum _{i=1}^{^p} \sum_{j=1}^q \phi_i
 \theta_j \sigma^2(\phi-\theta)\)</span></p>
 </section>
-<section id="section-61" class="slide level2">
+<section id="section-64" class="slide level2">
 <h2></h2>
 <p>De acuerdo a lo anterior <span class="math display">\[\begin{align}
 
@@ -2605,7 +2615,7 @@ x_{t-i}]\)</span></p>
 
 \end{align}\]</span></p>
 </section></section>
-<section id="section-62" class="title-slide slide level1">
+<section id="section-65" class="title-slide slide level1">
 <h1></h1>
 <p>Para las auto-covarianzas tenemos,</p>
 <p><span class="math display">\[\begin{align}
@@ -2621,7 +2631,7 @@ E[\varepsilon_t  x_{t-j}] \\
 \end{align}\]</span></p>
 </section>
 
-<section id="section-63" class="title-slide slide level1">
+<section id="section-66" class="title-slide slide level1">
 <h1></h1>
 <p>para <span class="math inline">\(\gamma_j\)</span> donde <span class="math inline">\(1 \leq j \leq q\)</span> sería,</p>
 <p><span class="math display">\[\begin{align}
@@ -2631,14 +2641,14 @@ E[\varepsilon_t  x_{t-j}] \\
 \end{align}\]</span></p>
 </section>
 
-<section id="section-64" class="title-slide slide level1">
+<section id="section-67" class="title-slide slide level1">
 <h1></h1>
 <p>Y para <span class="math inline">\(j&gt;q\)</span> obtenemos <span class="math display">\[\begin{align}
 \gamma_j &amp; = \phi_1 \gamma_{j-1} + \dots + \phi_p \gamma_{j-p}
 \end{align}\]</span></p>
 </section>
 
-<section id="section-65" class="title-slide slide level1">
+<section id="section-68" class="title-slide slide level1">
 <h1></h1>
 <p>Por lo tanto la auto-correlación para <span class="math inline">\(1
 \leq j \leq q\)</span> sería,</p>
@@ -2649,7 +2659,7 @@ E[\varepsilon_t  x_{t-j}] \\
 \end{align}\]</span></p>
 </section>
 
-<section id="section-66" class="title-slide slide level1">
+<section id="section-69" class="title-slide slide level1">
 <h1></h1>
 <p>y para <span class="math inline">\(j&gt;q\)</span></p>
 <p><span class="math display">\[\begin{align*}
@@ -2657,7 +2667,7 @@ E[\varepsilon_t  x_{t-j}] \\
 \end{align*}\]</span></p>
 </section>
 
-<section id="section-67" class="title-slide slide level1">
+<section id="section-70" class="title-slide slide level1">
 <h1></h1>
 <p>En los modelos ARMA(p,q) es conveniente factorizar las raíces de la
 parte autorregresiva y la parte de medias móviles,</p>
@@ -2670,7 +2680,7 @@ parte autorregresiva y la parte de medias móviles,</p>
 \end{equation}\]</span></p>
 </section>
 
-<section id="section-68" class="title-slide slide level1">
+<section id="section-71" class="title-slide slide level1">
 <h1></h1>
 <p>Por lo tanto el ARMA(p,q) se puede expresar como,</p>
 <p><span class="math display">\[\begin{align}
@@ -2679,7 +2689,7 @@ parte autorregresiva y la parte de medias móviles,</p>
 \end{align}\]</span></p>
 </section>
 
-<section id="section-69" class="title-slide slide level1">
+<section id="section-72" class="title-slide slide level1">
 <h1></h1>
 <p>Si existen dos raíces iguales dentro del circulo unidad, digamos
 <span class="math inline">\(\lambda_1 = \delta_q\)</span> podemos
@@ -2691,7 +2701,7 @@ expresar el proceso como un ARMA(p-1,q-1),</p>
 \end{align}\]</span></p>
 </section>
 
-<section id="section-70" class="title-slide slide level1">
+<section id="section-73" class="title-slide slide level1">
 <h1></h1>
 <p>Se pueden presentar problemas de sobre-parametrización. Esto puede
 ser solucionado a través de la búsqueda de un modelo parsimonioso.</p>
@@ -2699,7 +2709,7 @@ ser solucionado a través de la búsqueda de un modelo parsimonioso.</p>
 (IC)</p>
 </section>
 
-<section id="section-71" class="title-slide slide level1">
+<section id="section-74" class="title-slide slide level1">
 <h1></h1>
 <p>La idea es <strong>minimizar</strong> el criterio, que por lo general
 tienen la forma de <span class="math display">\[\begin{equation}
@@ -2711,7 +2721,7 @@ tienen la forma de <span class="math display">\[\begin{equation}
 </section>
 
 <section>
-<section id="section-72" class="title-slide slide level1">
+<section id="section-75" class="title-slide slide level1">
 <h1></h1>
 <p><strong>Criterios de información</strong></p>
 <ul>
@@ -2735,7 +2745,7 @@ porque castiga mejor la relación número de parámetros y datos.</p>
 <section id="máxima-verosimilitud." class="slide level2">
 <h2>Máxima verosimilitud.</h2>
 </section>
-<section id="section-73" class="slide level2">
+<section id="section-76" class="slide level2">
 <h2></h2>
 <p>bajo el supuesto de <span class="math inline">\(\varepsilon_t \sim
 N(0, \sigma^2 I)\)</span> la función de densidad de <span class="math inline">\(\varepsilon_t\)</span> es,</p>
@@ -2750,7 +2760,7 @@ e}^{-\frac{1}{2\sigma^2_{\varepsilon}}(w_t - \dots -  \phi_p w_{t-p} +
 \nonumber
 \end{align}\]</span></p>
 </section>
-<section id="section-74" class="slide level2">
+<section id="section-77" class="slide level2">
 <h2></h2>
 <p>La función de densidad conjunta de <span class="math inline">\(\varepsilon_1,\varepsilon_2,\dots,\varepsilon_T\)</span>
 sera igual al producto de las funciones de densidad marginales, ya que
@@ -2767,7 +2777,7 @@ w_{t-p} + \theta_1 \varepsilon_{t-1} + \dots +
 \theta_q\varepsilon_{t-q})^2} \nonumber
 \end{align}\]</span></p>
 </section>
-<section id="section-75" class="slide level2">
+<section id="section-78" class="slide level2">
 <h2></h2>
 <ul>
 <li>
@@ -2781,7 +2791,7 @@ estimador de MCO.
 </li>
 </ul>
 </section>
-<section id="section-76" class="slide level2">
+<section id="section-79" class="slide level2">
 <h2></h2>
 <p><strong>Advertencia:</strong> La máxima verosimilitud <span class="math inline">\(MV\)</span> depende de los supuestos sobre el
 error, por lo tanto, una vez escogido el modelo se deben validar los
@@ -2792,7 +2802,7 @@ supuestos sobre el error.</p>
 
 </section>
 
-<section id="section-77" class="title-slide slide level1">
+<section id="section-80" class="title-slide slide level1">
 <h1></h1>
 <p>A un proceso integrado <span class="math inline">\(x_t\)</span> se le
 denomina como ARIMA(p,d,q), si aplicando primeras diferencias <span class="math inline">\(d\)</span> veces se obtiene un proceso
