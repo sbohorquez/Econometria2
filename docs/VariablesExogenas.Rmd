@@ -232,7 +232,6 @@ Los modelos ADL estiman solo efectos auto-regresivos. Una extensión inmediata q
 
 Como vimos en el modelo de ajuste parcial estos efectos pueden ser entendidos en éste modelo como efectos rezagados de variables omitidas. 
 
-En el caso de R las betas se pueden interpretar sin problema ya que el software diferencia automáticamente el modelo.                                                                                          
 
 #
 
@@ -261,7 +260,9 @@ Este tipo de modelos también se pueden escribir como modelos dinámicos con err
  
  donde $\eta_t= \sum_{j=1}^p \phi_j (x_{t-j} - Z_{t-j}\beta )+ \varepsilon_t + \sum_{k=1}^q \theta_k \varepsilon_{t-k}$
  
-Los paquetes estadísticos por lo general usan una de estas dos transformaciones para las estimaciones.
+Los paquetes estadísticos por lo general usan una de estas dos transformaciones para las estimaciones. En el caso de R las betas se pueden interpretar sin problema ya que el software diferencia automáticamente el modelo.    
+
+                       
 
 # Modelos ARMAX - Validación
 
