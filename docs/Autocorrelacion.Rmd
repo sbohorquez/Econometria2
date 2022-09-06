@@ -165,6 +165,6 @@ Con esto, el test consiste en probar la hipótesis nula de $b_p = 0$ en la regre
 #
 <b>Yule-Walker Test:</b> Calculamos la autocorrelación de los residuales,
     \begin{equation}
-        \hat{\rho}_1 = \frac{\hat{\gamma}_1}{\hat{\gamma}_0}
+        \hat{\rho}_j = \frac{\hat{\gamma}_j}{\hat{\gamma}_0}
     \end{equation}
-    testeamos $\hat{\rho}_1 = 0$ con $Var(\hat{\rho}_1) = \frac{1}{T}$.
+    testeamos $\hat{\rho}_j = 0$ con $Var(\hat{\rho}_j) = \frac{1}{T}$.
