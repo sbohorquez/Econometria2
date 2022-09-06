@@ -31,6 +31,8 @@ Que también podemos escribir como $x_t = \phi x_{t-1} + \varepsilon_t$. El AR(1
 
 Como vimos cuando miramos el paseo aleatorio, necesitamos que $|\phi|<1$, bajo este supuesto miremos las condiciones de estacionariedad. 
 
+#
+
 \begin{align}
     E(x_t) & = E(\phi x_{t-1} + \varepsilon_t) \\
   & =   \phi E(x_{t-1}) + E(\varepsilon_t)  \\
@@ -38,6 +40,8 @@ Como vimos cuando miramos el paseo aleatorio, necesitamos que $|\phi|<1$, bajo e
     & =   \phi^2 E[ x_{t-2}] +  \phi E[ \varepsilon_{t-1}] +  E(\varepsilon_t) \\
                  & =   \phi^2 E[(\phi x_{t-3} + \varepsilon_{t-2})]  +  \phi E[ \varepsilon_{t-1}] +  E(\varepsilon_t)
 \end{align}
+
+#
 
 Es importante recalcar que, a cada componente de la ecuación de $x_t$ se remplaza por rezago, lo cual se conoce como iterar hacia atras.
 
