@@ -290,7 +290,7 @@ Var(x_t) & =  E[( x_{t-2} + \varepsilon_{t-1})^2] + E[\varepsilon_t^2] \\
 Repitiendo este proceso, obtenemos
 
 \begin{align}
-Var(x_t) & =  E[x_{t-n}^2] +  E[\varepsilon_{t-n}^2 ] + \dots  + E[\varepsilon_{t-1}^2] + E[\varepsilon_t^2] \\
+Var(x_t) & =  E[x_{t-n}^2] +  E[\varepsilon_{t-(n-1)}^2 ] + \dots  + E[\varepsilon_{t-1}^2] + E[\varepsilon_t^2] \\
 \end{align}    
 
 
