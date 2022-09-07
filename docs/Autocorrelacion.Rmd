@@ -58,7 +58,7 @@ Ahora, definimos la auto-correlación como
     \rho_j = \frac{\gamma_j}{\gamma_0}
 \end{equation}
  
-La ventaja de usar la auto-correlación en vez de la auto-covarianza es que la auto-correlación siempre va a estar entre -1 y 1, dado que la covarianza siempre es igual o menor en valor absoluto que la varianza. 
+La ventaja de usar la auto-correlación en vez de la auto-covarianza, es que la auto-correlación siempre va a estar entre -1 y 1, dado que la covarianza siempre es igual o menor en valor absoluto que la varianza. 
 
 
 #
@@ -98,7 +98,7 @@ El crecimiento del PIB trimestral para EEUU.
 <ul>
 <li> Claramente, si la autocorrelación es distinta de cero los supuestos de MCO no se cumplen.</li>
 <li> Por esta razón se han escrito innumerables artículos de investigación sobre como testear por correlación serial en modelos de regresión.</li>
-<li> La forma más sencilla de hacerlo es testeando la hipótesis nula de no correlación serial versus la alternativa de correlación serial de algún orden.</li>
+<li> La forma más sencilla de hacerlo es testeando la hipótesis nula de no correlación serial, versus la alternativa de correlación serial de algún orden.</li>
 </ul>
 
 # Test correlación serial 
@@ -134,7 +134,7 @@ Sustituyendo $u_t$ por $\rho u_{t-1} + \varepsilon_t$,
 
 <ul>
 <li> Como la variable dependiente rezagada, $y_{t-1}$, entra dentro de los regresores nos referimos a este modelo como un modelo <em> dinámico </em>.</li>
-<li> Para este modelo perdemos el primer dato de la muestra ya que en este caso no conoceríamos el rezago para dicho momento.</li>
+<li> Para este modelo perdemos el primer dato de la muestra, ya que en este caso no conoceríamos el rezago para dicho momento.</li>
 <li> Este modelo es lineal en los regresores, pero no es lineal en los parámetros, y por lo tanto debería ser estimado por Mínimos Cuadrados no lineales.</li>
 
 
