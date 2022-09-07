@@ -45,7 +45,7 @@ output:
 <ul>
 <li> El primer rezago de una variable $x_t$ se define como $x_{t-1}$</li>
 <li> De la misma forma el rezago $j$ de $x_t$ es $x_{t-j}$</li>
-<li> Cabe anotar que el rezago depende de la unidad de medida de la variable, e.g. si la variable esta medida anualmente $t-1$ es el año anterior, pero si esta medida mensualmente, $t-1$ es el mes anterior.</li>
+<li> Cabe anotar que el rezago depende de la unidad de medida de la variable, e.g. si la variable está medida anualmente $t-1$ es el año anterior, pero si está medida mensualmente, $t-1$ es el mes anterior.</li>
 
 
 # El operador de rezagos
@@ -312,7 +312,7 @@ Se deja como ejercicio, que la auto-covarianza es,
 
 #
 
-Finalmente, la auto-correlación esta dada por,
+Finalmente, la auto-correlación está dada por,
 
 \begin{align*}
     \rho_{j,t} & = \frac{\gamma_{j,t}}{\sqrt{\gamma_{0,t}}\sqrt{\gamma_{0,t-j}}} \\
