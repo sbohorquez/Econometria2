@@ -17,7 +17,7 @@ output:
 
 #
 
- El modelo de regresión lineal múltiple esta dado por
+ El modelo de regresión lineal múltiple está dado por
 \begin{equation}
         Y_i = \beta_0 + \beta_1 X_{1i} + \beta_2 X_{2i} + \dots + \beta_k X_{ki} + u_i
 \end{equation}
