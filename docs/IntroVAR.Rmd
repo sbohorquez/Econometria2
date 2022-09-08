@@ -23,7 +23,7 @@ Sin embargo, en muchos casos en economía diferentes variables se afectan entre 
 
 #
 
-En el modelo ADL tenemos que $x_t$ es afectado por $z_t$. Consideremos el caso sin efectos contemporaneos:
+En el modelo ADL tenemos que $x_t$ es afectado por $z_t$. Consideremos el caso sin efectos contemporáneos:
 
  \begin{equation}
      x_t = \delta + \sum_{i=1}^p \phi_i x_{t-i} + \sum_{j=1}^b \beta_j z_{t-j} + u_t
