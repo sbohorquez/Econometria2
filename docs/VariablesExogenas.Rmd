@@ -32,7 +32,7 @@ Por simplicidad de notación, miraremos el caso con una sola variable independie
 
 #
 
-Cuando el proceso $x_t$ depende solamente de nuestra variable independiente $z_t$ y no de rezagos de si mismo, tenemos lo que es llamado el modelo de rezagos distribuidos. 
+Cuando el proceso $x_t$ depende solamente de nuestra variable independiente $z_t$ y no de rezagos de sí mismo, tenemos lo que es llamado el modelo de rezagos distribuidos. 
 
 #
 
@@ -260,7 +260,7 @@ Este tipo de modelos también se pueden escribir como modelos dinámicos con err
  
  donde $\eta_t= \sum_{j=1}^p \phi_j (x_{t-j} - Z_{t-j}\beta )+ \varepsilon_t + \sum_{k=1}^q \theta_k \varepsilon_{t-k}$
  
-Los paquetes estadísticos por lo general usan una de estas dos transformaciones para las estimaciones. En el caso de R las betas se pueden interpretar sin problema ya que el software diferencia automáticamente el modelo.    
+Los paquetes estadísticos por lo general usan una de estas dos transformaciones para las estimaciones. En el caso de R las betas se pueden interpretar sin problema, ya que el software diferencia automáticamente el modelo.    
 
                        
 
