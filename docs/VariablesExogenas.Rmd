@@ -19,7 +19,7 @@ output:
 
 Hasta ahora hemos modelado los procesos como dependientes solo de su pasado o de procesos de innovación.
 
-Sin embargo, para muchas series económicas deseamos modelar la relación entre nuestra variable de interés, su valor actual y sus rezagos y, adicionalmente, los rezagos de otras variables independientes.
+Sin embargo, para muchas series económicas deseamos modelar la relación entre nuestra variable de interés, su valor actual, sus rezagos y, adicionalmente, los rezagos de otras variables independientes.
 
 
 # Modelos de Rezagos distribuidos
@@ -28,11 +28,11 @@ Sin embargo, para muchas series económicas deseamos modelar la relación entre 
 
 Empezamos con el modelo dinámico con variables independientes más sencillo.
 
-Por simplicidad de notación, miraremos el caso con una sola variable independiente $z_t$. En la practica suele haber más de una variable, pero en los casos que veremos a continuación, la extensión a modelos más generales es sencilla. 
+Por simplicidad de notación, miraremos el caso con una sola variable independiente $z_t$. En la práctica suele haber más de una variable, pero en los casos que veremos a continuación, la extensión a modelos más generales es sencilla. 
 
 #
 
-Cuando el proceso $x_t$ depende solamente de nuestra variable independiente $z_t$ y no de rezagos de si mismo, tenemos lo que es llamado el modelo de rezagos distribuidos. 
+Cuando el proceso $x_t$ depende solamente de nuestra variable independiente $z_t$ y no de rezagos de sí mismo, tenemos lo que es llamado el modelo de rezagos distribuidos. 
 
 #
 
