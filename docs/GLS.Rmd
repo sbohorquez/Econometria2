@@ -40,7 +40,7 @@ output:
 
 <ul>
 <li> Ahora, suponiendo que conocemos $\Omega(\mathbf{X})$ y que tenemos una matriz $\mathbf{F}$ tal que $\mathbf{F}'\mathbf{F} =\Omega(\mathbf{X})^{-1}$.</li> 
-<li> Estimamos el siguiento modelo de regresión,
+<li> Estimamos el siguiente modelo de regresión,
         \begin{equation}
         \tilde{\mathbf{Y}}  = \tilde{\mathbf{X}} \boldsymbol{\beta} + \tilde{\mathbf{U}}
     \end{equation}
@@ -81,7 +81,7 @@ Este estimador es conocido como el estimador de MCG Factibles.
 
 #
 
-En la literatura de series de tiempo, los errores estandares robustos a correlación serial son a veces llamados, HAC, por sus siglas en ingles (heteroskedasticity and autocorrelation consistent)
+En la literatura de series de tiempo, los errores estándares robustos a correlación serial son a veces llamados, HAC, por sus siglas en inglés (heteroskedasticity and autocorrelation consistent)
 
 Estos empezaron con el trabajo de Newey & West (1987), quienes buscaban tratar con el problema de correlación serial y heteroscedasticidad propio de las series de tiempo.
 
