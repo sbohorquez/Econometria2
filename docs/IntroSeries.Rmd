@@ -558,6 +558,8 @@ pp.test(data)
 
 Finalmente, KPSS de manera predeterminada rechaza que la serie sea estacionaria pues no considera estacionareidad en tendencia, pero al cambiar el parámetro _null_ por _"Trend" si la incluye y por tanto no encuentra evidencia de que la serie sea no estacionaria. En conclusión, tenemos evidencia para afirmar que la serie es estacionaria con intercepto y en tendencia.
 
+##
+
 ```{r kpss, echo=TRUE, warning=FALSE}
 kpss.test(data)
 kpss.test(data, null = "Trend")
