@@ -244,7 +244,7 @@ El proceso es estacionario si las soluciones de $\lambda_i$ de la ecuación
     \lambda^p - \phi_1 \lambda^{p-1} - \dots - \phi_p = 0  
 \end{equation}
 
-caen dentro del circulo de unidad
+caen dentro del círculo de unidad
 
 #
 
