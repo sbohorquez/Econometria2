@@ -104,13 +104,13 @@ width:1000px;
     <td>Quiz 4</td>
     <td>Comprende e implementa modelos orientados a estimar efectos causales en software especializado usando ecuaciones simultáneas.</td>
     <td>5%</td>
-    <td>Semana 12</td>
+    <td>Semana 11</td>
   </tr>
   <tr>
   <td>Parcial 2</td>
     <td>Entiende la teoría de modelos básicos de efectos causales e interpreta en una manera adecuada los resultados de los mecanismos de estimación.</td>
     <td>20%</td>
-    <td>Semana 13</td>
+    <td>Semana 12</td>
   </tr>
   <tr>
   <td>Trabajo aplicado</td>
