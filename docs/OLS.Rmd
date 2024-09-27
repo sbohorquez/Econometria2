@@ -142,7 +142,7 @@ Con estas condiciones podemos estimar las condiciones de primer orden para minim
      
 # 
 
-Si tenemos una muestra grande, y los supuestos anteriores se cumplen y usando el teorema del limite central, la distribución asintótica del estimador es dada por,
+Si tenemos una muestra grande y los supuestos anteriores se cumplen, usando el teorema del limite central, la distribución asintótica del estimador es dada por,
     \begin{equation}
        \sqrt{n}(\boldsymbol{\hat{\beta}} - \boldsymbol{\beta}) \overset{d}{\rightarrow} N(\mathbf{0}_{k+1},\Sigma_{\sqrt{n}(\boldsymbol{\hat{\beta}} - \boldsymbol{\beta})}) 
     \end{equation}
